@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" strict="true">>
+<Properties>
+<Property name="filename">./logs/Logs.log</Property>
+</Properties>
+    <Appenders>
+    <Appender type="Console" name="STDOUT">
+            <Layout type="PatternLayout" pattern="%d{HH:mm:ss.SSS} %-5level %logger{36} %msg%n"/>
+              </Appender>   
+                     
+               <Appender type="File" name="File" fileName="${filename}">
+				   <Layout type="PatternLayout" pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} %msg%n"/>
+              </Appender>     
+    </Appenders>
+    <Loggers>
+    	<!-- Root logger referring to console appender -->
+        <Root level="info">
+			 <AppenderRef ref="File"/>
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>

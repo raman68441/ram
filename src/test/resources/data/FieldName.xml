@@ -1,0 +1,27 @@
+<resources>
+	<string name="forgot password">Forgot Password</string>
+	<string name="logout option name">Logout</string>
+	<string name="login to dms">Login To DMS</string>
+	<string name="user name default text">Enter Your User Name *</string>
+	<string name="password default text">Password *</string>
+	<string name="or field">OR</string>
+	<string name="login warning message">Incorrect User Name or Password!</string>
+	<string name="resolve message">Don't worry. We will resolve this ASAP</string>
+	<string name="email default text">Enter Your Registered Email *</string>
+	<string name="document management system text">DOCUMENT MANAGEMENT SYSTEM</string>
+	<string name="back to login link text">Back To Login</string>
+	<string name="submit field text">SUBMIT</string>
+	<string name="email id label">Enter Your Registered Email *</string>
+	<string name="otp field type">numeric</string>
+	<string name="email id filed diabled">true</string>
+<string name="reset password text">Reset Password</string>
+<string name="sent otp text">We sent you an OTP to the registered email, Please check</string>
+<string name="enter otp default text">Enter OTP *</string>
+<string name="email field label text">Enter Your Registered Email *</string>
+<string name="otp warning message">Enter valid OTP</string>
+
+
+
+
+
+</resources>
