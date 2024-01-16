@@ -1,5 +1,6 @@
 package page;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,6 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utility.Constant;
+
 /**
  * This class will have forgot password screen functionality
  */
@@ -17,29 +20,33 @@ public class ForgotPasswordPage extends GlobalFunctions{
 	Logger log = LogManager.getLogger(ForgotPasswordPage.class);
 	private WebDriver driver;
 
-	@FindBy(xpath = "//*[@class='MuiOutlinedInput-notchedOutline css-igs3ac']//span")
+	@FindBy(id = "login-username")
 	WebElement emailField;
 	
-	@FindBy(id = "email-label")
+	@FindBy(id = "login-username-label")
 	WebElement emailLabel;
 	
-	@FindBy(id = "email")
-	WebElement emailId;
+	@FindBy(id = "login-username-helper-text")
+	WebElement invalidEmailIdMessage;
 
-	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-1ycgwhr']")
+	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-g9jn89']")
 	WebElement forgotPasswordHeading;
 	
-	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body2 css-vl1jh3']")
+	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-gix94l']")
 	WebElement resolveMessage;	
 	
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-fullWidth css-1s3d30o']")
+	@FindBy(id = "email-submit-button")
 	WebElement submitBtn;	
 	
-	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 css-1wd1o8s']")
-	WebElement documentManagementSystem;	
+	@FindBy(id = "email-sent")
+	WebElement emailSendText;
 	
-	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body2 css-1ujpxk5']")
-	WebElement backToLoginLink;	
+	@FindBy(xpath="//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-fullWidth MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-fullWidth css-p5f629']")
+	WebElement backToLoginLink;
+	
+	
+	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 css-1wd1o8s']")
+	WebElement documentManagementSystem;		
 
 	@FindBy(xpath = "//*[@class='MuiInputBase-input MuiOutlinedInput-input Mui-disabled css-1x5jdmq']")
 	WebElement disableEmailId;	
@@ -67,6 +74,30 @@ public class ForgotPasswordPage extends GlobalFunctions{
 	
 	@FindBy(id="otp-helper-text")
 	WebElement otpWarningMessage;
+	
+	@FindBy(id="login-username-label")
+	WebElement loginUserIdLabel;
+	
+	@FindBy(xpath="//*[@class='MuiAlert-message css-1xsto0d']")
+	WebElement submitMessage;
+	
+	@FindBy(id="otp-sent")
+	WebElement enterOtpField;
+	
+	@FindBy(id="resend-otp-btn")
+	WebElement resendOtpBtn;
+	
+	@FindBy(id="otp-message")
+	WebElement otpMessage;
+	
+	@FindBy(id="otp-input")
+	WebElement otpInputField;
+	
+	@FindBy(id="otp-input-helper-text")
+	WebElement otpErrorMessage;
+	
+	@FindBy(id="otp-submit-button")
+	WebElement otpSubmitBtn;
 	
 	
 	public ForgotPasswordPage(WebDriver driver) {
@@ -96,6 +127,12 @@ public class ForgotPasswordPage extends GlobalFunctions{
 		case "reset password":
 			clickElement(resetPassword);
 			break;	
+		case "otp submit button":
+			clickElement(otpSubmitBtn);
+			break;	
+		case "enter":
+			clickOnKeyBoardKeys(emailField,Constant.ENTER);
+			break;
 		default:
 			Assert.fail("failed");
 			System.out.println("invalid name");
@@ -126,12 +163,10 @@ public class ForgotPasswordPage extends GlobalFunctions{
 		case "resolve message":
 			verifyText(resolveMessage, name);
 			break;
-		case "email default text":
-			Assert.assertTrue(String.format("eamil defaulut text is %s",name),name.equals(getAttribute(emailField, "textContent")));
+		case "email field default text":
+		case "invalid email id label message":
+			Assert.assertTrue(String.format("eamil defaulut text is %s",name),name.equals(getAttribute(emailLabel, "textContent")));
 			break;
-		case "email id label":
-			verifyText(emailLabel, name);
-			break;	
 		case "email id field diabled":
 			Assert.assertTrue(String.format("eamil id is disabled is %s",name),name.equals(getAttribute(disableEmailId, "disabled")));
 			break;		
@@ -145,6 +180,37 @@ public class ForgotPasswordPage extends GlobalFunctions{
 			break;
 		case "reset password":
 			Assert.assertTrue(String.format("reset password text is %s",name),name.equals(getAttribute(resetPassword, "textContent")));
+			break;	
+		case "invalid email label error message":
+			Assert.assertTrue(String.format("reset password text is %s",name),name.equals(getAttribute(loginUserIdLabel, "textContent")));
+			break;
+		case "send email text":
+			verifyText(emailSendText, name);
+			break;	
+		case "otp success message":
+			waitTillAttributeDisplay(submitMessage, "class", "MuiAlert-message css-1xsto0d", Duration.ofSeconds(60));
+			verifyText(submitMessage, name);
+			break;
+		case "enter otp":
+			verifyText(enterOtpField, name);
+			break;
+		case "otp error message":
+			verifyText(submitMessage, name);
+			break;
+		case "invalid email error message":
+			verifyText(submitMessage, name);
+			break;
+		case "invalid email label":
+			verifyText(invalidEmailIdMessage, name);
+			break;
+		case "resend otp text":
+			verifyText(resendOtpBtn, name);
+			break;		
+		case "otp message text":
+			Assert.assertTrue(String.format("otp text is %s",name),(getAttribute(otpMessage, "textContent").contains(name)));
+			break;
+		case "otp less than six digit error message":
+			verifyText(otpErrorMessage, name);
 			break;		
 		default:
 			log.info("***failed***");
@@ -163,7 +229,10 @@ public class ForgotPasswordPage extends GlobalFunctions{
 		String fieldValue = getXmlFilesData(text);
 		switch (fieldName) {
 		case "email id":
-			enterValue(emailId, fieldValue);
+			enterValue(emailField, fieldValue);
+			break;
+		case "otp":
+			enterValue(otpInputField, fieldValue);
 			break;
 		default:
 			System.out.println("invalid name");

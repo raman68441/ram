@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import core.BaseClass;
+import hooks.Hooks;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -20,6 +21,8 @@ public class LoginStep {
 	LoginPage loginPage = new LoginPage(BaseClass.getDriver());	
 	CommonPage commonPage = new CommonPage(BaseClass.getDriver());
 	BaseClass baseClass = new BaseClass();
+	Hooks hooks = new Hooks();
+	
 	ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(BaseClass.getDriver());	
 	
 	@Given("User launched the application")
@@ -73,4 +76,10 @@ public class LoginStep {
 		forgotPasswordPage.enterValue(text, fieldName);
 	}
 
+	@Then("User relaunch the application")
+	public void userRelaunchApplication() {
+		hooks.getProperty();
+		hooks.launchBrowser();
+		commonPage.launchApplication();
+	}
 }

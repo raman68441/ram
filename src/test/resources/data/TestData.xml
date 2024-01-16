@@ -1,18 +1,24 @@
 <resources>	
 <!--login page texts-->	
-  <string name="user name">Jayalakshmi.X-Hegde@neviton.com</string>
-   <string name="password">NRXcZ93suQ</string>   
-     <string name="user name1">srinivas@neviton.com</string>
+  <string name="email id">Jayalakshmi.X-Hegde@neviton.com</string>
+   <string name="password">dms@234</string>   
+     <string name="invalid email id1">srinivas@neviton.com</string>
       <string name="invalid password1">abc123</string>
       <string name="invalid password2">abc345</string>
       <string name="invalid password3">abc111</string>
       <string name="invalid password4">abc155</string>
-      <string name="invalid password5">abc167</string>
-       <string name="valid password">srinivas@123</string>
-        
+       <string name="valid password">dms@234</string>
+       <string name="invalid email id">jaya</string> 
+       <string name="email id not registered">Jayalakshmi.X-Hegde@nevton.com</string>
+ <string name="invalid digit otp">12345</string>
+  <string name="invalid otp">123456</string>
  
  <!--Menu options texts-->	  
- <string name="txt full name">Jayalakshmi Hegde</string>
-   <string name="txt email id">Jayalakshmi.X-Hegde@neviton.com</string>
-    
+ <string name="full name">Jayalakshmi Hegde</string>
+   <string name="email id">Jayalakshmi.X-Hegde@neviton.com</string>
+   
+    <!--audit trail texts-->	  
+   <string name="txt_audit_trail_login_data">1|##|Jayalakshmi Hegde (NS1105)|Logged In</string>"
+     <string name="txt_audit_trail_login_data_without_identificationId">1|##|Jayalakshmi Hegde|Logged In</string>"
+  
 </resources>

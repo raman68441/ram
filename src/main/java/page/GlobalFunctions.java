@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -97,8 +98,8 @@ public class GlobalFunctions {
 	public void verifyText(WebElement element, String expectedText) {
 		String actualText = element.getText();
 		System.out.println("actualText " + actualText + " expectedText " + expectedText);
-		log.info("actualText " + actualText + " expectedText " + expectedText);
-		Assert.assertTrue(String.format("field text value %s %s", actualText, expectedText),
+		log.info("actualText " + actualText + "|expectedText " + expectedText + "|");
+		Assert.assertTrue(String.format("field text value actual text: %s expected text: %s", actualText, expectedText),
 				actualText.equals(expectedText));
 	}
 
@@ -130,7 +131,8 @@ public class GlobalFunctions {
 	 * @param waitTime
 	 * @return boolean value true or false
 	 */
-	public Boolean waitTillAttributeDisplay(WebElement element, String attribute, String attributeValue, Duration waitTime) {
+	public Boolean waitTillAttributeDisplay(WebElement element, String attribute, String attributeValue,
+			Duration waitTime) {
 		WebDriverWait wait = new WebDriverWait(driver, waitTime);
 		try {
 			log.info(
@@ -285,7 +287,10 @@ public class GlobalFunctions {
 			log.info(String.format("moved toward right for %s pixels ", pixel));
 		} else if (direction.equals(Constant.DOWN)) {
 			js.executeScript("arguments[0].scrollTop+=" + pixel + ";", element);
-			log.info(String.format("moved toward right for %s pixels ", pixel));
+			log.info(String.format("moved toward down for %s pixels ", pixel));
+		} else if (direction.equals(Constant.TOP)) {
+			js.executeScript("arguments[0].scrollTop = 0;", element);
+			log.info("moved to top of the element");
 		}
 		try {
 			Thread.sleep(200);
@@ -321,8 +326,8 @@ public class GlobalFunctions {
 	 * @param elements
 	 */
 	public void clickOnPerticularListElement(List<WebElement> elements, int number) {
-		WebElement client = elements.get(number);
-		client.click();
+		WebElement element = elements.get(number);
+		element.click();
 		log.info("clicked on mentioned number element in list");
 		try {
 			Thread.sleep(200);
@@ -352,7 +357,7 @@ public class GlobalFunctions {
 		log.info("Generated random string");
 		// Convert the StringBuilder to a String
 		return stringBuilder.toString();
-		
+
 	}
 
 	/**
@@ -397,29 +402,30 @@ public class GlobalFunctions {
 		boolean found = false;
 		int elementsCount = elements.size();
 		for (int x = 0; x < elementsCount; x++) {
+			System.out.println(x);
 			WebElement element = elements.get(x);
 			String textContent = element.getAttribute("textContent");
 			System.out.println(textContent);
 			System.out.println(text);
-			if(element.getAttribute("textContent").equals(text)) {
+			if (element.getAttribute("textContent").equals(text)) {
 				found = true;
 				break;
-			}		
+			}
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}		
+			}
 		}
 		log.info("checked all the element in list");
-		if(found=false) {
+		if (found == false) {
 			Assert.fail(String.format("%s is not displaying", text));
 		}
 	}
-	
+
 	/**
-	 * open new window
+	 * open new window(new tab)
 	 */
 	public void openNewWindow() {
 		((JavascriptExecutor) driver).executeScript("window.open()");
@@ -428,24 +434,162 @@ public class GlobalFunctions {
 
 	/**
 	 * switch to mentioned number window
+	 * 
 	 * @param windowNumber
 	 */
-public void switchWindow(int windowNumber) {
-	ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-	driver.switchTo().window(tabs.get(windowNumber));
-}
+	public void switchWindow(int windowNumber) {
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(windowNumber));
+	}
 
-/**
- * Get the attribute value
- * @param element
- * @param attribute
- * @return
- */
-public String getAttribute(WebElement element, String attribute) {
-	String value = null;
+	/**
+	 * Get the attribute value
+	 * 
+	 * @param element
+	 * @param attribute
+	 * @return
+	 */
+	public String getAttribute(WebElement element, String attribute) {
+		String value = null;
 		value = element.getAttribute(attribute);
 		log.info(String.format("attribute value is %s", value));
-	return value;
-	
-}
+		return value;
+
+	}
+
+	/**
+	 * Sort the List in Ascending or Descending order
+	 * 
+	 * @param data     -> List
+	 * @param sortType -> Ascending or Descending
+	 * @return List
+	 */
+	public List<String> sortList(List<String> data, String sortType) {
+		if (sortType.equals(Constant.ASCENDING)) {
+			Collections.sort(data);
+		} else {
+			Collections.sort(data, Collections.reverseOrder());
+		}
+		return data;
+	}
+
+	/**
+	 * Get the css property of the element
+	 * 
+	 * @param element      - WebElement
+	 * @param propertyName -> Css property name
+	 * @return
+	 */
+	public String getCssValue(WebElement element, String propertyName) {
+		String value = null;
+		if (isExists(element)) {
+			value = element.getCssValue(propertyName);
+		} else {
+			Assert.fail(String.format("%s WebElement is not present", element));
+		}
+		return value;
+	}
+
+	/**
+	 * compare two strings
+	 * 
+	 * @param actualText
+	 * @param expectedText
+	 */
+	public void compareTwoString(String actualText, String expectedText) {
+		Assert.assertTrue(
+				String.format("actual text value: %s and expected text value is: %s", actualText, expectedText),
+				actualText.equals(expectedText));
+	}
+
+	/**
+	 * Verify field name
+	 * 
+	 * @param element
+	 * @param expectedText
+	 */
+	public void verifyTextContent(WebElement element, String attribute, String expectedText) {
+		String actualText = element.getAttribute(attribute);
+		System.out.println("actualText " + actualText + " expectedText " + expectedText);
+		log.info("actualText " + actualText + " expectedText " + expectedText);
+		Assert.assertTrue(String.format("field text value actual text: %s expected text: %s", actualText, expectedText),
+				actualText.equals(expectedText));
+	}
+
+	/**
+	 * click on key board keys
+	 * 
+	 * @param element - Name of the element action take place
+	 * @param keyName - keyboard keys
+	 */
+	public void clickOnKeyBoardKeys(WebElement element, String keyName) {
+		if (keyName.equalsIgnoreCase(Constant.ENTER)) {
+			element.sendKeys(Keys.ENTER);
+			log.info("clicked on return key");
+		}
+	}
+
+	/**
+	 * get all the text from drop down list element
+	 * 
+	 * @param element
+	 * @return list text
+	 */
+	public List<String> getAllTextFromListDropDown(WebElement element) {
+		Select select = new Select(element);
+		List<WebElement> options = select.getOptions();
+		List<String> rowData = new ArrayList<>();
+		for (WebElement we : options) {
+			rowData.add(getText(we));
+		}
+		return rowData;
+
+	}
+
+	/**
+	 * verify element displayed or not
+	 * 
+	 * @param element
+	 * @return
+	 */
+	public boolean isElementPresent(WebElement element) {
+		try {
+			element.isDisplayed();
+			return true;
+		} catch (org.openqa.selenium.NoSuchElementException e) {
+			return false;
+		}
+	}
+
+	/**
+	 * Click on all the elements in list
+	 * 
+	 * @param elements
+	 */
+	public void getTextFromElementInListInMentionedPositionAndValidate(List<WebElement> elements, String text,
+			int position) {
+		boolean found = false;
+		int elementsCount = elements.size();
+		for (int x = 0; x < elementsCount; x++) {
+			WebElement element = elements.get(x);
+			String textContent = element.getAttribute("textContent");
+			System.out.println(textContent);
+			System.out.println(text);
+			if (position == x) {
+				if (element.getAttribute("textContent").equals(text)) {
+					found = true;
+					break;
+				}
+			}
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		log.info("checked all the element in list");
+		Assert.assertTrue(String.format("%s is not displaying", found), found);
+	}
+
 }

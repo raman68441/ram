@@ -1,5 +1,6 @@
 package page;
 
+import java.time.Duration;
 import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
@@ -10,46 +11,86 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import core.BaseClass;
 import utility.ConfigReader;
 import utility.ReadXml;
 
 /**
  * This class will have common elements and its functionality
  */
-public class CommonPage  extends GlobalFunctions {
+public class CommonPage extends GlobalFunctions {
 
 	Logger log = LogManager.getLogger(CommonPage.class);
 	ReadXml readxml = new ReadXml();
-	private WebDriver driver;	
+
+	private BaseClass baseClass;
+	private WebDriver driver;
 	ConfigReader configReader;
 	Properties prop;
-	
-	@FindBy(xpath="//*[@class ='MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1cw4hi4']")
-	WebElement hooverActivatedMenu;
-	
-	@FindBy(xpath="//*[@class ='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-dense MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-dense MuiMenuItem-gutters css-7zzzi9']")
-	WebElement logoutBtn;
-	
-	@FindBy(xpath="//*[@class ='MuiTypography-root MuiTypography-caption css-1j6vmv8']")
+
+	@FindBy(xpath = "//*[@class ='MuiAvatar-img css-1hy9t21']")
+	WebElement loginImage;
+
+	@FindBy(xpath = "//*[@class ='MuiSvgIcon-root MuiSvgIcon-fontSizeSmall css-11v7f0k']")
+	WebElement loginDropDown;
+
+	@FindBy(xpath = "//*[text()='Logout']")
+	WebElement logoutOption;
+
+	@FindBy(xpath = "//*[text()='Your Profile']")
+	WebElement yourProfileOption;
+
+	@FindBy(xpath = "//*[text()='Notifications']")
+	WebElement notificationsOption;
+
+	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-body2 css-1tulygb']")
 	WebElement loginEmailId;
-	
-	@FindBy(xpath="//*[@class ='MuiTypography-root MuiTypography-body2 css-1r5bq9o']")
+
+	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-body1 css-j5a1ma']")
 	WebElement loginName;
+
+	@FindBy(xpath = "//*[text()='Sort by ASC']")
+	WebElement sortByAscendingOption;
+
+	@FindBy(xpath = "//*[text()='Sort by DESC']")
+	WebElement sortByDescendingOption;
+
+	@FindBy(xpath = "//*[text()='Filter']")
+	WebElement filterOption;
+
+	@FindBy(xpath = "//*[text()='Hide column']")
+	WebElement hideColumnOption;
+
+	@FindBy(xpath = "//*[text()='Manage columns']")
+	WebElement manageColumnOption;
+
+	@FindBy(xpath = "//*[@class='MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-standard MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-standard css-1r4qbck']")
+	WebElement findColumn;
+
+	@FindBy(xpath = "//*[text()='Show all']")
+	WebElement showAll;
+
+	@FindBy(xpath = "//*[text()='Hide all']")
+	WebElement hideAll;
 	
+	@FindBy(xpath = "//*[text()='System']")
+	WebElement systemMenu;
+	
+	public static String loggedInUserfullName;
+
 	public CommonPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	public void launchApplication() {
-		switchWindow(0);
 		configReader = new ConfigReader();
 		prop = configReader.init_prop();
 		String url = prop.getProperty("url");
 		driver.get(url);
-		log.info("launching Vender application");
+		log.info("Launching DMS application");
 	}
-	
+
 	/**
 	 * Click on Button
 	 * 
@@ -57,11 +98,11 @@ public class CommonPage  extends GlobalFunctions {
 	 */
 	public void clickOnBtn(String fieldName) {
 		switch (fieldName) {
-		case "hover activated menu":
-			clickElement(hooverActivatedMenu);
+		case "logged in user drop down":
+			clickElement(loginDropDown);
 			break;
 		case "logout option":
-			clickElement(logoutBtn);
+			clickElement(logoutOption);
 			break;
 		case "back button":
 			driver.navigate().back();
@@ -72,11 +113,14 @@ public class CommonPage  extends GlobalFunctions {
 		case "close button":
 			driver.close();
 			break;
-		case "new window":
+		case "new tab":
 			openNewWindow();
 			break;
 		case "refresh button":
 			driver.navigate().refresh();
+			break;
+		case "system":
+			clickElement(systemMenu);
 			break;	
 		default:
 			Assert.fail("failed");
@@ -84,7 +128,7 @@ public class CommonPage  extends GlobalFunctions {
 			break;
 		}
 	}
-	
+
 	/**
 	 * Verify field name
 	 * 
@@ -93,14 +137,22 @@ public class CommonPage  extends GlobalFunctions {
 	public void verifyFieldText(String text, String fieldName) {
 		String name = getXmlFilesData(text);
 		switch (fieldName) {
-		case "user name":
+		case "logged in user":
+			waitTillAttributeDisplay(loginName, "textContent", name, Duration.ofSeconds(60));
 			verifyText(loginName, name);
+			loggedInUserfullName = name;
 			break;
 		case "email id":
 			verifyText(loginEmailId, name);
 			break;
 		case "logout":
-			verifyText(logoutBtn, name);
+			verifyText(logoutOption, name);
+			break;
+		case "your profile":
+			verifyText(yourProfileOption, name);
+			break;
+		case "notifications":
+			verifyText(notificationsOption, name);
 			break;
 		default:
 			log.info("***failed***");
@@ -108,6 +160,37 @@ public class CommonPage  extends GlobalFunctions {
 			Assert.fail("invalid name");
 			break;
 		}
+	}
+
+	/**
+	 * Relaunch the application.
+	 */
+	public void reLauchApplication() {
+		driver.quit();
+		configReader = new ConfigReader();
+		prop = configReader.init_prop();
+		String browserName = prop.getProperty("browser");
+		baseClass = new BaseClass();
+		driver = baseClass.init_dirver(browserName);
+		String url = prop.getProperty("url");
+		driver.get(url);
+		log.info("Re launching DMS application");
+	}
+
+	/**
+	 * switch to the mentioned window
+	 * 
+	 * @param windowNumber
+	 */
+	public void switchMentionedWindow(int windowNumber) {
+		switchWindow(windowNumber);
+	}
+
+	/**
+	 * open new tab
+	 */
+	public void openNewTab() {
+		openNewWindow();
 	}
 
 }
