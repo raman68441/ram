@@ -80,6 +80,9 @@ public class AuditTrailStep {
 		auditTrailPage.verifyNumberOfRowsInAuditTrailTable(totalRows);
 	}
 
-	
+	@Then("User verify life cycle states audit tail table data {string} for {string} event in row {int}")
+	public void userVerifyAuditTrailTableMentionedRowDataForLifeCycleStates(String data, String eventName, int rowNumber) {
+		auditTrailPage.validateMentionedRowNumberDataForLifeCycleStatesAuditTrail(data, eventName, rowNumber);
+	}
 	
 }

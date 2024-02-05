@@ -527,6 +527,7 @@ public class GlobalFunctions {
 			element.sendKeys(Keys.ENTER);
 			log.info("clicked on return key");
 		}
+
 	}
 
 	/**
@@ -590,6 +591,17 @@ public class GlobalFunctions {
 		}
 		log.info("checked all the element in list");
 		Assert.assertTrue(String.format("%s is not displaying", found), found);
+	}
+
+	/**
+	 * Drag the element from source place to destination place
+	 * 
+	 * @param WebElement - fromElement
+	 * @param WebElement - toElement
+	 */
+	public void dragAndDropElementFromToPlace(WebElement fromElement, WebElement toElement) {
+		Actions builder = new Actions(driver);
+		builder.dragAndDrop(fromElement, toElement).build().perform();
 	}
 
 }

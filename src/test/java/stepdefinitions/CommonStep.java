@@ -63,5 +63,15 @@ public class CommonStep {
 		paginationPage.clickOnNextPageTillLastData();
 	}
 	
+	@Then("User verify total number of records displayed in pagination")
+	public void userVerifyTotalNumberOfRecordsInPagination() {
+		paginationPage.getTotalNumberRecords();
+	}
+	
+	@Then("User upload file {string}")
+	@Then("User upload image {string}")
+	public void userUploadFile(String file) {
+		commonPage.uploadFileFromFolder(file);
+	}
 }
 	

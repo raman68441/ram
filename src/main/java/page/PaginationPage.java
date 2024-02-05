@@ -21,7 +21,7 @@ public class PaginationPage extends GlobalFunctions {
 	}
 
 	@FindBy(xpath = "//*[@class='MuiSelect-select MuiTablePagination-select MuiSelect-standard MuiInputBase-input css-1cccqvr']")
-	WebElement rowsPerPage;
+	public WebElement rowsPerPage;
 
 	@FindBy(xpath = "//*[@class='MuiTablePagination-displayedRows css-lf3lkf']")
 	WebElement numberOfRowsDisplay;
@@ -30,12 +30,12 @@ public class PaginationPage extends GlobalFunctions {
 	WebElement previousPageArrowField;
 
 	@FindBy(xpath = "//*[@title='Go to next page']")
-	WebElement nextPageArrowField;
+	public WebElement nextPageArrowField;
 
 	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters MuiTablePagination-menuItem css-wn1m24']")
 	WebElement rowsDropDown;
 
-	public static String totalNumberOfRecord;
+	public static String totalNumberOfRecords;
     public String pageNumbers = "//*[@data-value='#']";
 	//*[@data-value='20']
 	
@@ -117,8 +117,8 @@ public class PaginationPage extends GlobalFunctions {
 	public String getTotalNumberRecords() {
 		String numberOfRecords = getText(numberOfRowsDisplay);
 		String[] records = numberOfRecords.split(" ");
-		totalNumberOfRecord = records[records.length - 1];
-		return totalNumberOfRecord;
+		totalNumberOfRecords = records[records.length - 1];
+		return totalNumberOfRecords;
 	}
 
 	/**
@@ -132,4 +132,17 @@ public class PaginationPage extends GlobalFunctions {
 			clickElement(nextPageArrowField);
 		}
 	}
+	
+	/**
+	 * get total number records
+	 */
+	public int getNumberRecordsInPage() {
+		String numberOfRecords = getText(numberOfRowsDisplay);
+		String[] records = numberOfRecords.split(" ");
+		String numberRangeInPage = records[0];
+		String[] data = numberOfRecords.split("-");
+		int numberOfPage = (Integer.valueOf(data[1])-Integer.valueOf(data[0]))+1;
+		return numberOfPage;
+	}
+
 }

@@ -1,4 +1,4 @@
-package page;
+package page.config;
 
 import java.util.List;
 
@@ -8,6 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import page.ConfigurationPage;
+import page.GlobalFunctions;
 
 public class ListManagerPage extends GlobalFunctions {
 	Logger log = LogManager.getLogger(ConfigurationPage.class);

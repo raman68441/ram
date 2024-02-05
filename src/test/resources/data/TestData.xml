@@ -21,4 +21,62 @@
    <string name="txt_audit_trail_login_data">1|##|Jayalakshmi Hegde (NS1105)|Logged In</string>"
      <string name="txt_audit_trail_login_data_without_identificationId">1|##|Jayalakshmi Hegde|Logged In</string>"
   
+   <!--organization texts-->
+   <string name="text organization name">Test Arcolab</string>	
+   <string name="text organization code">111</string>
+    <string name="text description">Testing</string>
+     <string name="txt_organization_table_data">Test Arcolab|111|Testing</string>
+    	 <string name="text organization name1">Test Neviton</string>	
+   <string name="text organization code1">222</string>
+    <string name="text description1">Testing department</string>
+         <string name="txt_organization_table_data1">Test Neviton|222|Testing department</string>
+  
+   <!--department texts-->
+   <string name="text department name">QA</string>	
+   <string name="text department code">QA12</string>
+    <string name="text department description">Testing</string>
+    <string name="text department business unit">Business Unit 2</string>
+     <string name="txt_department_table_data">QA12|##|Testing|Business Unit 2</string>
+    	 <string name="text department name1">IT</string>	
+   <string name="text department code1">IT12</string>
+    <string name="text department description1">IT department</string>
+      <string name="text department business unit1">Business Unit 3</string>
+         <string name="txt_department_table_data1">IT12|##|Testing|Business Unit 3</string>
+         
+       <!--life cycle states texts-->
+         <string name="text life cycle state name">Test</string>	
+         <string name="text life cycle state description">Test description</string>	
+         <string name="txt_life_cycle_states_table_data">##|Test description|No|##|Jayalakshmi Hegde|#|#|</string>	
+         <string name="text edit life cycle state name">Test1</string>	
+         <string name="text edit life cycle state description">Test1 description</string>
+         <string name="txt_life_cycle_states_table_data1">##|Test description|No|##|Jayalakshmi Hegde|##|||</string>	
+         <string name="txt_lock_life_cycle_states_table_data">##|Test description|Yes|##|Jayalakshmi Hegde|#|#|</string>	
+          <string name="txt_edit_lock_life_cycle_states_table_data">##|Test1 description|Yes|##|Jayalakshmi Hegde|##|Jayalakshmi Hegde</string>	
+         <string name="txt_create_lock_life_cycle_states_auit_table_data">##|##|Jayalakshmi Hegde|Name = ##|created</string>	
+         <string name="txt_update_lock_life_cycle_states_auit_table_data">##|##|Jayalakshmi Hegde|Name = ##|updated|LifeCycleDescription|Test1 description|Test description</string>	
+         <string name="txt_delete_lock_life_cycle_states_auit_table_data">##|##|Jayalakshmi Hegde|Name = ##|deleted</string>
+         <string name="txt_file_ipad_image">\src\test\resources\files\ipad.jpg</string>
+	      <string name="txt jpg image file name">ipad.jpg</string>      
+	   <!--numbering system texts-->    
+	    <string name="text numbering system name">Numbering System Name</string>	
+	    <string name="text numbering system string value">123</string>	
+	    <string name="text numbering system maximum digit">1234</string>	
+	    <string name="text numbering system description">Numbering System Description</string>	
+	     <string name="option1">0</string>	
+
+	    
+
+	     
+	      
+
+
+          
+
+           
+ 
+ 
+         
+
+
+  
 </resources>

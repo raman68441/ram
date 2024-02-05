@@ -1,56 +1,56 @@
 
 <resources>
-	<string name="forgot password">Forgot Password</string>
-	<string name="logout option name">Logout</string>
-	<string name="login to dms">Login To DMS</string>
-	<string name="enter your login details">Please Enter Your Login Details</string>
-	<string name="email default text">Enter Your Email *</string>
-	<string name="password default text">Enter Your Password *</string>	
-	<string name="powered by text">Powered By</string>	
-	<string name="arcolab logo text">arcolab</string>	
-	<string name="email is required field">Email is a required field</string>
-	<string name="invalid email">Invalid email</string>
-	<string name="login with sso link">LOGIN WITH SSO</string>
-	<string name="invalid email label error message">Enter Your E-mail Address</string>
-	<string name="mandetory field">*</string>
-	<string name="send email text">We will send you an email.</string>
-	<string name="otp success message">OTP Sent Successfully!</string>
-	<string name="password is required field">Password is a required field</string>
-	<string name="invalid login credential error message">Invalid credentials</string>
-	<string name="resolve message">Don't worry. We will resolve this ASAP</string>
-	<string name="email default text">Enter Your Registered Email *</string>
-	<string name="document management system text">DOCUMENT MANAGEMENT SYSTEM</string>
-	<string name="back to login link text">BACK TO LOGIN</string>
-	<string name="submit field text">SUBMIT</string>
-	<string name="email id label">Enter Your Registered Email *</string>
-	<string name="otp field type">numeric</string>
-	<string name="email id filed diabled">true</string>
-<string name="reset password text">Reset Password</string>
-<string name="sent otp text">We sent you an OTP to the registered email, Please check</string>
-<string name="enter otp default text">Enter OTP *</string>
-<string name="email field label text">Enter Your Registered Email *</string>
-<string name="otp warning message">Enter valid OTP</string>
-<string name="your profile option name">Your Profile</string>
-<string name="notifications option name">Notifications</string>
-<string name="enter otp text">Enter OTP</string>
-<string name="resend otp text">RESEND OTP</string>
-  <string name="otp message text">Time Remaining: 01:</string>
- <string name="otp less than six digit error message">Must be exactly 6 digits</string>
- <string name="invalid email error message">Please provide registered Email Address</string>
- <string name="email field default text">Enter Your E-mail Address *</string>
- <string name="invalid email id label message">Enter Your E-mail Address *</string>
- <string name="invalid email label">Invalid Email</string>
- <string name="label audit trail">Audit Trail</string> 
-   <string name="label select category name">Select Category Name *</string>
-   <string name="label select event">Select Event *</string>
-   <string name="label start date">Start Date</string>
-   <string name="label end date">End Date</string>
-   <string name="label select user">Select User</string>
-   <string name="label select condition">Select Condition</string>
-   <string name="label enter name">Enter Name</string>
-   <string name="label show identification id">Show Identification ID</string>
-    <string name="label all day">All Day</string>
-    <string name="label or">Or</string>
+	 <string name="forgot password">Forgot Password</string>
+	 <string name="logout option name">Logout</string>
+	 <string name="login to dms">Login To DMS</string>
+	 <string name="enter your login details">Please Enter Your Login Details</string>
+	 <string name="email default text">Enter Your Email *</string>
+	 <string name="password default text">Enter Your Password *</string>
+	 <string name="powered by text">Powered By</string>
+	 <string name="arcolab logo text">arcolab</string>
+	 <string name="email is required field">Email is a required field</string>
+	 <string name="invalid email">Invalid email</string>
+	 <string name="login with sso link">LOGIN WITH SSO</string>
+	 <string name="invalid email label error message">Enter Your E-mail Address</string>
+	 <string name="mandetory field">*</string>
+	 <string name="send email text">We will send you an email.</string>
+	 <string name="otp success message">OTP Sent Successfully!</string>
+	 <string name="password is required field">Password is a required field</string>
+	 <string name="invalid login credential error message">Invalid credentials</string>
+	 <string name="resolve message">Don't worry. We will resolve this ASAP</string>
+	 <string name="email default text">Enter Your Registered Email *</string>
+	 <string name="document management system text">DOCUMENT MANAGEMENT SYSTEM</string>
+	 <string name="back to login link text">BACK TO LOGIN</string>
+	 <string name="submit field text">SUBMIT</string>
+	 <string name="email id label">Enter Your Registered Email *</string>
+	 <string name="otp field type">numeric</string>
+	 <string name="email id filed diabled">true</string>
+	 <string name="reset password text">Reset Password</string>
+	 <string name="sent otp text">We sent you an OTP to the registered email, Please check</string>
+	 <string name="enter otp default text">Enter OTP *</string>
+	 <string name="email field label text">Enter Your Registered Email *</string>
+	 <string name="otp warning message">Enter valid OTP</string>
+	 <string name="your profile option name">Your Profile</string>
+	 <string name="notifications option name">Notifications</string>
+	 <string name="enter otp text">Enter OTP</string>
+	 <string name="resend otp text">RESEND OTP</string>
+	 <string name="otp message text">Time Remaining: 01:</string>
+	 <string name="otp less than six digit error message">Must be exactly 6 digits</string>
+	 <string name="invalid email error message">Please provide registered Email Address</string>
+     <string name="email field default text">Enter Your E-mail Address *</string>
+  	 <string name="invalid email id label message">Enter Your E-mail Address *</string>
+	 <string name="invalid email label">Invalid Email</string>
+	 <string name="label audit trail">Audit Trail</string> 
+	<string name="label select category name">Select Category Name *</string>
+	<string name="label select event">Select Event *</string>
+	<string name="label start date">Start Date</string>
+	<string name="label end date">End Date</string>
+	<string name="label select user">Select User</string>
+	<string name="label select condition">Select Condition</string>
+	<string name="label enter name">Enter Name</string>
+	<string name="label show identification id">Show Identification ID</string>
+	<string name="label all day">All Day</string>
+	<string name="label or">Or</string>
    <string name="label generate">Generate</string>
    <string name="label add new event category">Add New Event Category</string>
    <string name="label reset all filters">Reset All Filters</string>
@@ -67,14 +67,14 @@
 	<string name="created option">created</string>
 	<string name="updated option">updated</string>
 	<string name="deleted option">deleted</string>
-     <string name="login tab">Login</string> 
-     <string name="login audit trail table headers">ID|Date|Time|Initiating User Login Id|Event</string>
-      <string name="remove event category header">Remove Event Category</string>
-      <string name="select category header">Select Category</string>
-      <string name="cancel">CANCEL</string>
-      <string name="add new event category header">Add New Event Category</string>
-      <string name="label add new event category generate">Generate</string>    
-       <string name="label add new event select category name">Select Event Category *</string>
+    <string name="login tab">Login</string> 
+    <string name="login audit trail table headers">ID|Date|Time|Initiating User Login Id|Event</string>
+    <string name="remove event category header">Remove Event Category</string>
+    <string name="select category header">Select Category</string>
+    <string name="cancel">CANCEL</string>
+    <string name="add new event category header">Add New Event Category</string>
+   <string name="label add new event category generate">Generate</string>
+   <string name="label add new event select category name">Select Event Category *</string>
    <string name="label add new event select event">Select Event *</string>
    <string name="label add new event start date">Start Date</string>
    <string name="label add new event end date">End Date</string>
@@ -82,20 +82,133 @@
    <string name="label add new event select condition">Select Condition</string>
    <string name="label add new event enter name">Enter Name</string>
    <string name="label add new event show identification id">Show Identification ID</string>
-    <string name="label add new event all day">All Day</string>
-    <string name="life cycle states tab">Life Cycle States</string>
+	<string name="label add new event all day">All Day</string>
+	<string name="life cycle states tab">Life Cycle States</string>
+	<string name="organization table column headers">Organisation Code|Organisation Name|Organisation Description|Created On|Created By|Modified On|Modified By</string>
+	<string name="organization delete message">Organisation Deleted Successfully</string>
+	<string name="organization create message">Organisation Created Successfully</string>
+	<string name="organization allready exist message">Organisation is allready present</string>
+ 		<string name="organization updated successfully message">Organisation Updated Successfully</string>
+ 	<string name="organization tab">Organisation</string>
+ 	<string name="organization list">Organisation List</string>
+ 	<string name="new organization">New Organisation</string>
+	<string name="label organization name">Organisation Name*</string>
+	<string name="label organization code">Organisation Code*</string>
+	<string name="label organization description">Description</string>
+	  <string name="save">Save</string>
+	<string name="warning message organization name required">Organisation Name is required</string>
+	<string name="warning message organization code required"> Organisation Code is required</string>
+    <string name="edit organization header">Edit Organisation</string> 
+	
+	<string name="department table column headers">Department Code|Department Name|Department Description|Business Unit|Created On|Created By|Modified On|Modified By</string>
+	<string name="department delete message">Department Deleted Successfully</string>
+	<string name="department create message">Department Created Successfully</string>
+	<string name="department is allready present">Department is allready present</string>
+ 	<string name="department updated successfully message">Department Updated Successfully</string>
+ 	<string name="department tab">Department</string>
+ 	<string name="department list">Department List</string>
+ 	<string name="new department">New Department</string>
+	<string name="label department name">Department Name*</string>
+	<string name="label department code">Department Code*</string>
+	<string name="label business unit">Business Unit *</string>
+	<string name ="label edit business unit">Business Unit*</string>
+	<string name="label department description">Description</string>
+	<string name="save button">SAVE</string>
+	<string name="warning message department name required">Department Name is required</string>
+	<string name="warning message department code required">Department Code is required</string>
+    <string name="warning message please select business unit">Please select a business unit</string>
+    <string name="edit department header">Edit Department</string>
+	<string name="life cycle states table column headers">Name|Description|Locked State|Created On|Created By|Modified On|Modified By</string>
+	<string name="life cycle state delete message">Life Cycle State Deleted Successfully</string>
+	<string name="life cycle state create message">Life Cycle State Created Successfully</string>
+	<string name="life cycle state is allready present">Life Cycle State is allready present</string>
+ 	<string name="life cycle state updated successfully message">Life Cycle State Updated Successfully</string>
+ 	<string name="life cycle states tab">Life Cycle States</string>
+ 	<string name="life cycle states list">Life Cycle States List</string>
+ 	<string name="new life cycle states">New Life Cycle States</string>
+	<string name="label name">Name*</string>
+	<string name="label select icon">Select Icon</string>
+	<string name="label description">Description*</string>
+	<string name="label locked state">Locked State:</string>
+	<string name="label yes">Yes</string>
+	<string name="label no">No</string>
+	<string name="warning message name required">Name is required</string>
+	<string name="warning message description required">Description is required</string>
+    <string name="edit life cycle states header">Edit Life Cycle States</string>
+    <string name="search option default value">All</string>
+    <string name="table filter default value">All</string>
+    <string name="option active">Active</string>
+    <string name="option inactive">Inactive</string>  
+    <string name="option life cycle name">LifeCycleName</string>
+    <string name="option life cycle description">LifeCycleDescription</string>
+    <string name="confirm you delete">Confirm Your Delete:</string>
+    <string name="delete">DELETE</string>
+    <string name="create life cycle states audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="update life cycle states audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+    <string name="delete life cycle states audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+	<string name="now rows">No rows</string>
 
-      
-      
+    <string name="numbering system tab">Numbering System</string>
+ 	<string name="numbering system list">Numbering System List</string>
+ 	<string name="new numbering system">New Numbering System</string>
+ 	<string name="numbering system table column headers">ID|Name|Description|Data Field Type|Final Number|Created On</string>
+ 	<string name="label string value">Starting Value *</string>
+ 	<string name="label maximum digit">Maximum Digit *</string>
+ 	<string name="label display leading zero">Display Leading Zero</string> 
+    <string name="warning message system name required">System Name is required</string>
+	<string name="warning message starting value required">Starting Values is required</string>
+	<string name="warning message maximum digit required">Maximun Digit is required</string>
+	<string name="warning message at least one field type is required">At least one field type is required</string>
+ 	<string name="label maximum digit">Maximum Digit *</string> 	
+ 	<string name="add field type header">Add Field Type</string>
+ 	<string name="label selected numbering system">Selected Numbering System:</string>
+ 	<string name="no field type added">No Field type added</string>
+ 	<string name="numbering format">Numbering Format:</string>
+ 	<string name="add button">Add</string>
+ 	<string name="add field type">Add Field Type</string>
+ 	<string name="label select feild type">Select Field Type</string>
+ 	<string name="system data field Type option">System Data Field Type</string>
+ 	<string name="list manager option">Select List Manager</string>
+ 	<string name="document type option">Select Document Type</string>
+ 	<string name="constant string option">Constant String</string>
+ 	<string name="year option">Year</string>	
+ 	<string name="label select system data field Type">Select System Data Field Type</string>
+ 	<string name="label select list manager">Select List Manager</string>
+ 	<string name="label select document type">Select Document Type</string>
+ 	<string name="label enter constant string">Enter Constant String</string>
+ 	<string name="label enter year">Enter Year</string>
+ 	<string name="generate button">Generate</string>
+ 	<string name="reset filter">RESET FILTER</string>
+ 	<string name="download">DOWNLOAD</string>
+ 	<string name="edit numbering system header">Edit Numbering System</string>
+	<string name="label name field">Name *</string>
+	<string name="label description field">Description *</string>
+
+	
+	
 
 
 
+ 	  
+
+ 	 
+	
+ 	 	
+
+ 	
+ 	
+
+ 
+
+
+   
+    
 
 
 
 
    
-	  
+  
   
   
 

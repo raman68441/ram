@@ -76,6 +76,30 @@ public class CommonPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='System']")
 	WebElement systemMenu;
 	
+	@FindBy(xpath = "//*[text()='Config']")
+	WebElement configMenu;
+	
+	@FindBy(xpath = "//*[text()='Admin']")
+	WebElement adminMenu;
+	
+	@FindBy(xpath = "//*[text()='Workflow']")
+	WebElement workFlowMenu;
+	
+	@FindBy(xpath = "//*[text()='Template']")
+	WebElement templateMenu;
+	
+	@FindBy(xpath = "//*[text()='Document']")
+	WebElement documentMenu;
+	
+	@FindBy(xpath = "//*[text()='Reports']")
+	WebElement reportsMenu;
+	
+	@FindBy(xpath = "//*[text()='Dashboard']")
+	WebElement dashBoardMenu;
+	
+	@FindBy(xpath = "//*[@type='file']")
+	WebElement fileupload;
+	
 	public static String loggedInUserfullName;
 
 	public CommonPage(WebDriver driver) {
@@ -122,6 +146,27 @@ public class CommonPage extends GlobalFunctions {
 		case "system":
 			clickElement(systemMenu);
 			break;	
+		case "config":
+			clickElement(configMenu);
+			break;
+		case "admin":
+			clickElement(adminMenu);
+			break;
+		case "workflow":
+			clickElement(workFlowMenu);
+			break;
+		case "template":
+			clickElement(templateMenu);
+			break;
+		case "document":
+			clickElement(documentMenu);
+			break;
+		case "report":
+			clickElement(reportsMenu);
+			break;
+		case "dashboard":
+			clickElement(dashBoardMenu);
+			break;
 		default:
 			Assert.fail("failed");
 			System.out.println("invalid name");
@@ -191,6 +236,19 @@ public class CommonPage extends GlobalFunctions {
 	 */
 	public void openNewTab() {
 		openNewWindow();
+	}
+	
+	/**
+	 * Upload file
+	 * 
+	 * @param file - file name
+	 */
+	public void uploadFileFromFolder(String file) {
+		String filePath = getXmlFilesData(file);
+		String path = System.getProperty("user.dir");
+		String fullPath = path + filePath;
+		fileupload.sendKeys(fullPath);
+		log.info(String.format("file uploaeded %s",fullPath));
 	}
 
 }

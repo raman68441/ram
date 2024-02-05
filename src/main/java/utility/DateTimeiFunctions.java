@@ -36,12 +36,12 @@ public class DateTimeiFunctions {
 	}
 
 	/**
-	 * generate current date month and year in dd-mmm-yyyy with month as English
+	 * generate current  month date, and year in MM/dd/YYYY with month as English
 	 * locale(ex: 09/05/2023)
 	 * 
 	 * @return date
 	 */
-	public String getCurrentDateMonthYear() {
+	public String getCurrentMonthDateYear() {
 		Date date = new Date(); // You can replace this with your own date
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
 		String formattedDate = dateFormat.format(date);
@@ -139,6 +139,20 @@ public class DateTimeiFunctions {
 		String currentMonth = monthFormat.format(date);
 		log.info(String.format("formated date %s", currentMonth));
 		return currentMonth;
+	}
+	
+	/**
+	 * generate current date month and year in dd-MM-yyyy with month as English
+	 * locale(ex: 09/05/2023)
+	 * 
+	 * @return date
+	 */
+	public String getCurrentDateMonthYear() {
+		Date date = new Date(); // You can replace this with your own date
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+		String formattedDate = dateFormat.format(date);
+		log.info(String.format("formated date %s", formattedDate));
+		return formattedDate;
 	}
 	
 }
