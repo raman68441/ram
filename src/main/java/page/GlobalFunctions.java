@@ -407,7 +407,7 @@ public class GlobalFunctions {
 			String textContent = element.getAttribute("textContent");
 			System.out.println(textContent);
 			System.out.println(text);
-			if (element.getAttribute("textContent").equals(text)) {
+			if (textContent.equals(text)) {
 				found = true;
 				break;
 			}
@@ -602,6 +602,32 @@ public class GlobalFunctions {
 	public void dragAndDropElementFromToPlace(WebElement fromElement, WebElement toElement) {
 		Actions builder = new Actions(driver);
 		builder.dragAndDrop(fromElement, toElement).build().perform();
+	}
+
+	/**
+	 * Click on all the elements in list
+	 * 
+	 * @param elements
+	 */
+	public String getTextFromElementInListInMentionedPosition(List<WebElement> elements, int position) {
+		String textContent = null;
+		int elementsCount = elements.size();
+		for (int x = 0; x < elementsCount; x++) {
+			WebElement element = elements.get(x);
+			textContent = getText(element);
+			System.out.println(textContent);
+			if (position == x) {
+				break;
+			}
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		log.info("checked all the element in list");
+		return textContent;
 	}
 
 }

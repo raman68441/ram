@@ -14,7 +14,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import core.BaseClass;
+import page.admin.TagsPage;
 import page.config.LifeCycleStatesPage;
+import page.config.NumberingSystemPage;
 import utility.Constant;
 import utility.DateTimeiFunctions;
 
@@ -148,6 +150,13 @@ public class AuditTrailPage extends GlobalFunctions {
 
 	@FindBy(xpath = "//*[@role='tab' and text()='Life Cycle States']")
 	WebElement lifeCycleStatesTab;
+	
+	@FindBy(xpath = "//*[@role='tab' and text()='Numbering System']")
+	WebElement numberingSystemTab;
+	
+	@FindBy(xpath = "//*[@role='tab' and text()='Tag']")
+	WebElement tagTab;
+
 
 	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1jhhc83']")
 	WebElement removeEventCategoryHeader;
@@ -479,6 +488,15 @@ public class AuditTrailPage extends GlobalFunctions {
 		case "life cycle states tab":
 			verifyText(lifeCycleStatesTab, name);
 			break;
+		case "numbering system tab":
+			verifyText(numberingSystemTab, name);
+			break;
+		case "business unit tab":
+			verifyText(numberingSystemTab, name);
+			break;
+		case "tag tab":
+			verifyText(tagTab, name);
+			break;
 		case "remove event category header":
 			verifyText(removeEventCategoryHeader, name);
 			break;
@@ -710,6 +728,118 @@ public class AuditTrailPage extends GlobalFunctions {
 			break;
 		case "delete":
 			expectedTime = (LifeCycleStatesPage.lifeCycleStateDeletedTime).toLowerCase();
+			break;
+		default:
+			log.error("invalid field" + eventName);
+			Assert.fail("failed");
+			break;
+		}
+		for (int i = 1; i <= columnLength+1; i++) {
+			String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']//*[@aria-colindex='"
+					+ Integer.toString(i) + "']";
+			WebElement element = driver.findElement(By.xpath(rowItem));
+			if (i != 3) {
+				rowData.add(getText(element));
+			} else {
+				actualTime = getText(element);
+			}
+			// scrollScrollBar(auditTrailTable, 90, Constant.RIGHT);
+		}
+		log.info(String.format("mentioned row %s %s", rowNumber, expectedData));
+		Assert.assertTrue(compareArrayAndList(expectedData, rowData));
+		Assert.assertTrue(dateTimeiFunctions.validateTimeWithInDuration(expectedTime, actualTime, "", 60));
+
+	}
+	
+	/**
+	 * validate mentioned row number data in numbering system audit trail table
+	 * 
+	 * @param rowNumber
+	 * @param data
+	 */
+	public void validateMentionedRowNumberDataForNumberingSystemAuditTrail(String data, String eventName,
+			int rowNumber) {
+		String expectedTime = null;
+		String actualTime = null;
+		List<String> rowData = new ArrayList<>();
+		String lifeCycleStateData = getXmlFilesData(data);
+		String[] expectedData = lifeCycleStateData.split("\\|");
+		int columnLength = expectedData.length;
+		if (expectedData[0].equals("##")) {
+			expectedData[0] = Integer.toString(rowNumber);
+		}
+		if (expectedData[1].equals("##")) {
+			expectedData[1] = dateTimeiFunctions.getCurrentDateMonthNameYear();
+		}
+		if (expectedData[3].contains("##")) {
+			expectedData[3] = expectedData[3].replace("##", NumberingSystemPage.numberingSystemName);
+					
+		}
+		switch (eventName) {
+		case "create":
+			expectedTime = (NumberingSystemPage.numberingSystemCreatedTime).toLowerCase();
+			break;
+		case "update":
+			expectedTime = (NumberingSystemPage.numberingSystemUpdatedTime).toLowerCase();
+			break;
+		case "delete":
+			expectedTime = (NumberingSystemPage.numberingSystemDeletedTime).toLowerCase();
+			break;
+		default:
+			log.error("invalid field" + eventName);
+			Assert.fail("failed");
+			break;
+		}
+		for (int i = 1; i <= columnLength+1; i++) {
+			String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']//*[@aria-colindex='"
+					+ Integer.toString(i) + "']";
+			WebElement element = driver.findElement(By.xpath(rowItem));
+			if (i != 3) {
+				rowData.add(getText(element));
+			} else {
+				actualTime = getText(element);
+			}
+			// scrollScrollBar(auditTrailTable, 90, Constant.RIGHT);
+		}
+		log.info(String.format("mentioned row %s %s", rowNumber, expectedData));
+		Assert.assertTrue(compareArrayAndList(expectedData, rowData));
+		Assert.assertTrue(dateTimeiFunctions.validateTimeWithInDuration(expectedTime, actualTime, "", 60));
+
+	}
+
+	/**
+	 * validate mentioned row number data in Tag audit trail table
+	 * 
+	 * @param rowNumber
+	 * @param data
+	 */
+	public void validateMentionedRowNumberDataForTagAuditTrail(String data, String eventName,
+			int rowNumber) {
+		String expectedTime = null;
+		String actualTime = null;
+		List<String> rowData = new ArrayList<>();
+		String lifeCycleStateData = getXmlFilesData(data);
+		String[] expectedData = lifeCycleStateData.split("\\|");
+		int columnLength = expectedData.length;
+		if (expectedData[0].equals("##")) {
+			expectedData[0] = Integer.toString(rowNumber);
+		}
+		if (expectedData[1].equals("##")) {
+			expectedData[1] = dateTimeiFunctions.getCurrentDateMonthNameYear();
+		}
+		if (expectedData[3].contains("##")) {
+			expectedData[3] = expectedData[3].replace("##", TagsPage.tagName);
+					
+		}
+		switch (eventName) {
+		case "create":
+			expectedTime = (TagsPage.tagCreatedTime).toLowerCase();
+			break;
+		case "update":
+			expectedTime = (TagsPage.tagUpdatedTime).toLowerCase();
+			break;
+		case "delete":
+			expectedTime = (TagsPage.tagDeletedTime).toLowerCase();
 			break;
 		default:
 			log.error("invalid field" + eventName);

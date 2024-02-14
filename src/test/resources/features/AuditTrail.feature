@@ -361,3 +361,343 @@ Feature: Audit Trail functionality
     Then User clicks on 'logged in user drop down'
     And User verifies 'logout option name' is displayed in 'logout' field
     Then User clicks on 'logout option' 
+    
+      @audit1
+  Scenario: 8_verify number system create, update, delete functionality in audit tral
+    Given User launched the application
+    Then User enters 'email id' in 'email' field of login page
+    Then User enters 'password' in 'password' field of login page
+    And User clicks on 'login' button in login page
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    And User clicks on 'config' sidebar menu
+    Then User verify 'numbering system tab' in numbering system page
+    And User clicks on 'numbering system tab' in numbering system page
+    And User verify 'numbering system list' in numbering system page
+    Then User verify 'new numbering system' in numbering system page
+    And User verifies 'numbering system table column headers' in numbering system page
+    And User clicks on 'new numbering system' in numbering system page
+    Then User enters 'text numbering system name' in 'name' field of numbering system page
+    Then User enters 'text numbering system string value' in 'string value' field of numbering system page
+    Then User enters 'text numbering system maximum digit' in 'maximum digit' field of numbering system page
+    Then User enters 'text numbering system description' in 'description' field of numbering system page 
+    And User clicks on 'add field type' button in numbering system page
+    Then User verify 'add field type header' in numbering system page
+    Then User verify 'label select feild type' in numbering system page
+    And User selects 0 index option in 'select field type' in numbering system page
+    Then User verify 'label select system data field Type' in numbering system page
+    And User selects 0 index option in 'select sub field value' in numbering system page
+    And User clicks on 'add' button in numbering system page
+    Then User verify 'selected numbering system data' in new numbering page
+    Then User verify 'numbering format data' in new numbering page
+    And User clicks on 'generate' button in numbering system page
+    Then User verify 'numbering system added message' in numbering system page
+    Then User verify 'reset filter' button in numbering system page 
+    Then User verify 'txt_numbering_system_table_data' in row 1 of numbering system page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'numbering system option' as 'category name' in audit trail page
+    And User selects 'created option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'numbering system tab' in audit trail page
+    Then User verifies 'create number system audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify numbering system audit tail table data 'txt_create_numbering_system_audit_table_data' for 'create' event in row 1
+    
+     And User clicks on 'config' sidebar menu
+    Then User verify 'numbering system tab' in numbering system page
+    And User clicks on 'numbering system tab' in numbering system page
+    And User verify 'numbering system list' in numbering system page
+    Then User verify 'new numbering system' in numbering system page
+    And User verifies 'numbering system table column headers' in numbering system page
+    And User clicks on 'edit' icon in numbering system page
+    Then User verify 'edit numbering system header' in numbering system page
+    Then User verify 'label name field' in numbering system page
+    Then User enters 'text edit numbering system description' in 'description' field of numbering system page
+    And User clicks on 'update' button in numbering system page
+    Then User verify 'numbering system updated message' in numbering system page
+    Then User verify 'reset filter' button in numbering system page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'numbering system option' as 'category name' in audit trail page
+    And User selects 'updated option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'numbering system tab' in audit trail page
+    Then User verifies 'update number system audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify numbering system audit tail table data 'txt_update_numbering_system_audit_table_data' for 'update' event in row 1
+    
+    And User clicks on 'config' sidebar menu
+    Then User verify 'numbering system tab' in numbering system page
+    And User clicks on 'numbering system tab' in numbering system page
+    And User verify 'numbering system list' in numbering system page
+    Then User verify 'new numbering system' in numbering system page
+    And User verifies 'numbering system table column headers' in numbering system page
+		And User clicks on 'delete icon' in numbering system page
+    Then User verify 'confirm you delete' in numbering system page
+    Then User verify 'delete' button in numbering system page
+    And User clicks on 'delete' button in numbering system page
+    Then User verify 'numbering system deleted message' in numbering system page 
+    Then User verify 'reset filter' button in numbering system page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'numbering system option' as 'category name' in audit trail page
+    And User selects 'deleted option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'numbering system tab' in audit trail page
+    Then User verifies 'delete number system audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify numbering system audit tail table data 'txt_delete_numbering_system_audit_table_data' for 'delete' event in row 1
+    
+    Then User clicks on 'logged in user drop down'
+    And User verifies 'logout option name' is displayed in 'logout' field
+    Then User clicks on 'logout option' 
+    
+       @audit1
+  Scenario: 9_verify business unit create, update, delete functionality in audit tral
+    Given User launched the application
+    Then User enters 'email id' in 'email' field of login page
+    Then User enters 'password' in 'password' field of login page
+    And User clicks on 'login' button in login page
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    And User clicks on 'admin' sidebar menu
+    Then User verify 'business unit tab' in business unit page
+    And User clicks on 'business unit tab' in business unit page
+    And User verify 'business unit list' in business unit page
+    Then User verify 'new business unit' in business unit page
+    And User verifies 'business unit table column headers' in business unit page
+  
+    And User clicks on 'new business unit' in business unit page
+    Then User verify 'label business unit name' in business unit page
+    Then User enters 'text business unit name' in 'business unit name' field of business unit page
+    Then User enters 'text business unit code' in 'business unit code' field of business unit page
+    Then User enters 'text business unit addresss' in 'address' field of business unit page
+    And User selects 'text business unit organisation' as 'organization' in business unit page
+    And User selects 'text business unit country' as 'country' in business unit page
+    Then User selects 'text business unit time zone' as 'time zone' in business unit page
+    Then User enters 'text date month year' in 'date format' field of business unit page
+    And User clicks on 'save' button in business unit page
+    Then User verify 'business unit create message' in business unit page
+    Then User verify 'reset filter' button in business unit page
+    Then User verify 'txt_business_unit_table_data' in row 1 of business unit page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'business unit option' as 'category name' in audit trail page
+    And User selects 'created option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'business unit tab' in audit trail page
+    Then User verifies 'create business unit audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify numbering system audit tail table data 'txt_create_numbering_system_audit_table_data' for 'create' event in row 1
+    
+    And User clicks on 'config' sidebar menu
+  	And User clicks on 'business unit tab' in business unit page
+    And User verify 'business unit list' in business unit page
+    Then User verify 'new business unit' in business unit page
+    And User verifies 'business unit table column headers' in business unit page
+    Then User verify 'search option default value' in business unit page
+     And User clicks on 'edit' icon in business unit page
+    Then User verify 'edit business unit header' in business unit page
+    Then User verify 'label businees unit name' in business unit page
+    Then User enters 'text business unit name' in 'business unit name' field of business unit page
+    Then User enters 'text business unit code' in 'business unit code' field of business unit page
+    And User clicks on 'update' button in business unit page
+    Then User verify 'business unit updated successfully message' in business unit page
+    Then User verify 'txt_business_unit_table_data1' in row 1 of business unit page
+    
+    
+ 		And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'business unit option' as 'category name' in audit trail page
+    And User selects 'updated option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'business unit tab' in audit trail page
+    Then User verifies 'update business unit audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify numbering system audit tail table data 'txt_update_business_unit_audit_table_data' for 'update' event in row 1
+ 
+     And User clicks on 'config' sidebar menu
+  	And User clicks on 'business unit tab' in business unit page
+    And User verify 'business unit list' in business unit page
+    Then User verify 'new business unit' in business unit page
+    And User verifies 'business unit table column headers' in business unit page
+    Then User verify 'search option default value' in business unit page
+     And User clicks on 'delete icon' in business unit page
+    Then User verify 'confirm you delete' in business unit page
+    Then User verify 'delete' button in business unit page
+    And User clicks on 'delete' button in business unit page
+    Then User verify 'business unit delete message' in business unit page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'business unit option' as 'category name' in audit trail page
+    And User selects 'deleted option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'business unit tab' in audit trail page
+    Then User verifies 'delete business unit audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify numbering system audit tail table data 'txt_delete_business_unit_audit_table_data' for 'delete' event in row 1
+    
+    Then User clicks on 'logged in user drop down'
+    And User verifies 'logout option name' is displayed in 'logout' field
+    Then User clicks on 'logout option' 
+    
+   @audit
+  Scenario: 10_verify tags create, update, delete functionality in audit tral
+   Given User launched the application
+    Then User enters 'email id' in 'email' field of login page
+    Then User enters 'password' in 'password' field of login page
+    And User clicks on 'login' button in login page
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    And User clicks on 'admin' sidebar menu
+    Then User verify 'tags tab' in tag page
+    And User clicks on 'tags tab' in tag page
+    And User verify 'tag list' in tag page
+    Then User verify 'new tag' in tag page
+    And User verifies 'tag list table column headers' in tag page
+  
+   	And User clicks on 'new tag' in tag page
+    Then User verify 'label tag name' in tag page
+    Then User enters 'text tag name' in 'tag name' field of tag page
+    Then User enters 'text tag code' in 'tag code' field of tag page
+    Then User enters 'text tag description' in 'tag description' field of tag page
+    And User selects 'text tag department' as 'department' in tag page
+    And User clicks on 'save' button in tag page
+    Then User verify 'tag created successfully message' in tag page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'tag option' as 'category name' in audit trail page
+    And User selects 'created option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'tag tab' in audit trail page
+    Then User verifies 'create tag audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify tag audit tail table data 'txt_create_tag_audit_table_data' for 'create' event in row 1
+    
+    And User clicks on 'admin' sidebar menu
+    Then User verify 'tags tab' in tag page
+    And User clicks on 'tags tab' in tag page
+    And User verify 'tag list' in tag page
+    Then User verify 'new tag' in tag page
+    And User verifies 'tag list table column headers' in tag page
+    And User clicks on 'edit' icon in tag page
+    Then User verify 'edit tag header' in tag page
+    Then User verify 'label tag name' in tag page
+    Then User enters 'text edit tag code' in 'tag code' field of tag page
+    And User clicks on 'update' button in tag page
+    Then User verify 'tag updated successfully message' in tag page
+    Then User verify 'search option default value' in tag page
+    And User selects 'name option' as 'search option' in tag page
+    Then User enters 'text tag name' in 'search' field of tag page
+    Then User verify 'txt_update_tag_table_data' in row 1 of tag page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'tag option' as 'category name' in audit trail page
+    And User selects 'updated option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'tag tab' in audit trail page
+    Then User verifies 'update tag audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify tag audit tail table data 'txt_update_tag_audit_table_data' for 'update' event in row 1
+    
+     And User clicks on 'admin' sidebar menu
+    Then User verify 'tags tab' in tag page
+    And User clicks on 'tags tab' in tag page
+    And User verify 'tag list' in tag page
+    Then User verify 'new tag' in tag page
+    And User verifies 'tag list table column headers' in tag page
+    And User selects 'name option' as 'search option' in tag page
+    Then User enters 'text tag name' in 'search' field of tag page
+    And User clicks on 'delete icon' in tag page
+    Then User verify 'confirm you delete' in tag page
+    Then User verify 'delete' button in tag page
+    And User clicks on 'delete' button in tag page
+    Then User verify 'tag deleted successfully message' in tag page
+    Then User verify 'reset filter' button in tag page  
+    And User selects 'name option' as 'search option' in tag page
+    Then User enters 'text tag name' in 'search' field of tag page  
+    Then User verify 'no rows' in tag page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'tag option' as 'category name' in audit trail page
+    And User selects 'deleted option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'tag tab' in audit trail page
+    Then User verifies 'delete tag audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify tag audit tail table data 'txt_delete_tag_audit_table_data' for 'delete' event in row 1
+    
+    Then User clicks on 'logged in user drop down'
+    And User verifies 'logout option name' is displayed in 'logout' field
+    Then User clicks on 'logout option' 
+    
+  
+  
+    
+    
+    
+    
+  
+  
+  
+  

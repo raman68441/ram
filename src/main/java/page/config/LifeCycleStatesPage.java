@@ -228,7 +228,7 @@ public class LifeCycleStatesPage extends GlobalFunctions {
 			element = driver.findElement(By.xpath(text));
 			verifyText(element, name);
 			break;
-		case "now rows":
+		case "no rows":
 			verifyText(emptyTable, name);
 			break;
 		

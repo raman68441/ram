@@ -39,7 +39,7 @@ public class LifeCycleStatesStep {
 	}
 	
 	@Then("User verify {string} in row {int} of life cycle states page")
-	public void userVerifyDepartmentTableeMentionedRowData(String data, int rowNumber) {
+	public void userVerifyLifeCycleSatesTableMentionedRowData(String data, int rowNumber) {
 		lifeCycleStatesPage.validateMentionedRowNumberDataForLifeCycleStates(data, rowNumber);
 	}
 	@Then("User enters {string} in {string} field of life cycle states page")

@@ -115,7 +115,7 @@ Feature: Life Cycle States functionality
     Then User verify 'delete' button in life cycle states page
     And User clicks on 'delete' button in life cycle states page
     Then User verify 'life cycle state delete message' in life cycle states page
-     Then User verify 'now rows' in life cycle states page
+     Then User verify 'no rows' in life cycle states page
        Then User clicks on 'logged in user drop down'
     And User verifies 'logout option name' is displayed in 'logout' field
     Then User clicks on 'logout option' 

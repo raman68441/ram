@@ -51,9 +51,7 @@ public class AuditTrailStep {
 	@Then("User verify {string} in {string} field of audit trail page")
 	public void userDateFields(String dateValue, String fieldName) {
 		auditTrailPage.verifyDate(dateValue, fieldName);
-	}
-	
-	
+	}	
 
 	@Then("User verifies {string} in audit trail page")
 	public void userVerifyAuditTrailTableHeaderColumns(String columnuName) {
@@ -83,6 +81,16 @@ public class AuditTrailStep {
 	@Then("User verify life cycle states audit tail table data {string} for {string} event in row {int}")
 	public void userVerifyAuditTrailTableMentionedRowDataForLifeCycleStates(String data, String eventName, int rowNumber) {
 		auditTrailPage.validateMentionedRowNumberDataForLifeCycleStatesAuditTrail(data, eventName, rowNumber);
+	}
+	
+	@Then("User verify numbering system audit tail table data {string} for {string} event in row {int}")
+	public void userVerifyAuditTrailTableMentionedRowDataForNumberingSystem(String data, String eventName, int rowNumber) {
+		auditTrailPage.validateMentionedRowNumberDataForNumberingSystemAuditTrail(data, eventName, rowNumber);
+	}
+	
+	@Then("User verify tag audit tail table data {string} for {string} event in row {int}")
+	public void userVerifyAuditTrailTableMentionedRowDataForTag(String data, String eventName, int rowNumber) {
+		auditTrailPage.validateMentionedRowNumberDataForTagAuditTrail(data, eventName, rowNumber);
 	}
 	
 }

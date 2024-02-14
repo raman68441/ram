@@ -21,6 +21,9 @@ import page.GlobalFunctions;
 import page.PaginationPage;
 import utility.Constant;
 
+/**
+ * This class has department functionality
+ */
 public class DepartmentPage extends GlobalFunctions {
 	Logger log = LogManager.getLogger(DateSelectionPage.class);
 	private WebDriver driver;

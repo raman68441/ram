@@ -146,12 +146,12 @@
     <string name="create life cycle states audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
     <string name="update life cycle states audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
     <string name="delete life cycle states audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
-	<string name="now rows">No rows</string>
+	<string name="no rows">No rows</string>
 
     <string name="numbering system tab">Numbering System</string>
  	<string name="numbering system list">Numbering System List</string>
  	<string name="new numbering system">New Numbering System</string>
- 	<string name="numbering system table column headers">ID|Name|Description|Data Field Type|Final Number|Created On</string>
+ 	<string name="numbering system table column headers">ID|Name|Description|Final Number|Created On</string>
  	<string name="label string value">Starting Value *</string>
  	<string name="label maximum digit">Maximum Digit *</string>
  	<string name="label display leading zero">Display Leading Zero</string> 
@@ -163,13 +163,13 @@
  	<string name="add field type header">Add Field Type</string>
  	<string name="label selected numbering system">Selected Numbering System:</string>
  	<string name="no field type added">No Field type added</string>
- 	<string name="numbering format">Numbering Format:</string>
+ 	<string name="numbering format">Numbering Format: </string>
  	<string name="add button">Add</string>
  	<string name="add field type">Add Field Type</string>
  	<string name="label select feild type">Select Field Type</string>
- 	<string name="system data field Type option">System Data Field Type</string>
- 	<string name="list manager option">Select List Manager</string>
- 	<string name="document type option">Select Document Type</string>
+ 	<string name="system data field Type option">System Data Fields Types</string>
+ 	<string name="list manager option">List Manager</string>
+ 	<string name="document type option">Document Type</string>
  	<string name="constant string option">Constant String</string>
  	<string name="year option">Year</string>	
  	<string name="label select system data field Type">Select System Data Field Type</string>
@@ -177,14 +177,78 @@
  	<string name="label select document type">Select Document Type</string>
  	<string name="label enter constant string">Enter Constant String</string>
  	<string name="label enter year">Enter Year</string>
- 	<string name="generate button">Generate</string>
+ 	<string name="generate">GENERATE</string>
  	<string name="reset filter">RESET FILTER</string>
  	<string name="download">DOWNLOAD</string>
  	<string name="edit numbering system header">Edit Numbering System</string>
 	<string name="label name field">Name *</string>
 	<string name="label description field">Description *</string>
+	<string name="add field type button">ADD FIELD TYPE</string>
+	<string name="numbering system added message">Numbering System Added</string>
+	<string name="numbering system already exist message">Numbering System Alredy exists</string>
+	<string name="numbering system updated message">Numbering System Updated</string>
+	<string name="numbering system deleted message">Numbering System has been deleted</string>
+	<string name="name option">Name</string>
+	<string name="description option">Description</string>
+	<string name="create number system audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="update number system audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+    <string name="delete number system audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+	<string name="numbering system option">Numbering System</string>
+	<string name="business unit option">Business Unit</string>
+	<string name="create business unit audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="update business unit audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+    <string name="delete business unit audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+	<string name="business unit tab">Business Unit</string>
+	<string name="business unit list">Business Unit List</string>
+	<string name="new business unit">New Business Unit</string>
+ 	<string name="business unit table column headers">Action|Business Unit|Business Unit Code|Organisation|Country|Time Zone|Date Format|Status|Active/Inactive</string>
+	<string name="label business unit name">Business Unit*</string>
+	<string name="label business unit code">Business Unit Code*</string>
+	<string name="label organisation">Organisation*</string>
+	<string name="label address">Address</string>
+	<string name="label country">Country*</string>
+	<string name="label time zone">Time Zone*</string>
+	<string name="label date format">Date Format*</string>
+	<string name="warning message business unit name required">BusinessUnit Name is required</string>
+	<string name="warning message business unit code required">BusinessUnit Code is required</string>
+	<string name="warning message please select organisation">Please select an organisation</string>
+	<string name="warning message please select location">Please select a Location</string>
+	<string name="warning message please select time zone">Please select a Time Zone</string>
+	<string name="warning message date format required">Date Format is required</string>
+	
+	<string name="tags tab">Tags</string>
+	<string name="tag list">Tag List</string>
+	<string name="new tag">New Tag</string>
+	<string name="tag list table column headers">Action|Name|Code|Description|Department|Created On|Created By|Modified On|Modified By</string>
+	<string name="label tag name">Tag Name*</string>
+	<string name="label tag code">Tag Code*</string>
+	<string name="label tag description">Tag Description</string>
+	<string name="label department">Department*</string>
+	<string name="warning message tag name required">Name is required</string>
+	<string name="warning message tag code required">Code is required</string>
+	<string name="warning message department required">Department is required</string>
+	<string name="tag created successfully message">Tag Created Successfully</string>
+	<string name="tag updated successfully message">Tag Updated Successfully</string>
+	<string name="tag name already exists message">Tag name already exists</string>
+	<string name="tag deleted successfully message">Tag Deleted Successfully</string>
+	<string name="warning message tag code more than 5 characters">Code must be at most 5 characters long</string>
+	<string name="warning message tag code for special characters">Only alphanumeric characters are allowed</string>
+	<string name="code option">Code</string>
+	<string name="description option">Description</string>
+	<string name="department option">Department</string>
+	<string name="edit tag header">Edit Tag</string>
+	<string name="tag tab">Tag</string>
+	<string name="create tag audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="update tag audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+    <string name="delete tag audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="tag option">Tag</string>
+	
 
 	
+
+
+
+
 	
 
 

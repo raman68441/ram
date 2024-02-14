@@ -36,7 +36,7 @@ public class NumberingSystemStep {
 	}
 	
 	@Then("User verify {string} in row {int} of numbering system page")
-	public void userVerifyDepartmentTableeMentionedRowData(String data, int rowNumber) {
+	public void userVerifyNumberingSystemTableeMentionedRowData(String data, int rowNumber) {
 		numberingSystemPage.validateMentionedRowNumberDataForNumberingSystem(data, rowNumber);
 	}
 	@Then("User enters {string} in {string} field of numbering system page")
@@ -49,9 +49,24 @@ public class NumberingSystemStep {
 		numberingSystemPage.selectDropDownfromNumberingSystemPage(data, fieldName);
 	}
 	
+	@When("User selects {int} index option in {string} in numbering system page")
+	public void userSelectsIndexFromDropDown(int index, String fieldName) {
+		numberingSystemPage.selectDropDownfromNumberingSystemPage(index, fieldName);
+	}
+	
 	@When("User verify only {string} numbering system records will display")
 	public void userVerifyActiveInactiveRecords(String activeOrInactiveRecords) {
 		numberingSystemPage.verifyActiveInactiveState(activeOrInactiveRecords);
 	}
+	
+	@When("User verify {string} in new numbering page")
+	public void userVerifyNumberingSystemData(String fieldName) {
+		numberingSystemPage.verifySelectedNumberingSystemAndNumberingData(fieldName);
+	}
 
+	@When("User verify {string} in row {int} column {int} in numbering page")
+	public void userVerifyNumberingSystemTableCellData(String data, int rowNumber, int columnNumber) {
+		numberingSystemPage.verifyMentionedCellDataInTable(data, rowNumber, columnNumber);
+	}
+	
 }

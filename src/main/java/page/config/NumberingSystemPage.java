@@ -60,7 +60,10 @@ public class NumberingSystemPage extends GlobalFunctions {
 
 	@FindBy(xpath = "//*[@class='PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3']")
 	List<WebElement> activeInactiveTogleIcon;
-
+	
+	@FindBy(xpath="//*[@class='MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-aqsgr9']")
+	WebElement deactiveIcon;
+	
 	@FindBy(xpath = "//*[text()='Cancel']")
 	WebElement cancelBtn;
 
@@ -117,11 +120,11 @@ public class NumberingSystemPage extends GlobalFunctions {
 
 	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 css-j5a1ma']")
 	List<WebElement> addedFieldNumberingFormat;
-	
-	@FindBy(xpath="//*[@class='MuiTypography-root MuiTypography-body1 css-1w985am'")
+
+	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 css-1w985am']")
 	WebElement numberingFormatData;
 
-	@FindBy(xpath = "//**[@class='MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1jhhc83']")
+	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1jhhc83']")
 	WebElement addFieldTypeHeader;
 
 	@FindBy(xpath = "//*[@data-testid='DragIndicatorIcon']")
@@ -168,13 +171,13 @@ public class NumberingSystemPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Select Field Type']")
 	WebElement selectFieldType;
 
-	@FindBy(xpath = "//*[text()='System Data Field Type']")
+	@FindBy(xpath = "//*[text()='System Data Fields Types']")
 	WebElement systemDataTypeOption;
 
-	@FindBy(xpath = "//*[text()='Select List Manager']")
+	@FindBy(xpath = "//*[text()='List Manager']")
 	WebElement selectListManagerOption;
 
-	@FindBy(xpath = "//*[text()='Select Document Type']")
+	@FindBy(xpath = "//*[text()='Document Type']")
 	WebElement selectDocumentTypeOption;
 
 	@FindBy(xpath = "//*[text()='Constant String']")
@@ -189,14 +192,24 @@ public class NumberingSystemPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Maximun Digit is required']")
 	WebElement maximumDigitRequired;
 
+	@FindBy(xpath = "//*[@data-testid='ArrowDropDownIcon']")
+	WebElement dropdownIcon;
+
+	@FindBy(xpath = "//*[@data-testid='ArrowDropDownIcon']")
+	List<WebElement> dropdownIcons;
+
 	public String numberingSystemTableHeader = "//*[@class='MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable' and  @aria-colindex='#']";
 
 	public String numberingSystemCellData = "//*[@data-colindex='#']";
 
-	public static String numberingSystemName, numberingSystemSubOption, numberingSystemCreatedTime,
-			numberingSystemUpdatedTime, numberingSystemDeletedTime;
+	public String rowCellData = "//*[@data-rowindex='#']/..//*[@data-colindex='#']";
+
+	public static String numberingSystemName, numberingSystemDescription, numberingSystemFieldOption,
+			numberingSystemSubOption, numberingSystemCreatedTime, numberingSystemUpdatedTime,
+			numberingSystemDeletedTime;
 
 	public static List<String> numberingSystemSubValue = new ArrayList<>();
+	public static List<String> numberingSystemFieldValue = new ArrayList<>();
 
 	/**
 	 * verify the field name
@@ -219,7 +232,7 @@ public class NumberingSystemPage extends GlobalFunctions {
 			verifyText(newNumberingSystem, name);
 			break;
 		case "label name field":
-		case "label description":
+		case "label description field":
 		case "label string value":
 		case "label maximum digit":
 		case "label select system data field Type":
@@ -228,7 +241,7 @@ public class NumberingSystemPage extends GlobalFunctions {
 		case "cancel":
 			verifyText(cancelBtn, name);
 			break;
-		case "warning message name required":
+		case "warning message system name required":
 			verifyText(nameRequired, name);
 			break;
 		case "warning message description required":
@@ -240,20 +253,22 @@ public class NumberingSystemPage extends GlobalFunctions {
 		case "warning message maximum digit required":
 			verifyText(maximumDigitRequired, name);
 			break;
-		case "warning message field type requiredwarning message at least one field type is required":
+		case "warning message at least one field type is required":
 			verifyText(fieldTypeRequired, name);
 			break;
-		case "numbering system create message":
-		case "numbering system is allready present":
-		case "numbering system updated successfully message":
-		case "numbering system delete message":
+		case "numbering system added message":
+		case "numbering system already exist message":
+		case "numbering system updated message":
+		case "numbering system deleted message":
 			verifyText(numberingSystemMessage, name);
-			if (fieldName.contains("create")) {
-				numberingSystemCreatedTime = dateTimeiFunctions.getCurrentTime();
-			} else if (fieldName.contains("update")) {
-				numberingSystemUpdatedTime = dateTimeiFunctions.getCurrentTime();
-			} else if (fieldName.contains("delete"))
-				numberingSystemDeletedTime = dateTimeiFunctions.getCurrentTime();
+			if(fieldName.contains("added")) {
+				numberingSystemCreatedTime= dateTimeiFunctions.getCurrentTime();
+			}
+			else if(fieldName.contains("updated")) {
+				numberingSystemUpdatedTime= dateTimeiFunctions.getCurrentTime();
+			}
+			else if(fieldName.contains("deleted"))
+				numberingSystemDeletedTime= dateTimeiFunctions.getCurrentTime();
 			break;
 		case "confirm you delete":
 			verifyText(confirmDelete, name);
@@ -283,6 +298,9 @@ public class NumberingSystemPage extends GlobalFunctions {
 			verifyText(displayLeadingZeroLabel, name);
 			break;
 		case "add field type":
+			verifyText(addFieldType, name);
+			break;
+		case "add field type button":
 			verifyText(addFieldType, name);
 			break;
 		case "label selected numbering system":
@@ -411,12 +429,14 @@ public class NumberingSystemPage extends GlobalFunctions {
 			clickElement(addFieldType);
 			break;
 		case "select field type option":
-			clickElement(selectAddFieldType);
+			clickElement(dropdownIcon);
 			break;
 		case "add":
 			clickElement(addBtn);
 			break;
-
+		case "reset all":
+			clickElement(resetFilterBtn);
+			break;
 		default:
 			Assert.fail("failed");
 			log.error("invalid field " + fieldName);
@@ -444,16 +464,20 @@ public class NumberingSystemPage extends GlobalFunctions {
 			enterValue(descriptionField, fieldValue);
 			break;
 		case "maximum digit":
-			descriptionField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			maximumDigitField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
 			enterValue(maximumDigitField, fieldValue);
 			break;
 		case "string value":
-			descriptionField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			stringValueField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
 			enterValue(stringValueField, fieldValue);
 			break;
 		case "search":
 			tableSearchField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(tableSearchField, numberingSystemName);
+			if (text.equals("text numbering system description")) {
+				enterValue(tableSearchField, fieldValue);
+			} else {
+				enterValue(tableSearchField, numberingSystemName);
+			}
 			break;
 		case "edit name":
 			numberingSystemName = String.format("%s%s", fieldValue, generateRandomString(7));
@@ -476,25 +500,26 @@ public class NumberingSystemPage extends GlobalFunctions {
 		String rowData = getXmlFilesData(data);
 		String[] numberingSystemExpectedData = rowData.split("\\|");
 		if (numberingSystemExpectedData[0].equals("##")) {
-			numberingSystemExpectedData[0] = numberingSystemName;
+			numberingSystemExpectedData[0] = Integer.toString(rowNumber);
 		}
-		if (numberingSystemExpectedData[5].equals("#")) {
-			numberingSystemExpectedData[5] = "";
-		} else if (numberingSystemExpectedData[5].equals("##")) {
-			numberingSystemExpectedData[5] = dateTimeiFunctions.getCurrentDateMonthYear();
+		if (numberingSystemExpectedData[1].equals("##")) {
+			numberingSystemExpectedData[1] = numberingSystemName;
+		}
+		if (numberingSystemExpectedData[3].equals("#")) {
+			numberingSystemExpectedData[3] = "";
+		}
+		if (numberingSystemExpectedData[4].equals("##")) {
+			numberingSystemExpectedData[4] = dateTimeiFunctions.getCurrentDateMonthNameYear();
 
 		}
-		if (numberingSystemExpectedData[6].equals("#")) {
-			numberingSystemExpectedData[6] = "";
-		}
-		numberingSystemExpectedData[3] = dateTimeiFunctions.getCurrentDateMonthYear();
 		int columnLength = numberingSystemExpectedData.length;
 		List<String> actualData = new ArrayList<>();
 		for (int i = 1; i <= columnLength; i++) {
-			String rowItem = numberingSystemCellData.replace("#", Integer.toString(i));
+			String rowItem = "//*[@data-rowindex='" + Integer.toString(rowNumber) + "']/..//*[@data-colindex='"
+					+ Integer.toString(i) + "']";
 			WebElement element = driver.findElement(By.xpath(rowItem));
 			actualData.add(getText(element));
-			// scrollScrollBar(auditTrailTable, 90, Constant.RIGHT);
+			// scrollScrollBar(numberingSystemTable, 10, Constant.RIGHT);
 		}
 		log.info(String.format("mentioned row %s %s", rowNumber, numberingSystemExpectedData));
 		Assert.assertTrue(compareArrayAndList(numberingSystemExpectedData, actualData));
@@ -517,7 +542,7 @@ public class NumberingSystemPage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			element = driver.findElement(By.xpath("//*[@data-value='" + value + "']"));
+			element = driver.findElement(By.xpath("//*[@role='option']/..//*[text()='" + value + "']"));
 			clickElement(element);
 			try {
 				Thread.sleep(300);
@@ -529,56 +554,21 @@ public class NumberingSystemPage extends GlobalFunctions {
 		case "table filter":
 			clickElement(tableFilterOption);
 			try {
-				Thread.sleep(500);
+				Thread.sleep(300);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			element = driver.findElement(By.xpath("//*[text()='" + value + "']"));
+			element = driver.findElement(By.xpath("//*[@data-value='" + value + "']"));
 			clickElement(element);
 			try {
-				Thread.sleep(300);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			break;
-		case "select field type":
-			clickElement(selectAddFieldType);
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			element = driver.findElement(By.xpath("//*[text()='" + value + "']"));
-			clickElement(element);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
-		case "select sub field value":
-			clickElement(addSubFieldTypeValue);
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			clickOnPerticularListElement(option, Integer.valueOf(value));
-			numberingSystemSubOption = getText(addSubFieldTypeValue);
-			numberingSystemSubValue.add(numberingSystemSubOption);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			break;
 
+			}
+			break;
 		default:
 			log.error("invalid field" + fieldName);
 			Assert.fail("failed");
@@ -597,7 +587,6 @@ public class NumberingSystemPage extends GlobalFunctions {
 		if (activeOrInactiveRecords.equals("inactive")) {
 			status = "false";
 		}
-		scrollUpOrDownWindows(500);
 		int totalRows = Integer.valueOf(getText(paginationPage.rowsPerPage));
 		String nextPagestatus = (paginationPage.nextPageArrowField).getDomProperty("disabled");
 		if (nextPagestatus.equals("false")) {
@@ -608,8 +597,15 @@ public class NumberingSystemPage extends GlobalFunctions {
 				scrollScrollBar(numberingSystemTable, 2, Constant.DOWN);
 			}
 		} else {
-			for (int i = 1; i <= paginationPage.getNumberRecordsInPage(); i++) {
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			for (int i = 1; i < paginationPage.getNumberRecordsInPage(); i++) {
 				actualStatus = (activeInactiveTogleIcon.get(i)).getDomProperty("defaultChecked");
+				System.out.println(actualStatus);
 				Assert.assertTrue(actualStatus.equals(status));
 				scrollScrollBar(numberingSystemTable, 2, Constant.DOWN);
 			}
@@ -627,19 +623,116 @@ public class NumberingSystemPage extends GlobalFunctions {
 	public void dragAndDropElement(int position1, int position2) {
 		dragAndDropElementFromToPlace(dragDropIcon.get(position1), dragDropIcon.get(position2));
 	}
-	
+
 	/**
 	 * 
 	 */
 	public void verifyNumberingFormatDataOrder() {
 		String data = null;
 		int numberOfAddedData = addedFieldNumberingFormat.size();
-		for(int i =0; i < numberOfAddedData; i++) {
+		for (int i = 0; i < numberOfAddedData; i++) {
 			data = data + getText(addedFieldNumberingFormat.get(i));
 		}
-		
+
 		Assert.assertTrue(getText(numberingFormatData).equals(data));
-			
+
+	}
+
+	/**
+	 * Select index from drop down
+	 * 
+	 * @param value - value or index or text
+	 */
+	public void selectDropDownfromNumberingSystemPage(int index, String fieldName) {
+		switch (fieldName) {
+		case "select field type":
+			clickElement(dropdownIcon);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			clickOnPerticularListElement(option, index);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			numberingSystemFieldOption = getText(addSubFieldTypeValue);
+			numberingSystemFieldValue.add(numberingSystemFieldOption);
+			break;
+		case "select sub field value":
+			clickElement(addSubFieldTypeValue);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			clickOnPerticularListElement(option, index);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (numberingSystemSubOption != null) {
+				numberingSystemSubOption = String.format("%s%s", numberingSystemSubOption,
+						getText(addSubFieldTypeValue));
+			} else {
+				numberingSystemSubOption = getText(addSubFieldTypeValue);
+			}
+			numberingSystemSubValue.add(getText(addSubFieldTypeValue));
+			break;
+		default:
+			log.error("invalid field" + fieldName);
+			Assert.fail("failed");
+			break;
+		}
+	}
+
+	/**
+	 * verify added data in new numbering system
+	 * 
+	 * @param fieldName
+	 */
+
+	public void verifySelectedNumberingSystemAndNumberingData(String fieldName) {
+		scrollScrollBar(scrollPage, 3000, Constant.DOWN);
+		switch (fieldName) {
+		case "selected numbering system data":
+			int selectedNumberingData = addedFieldNumberingFormat.size();
+			for (int i = 1; i < selectedNumberingData - 1; i++) {
+				getTextFromElementInListInMentionedPositionAndValidate(addedFieldNumberingFormat,
+						numberingSystemSubValue.get(i - 1), i);
+			}
+			break;
+		case "numbering format data":
+			String data = getText(numberingFormatData);
+			Assert.assertTrue(numberingSystemSubOption.equals(data));
+			break;
+		default:
+			log.error("invalid field" + fieldName);
+			Assert.fail("failed");
+			break;
+		}
+	}
+	
+	/**
+	 * Verify cell data in table
+	 * 
+	 * @param rowNumber
+	 * @param columnNumber
+	 * @param data
+	 */
+	public void verifyMentionedCellDataInTable(String data, int rowNumber, int columnNumber) {
+		String rowData = getXmlFilesData(data);
+		String rowItem = "//*[@data-rowindex='" + Integer.toString(rowNumber) + "']/..//*[@data-colindex='"
+				+ Integer.toString(columnNumber) + "']";
+		WebElement element = driver.findElement(By.xpath(rowItem));
+		compareTwoString(rowData, getText(element));
 	}
 
 }

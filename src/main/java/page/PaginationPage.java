@@ -138,11 +138,10 @@ public class PaginationPage extends GlobalFunctions {
 	 */
 	public int getNumberRecordsInPage() {
 		String numberOfRecords = getText(numberOfRowsDisplay);
-		String[] records = numberOfRecords.split(" ");
-		String numberRangeInPage = records[0];
-		String[] data = numberOfRecords.split("-");
-		int numberOfPage = (Integer.valueOf(data[1])-Integer.valueOf(data[0]))+1;
-		return numberOfPage;
+		String[] data = numberOfRecords.split(" ");
+		String[]pagePerData = data[0].split("–");
+		int numberOfRecordsInPage = (Integer.valueOf(pagePerData[1]));
+		return numberOfRecordsInPage;
 	}
 
 }

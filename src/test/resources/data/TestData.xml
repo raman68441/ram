@@ -62,7 +62,46 @@
 	    <string name="text numbering system string value">123</string>	
 	    <string name="text numbering system maximum digit">1234</string>	
 	    <string name="text numbering system description">Numbering System Description</string>	
-	     <string name="option1">0</string>	
+	    <string name="option1">0</string>	
+	    <string name="txt_numbering_system_table_data">1|##|Numbering System Description|#|##|Active</string>
+	    <string name="text edit numbering system description">Numbering System Edit Description</string>	
+	    <string name="txt_create_numbering_system_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|created</string>	
+	    <string name="txt_update_numbering_system_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|updated|NumberingSystemDescription|Numbering System Edit Description|Numbering System Description</string>	
+	    <string name="txt_delete_numbering_system_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|deleted</string>	
+ 
+  <!--business unit texts--> 
+  	    <string name="text business unit name">BU</string>	
+  	     <string name="text business unit code">BU234</string>	
+  	     <string name="text business unit addresss">Outer ring road. JP Nagar Bangalore</string>	
+  	    <string name="text business unit organisation">Neviton</string>	
+  	    <string name="text business unit country">India</string>	
+  	    <string name="text business unit time zone">timezone-1</string>	
+  	    <string name="text date month year">DD-MM-yyyy</string>	
+  	    <string name="txt_business_unit_table_data">##|BU234|Neviton|India|timezone-##|10|Active</string>	
+	    <string name="txt_create_business_unit_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|created</string>	
+	    <string name="txt_update_business_unit_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|updated|NumberingSystemDescription|Numbering System Edit Description|Numbering System Description</string>	
+	    <string name="txt_delete_business_unit_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|deleted</string>	
+
+  <!--Tags texts--> 
+  	 <string name="text more than five characters tag code">abcdef</string>	
+     <string name="text special characters tag code">$#@%^</string>	
+     <string name="text more than five characters tag code">abcdef</string>	
+     <string name="text tag name">QA</string>	
+     <string name="text tag code">123</string>	
+     <string name="text tag description">Tag Description</string>	
+     <string name="text tag department">Neviton</string>	
+     <string name="txt_tag_list_table_data">##|123|Tag Description|Neviton|##|Jayalakshmi Hegde|#|#</string>	
+  	 <string name="text edit tag code">456</string>
+     <string name="txt_update_tag_table_data">##|456|Tag Description|Neviton|##|Jayalakshmi Hegde|##|Jayalakshmi Hegde</string>	
+     <string name="txt_create_tag_audit_table_data">##|##|Jayalakshmi Hegde|Tag Name = ##|created</string>	
+	 <string name="txt_update_tag_audit_table_data">##|##|Jayalakshmi Hegde|Tag Name = ##|updated|TagCode|456|123</string>	
+	 <string name="txt_delete_tag_audit_table_data">##|##|Jayalakshmi Hegde|Tag Name = ##|deleted</string>	
+
+
+
+
+
+	     
 
 	    
 
