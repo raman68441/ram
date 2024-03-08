@@ -25,7 +25,7 @@ import utility.Constant;
  */
 
 public class OrganizationPage extends GlobalFunctions {
-	Logger log = LogManager.getLogger(DateSelectionPage.class);
+	Logger log = LogManager.getLogger(OrganizationPage.class);
 	private WebDriver driver;
 	PaginationPage paginationPage = new PaginationPage(BaseClass.getDriver());
 

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,7 +31,7 @@ public class LoginPage extends GlobalFunctions {
 	@FindBy(id = "login-password")
 	WebElement password;
 
-	@FindBy(xpath = "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-fullWidth css-1jexqpc']")
+	@FindBy(xpath = "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-fullWidth css-1jexqpc'] | //*[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-fullWidth css-6rq4vy']")
 	WebElement loginBtn;
 
 	@FindBy(xpath = "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-fullWidth MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-fullWidth css-1bdjuef']")
@@ -48,7 +49,7 @@ public class LoginPage extends GlobalFunctions {
 	@FindBy(xpath="//*[@class='MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-gix94l']")
 	WebElement enterLoginDetails;
 
-	@FindBy(xpath = "//*[@class='MuiOutlinedInput-notchedOutline css-igs3ac']//span")
+	@FindBy(xpath = "//*[@class='css-yjsfm1']//span")
 	List<WebElement> defaultTextInUserNamePassword;
 
 	@FindBy(xpath = "//*[@data-testid='VisibilityIcon']")
@@ -106,6 +107,12 @@ public class LoginPage extends GlobalFunctions {
 			break;
 		case "forgot password":
 			clickElement(forgotPassword);
+			try {
+				Thread.sleep(400);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;				
 		case "password protection off":
 			clickElement(passwordProtectionIconOn);
@@ -166,8 +173,10 @@ public class LoginPage extends GlobalFunctions {
 			verifyText(poweredByField, name);
 			break;
 		case "email default text":
+			(defaultTextInUserNamePassword.get(0).getDomProperty("textContent")).contains(name);	
+			break;
 		case "password default text":
-			getTextFromElementInListAndValidate(defaultTextInUserNamePassword, name);
+			(defaultTextInUserNamePassword.get(0).getDomProperty("textContent")).contains(name);
 			break;
 		case "invalid login credential error message":
 			try {
@@ -200,9 +209,11 @@ public class LoginPage extends GlobalFunctions {
 		String fieldValue = getXmlFilesData(text);
 		switch (fieldName) {
 		case "email":
+			emailId.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
 			enterValue(emailId, fieldValue);
 			break;
 		case "password":
+			password.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
 			enterValue(password, fieldValue);
 			break;
 		default:

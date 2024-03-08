@@ -112,7 +112,7 @@ Feature: Login functionality
     And User clicks on 'enter' button in forgot password page
     Then User verify 'otp success message' in forgot password page
 
-  @test1
+  @test
   Scenario: 6_Verify Forgot password screen
     Given User launched the application
     When User verify 'forgot password' field name in login page

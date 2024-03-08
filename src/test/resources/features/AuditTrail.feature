@@ -581,7 +581,7 @@ Feature: Audit Trail functionality
     And User verifies 'logout option name' is displayed in 'logout' field
     Then User clicks on 'logout option' 
     
-   @audit
+   @audit6
   Scenario: 10_verify tags create, update, delete functionality in audit tral
    Given User launched the application
     Then User enters 'email id' in 'email' field of login page
@@ -693,9 +693,240 @@ Feature: Audit Trail functionality
     
   
   
+     @audit1
+  Scenario: 11_verify activities create, update, delete functionality in audit tral
+   Given User launched the application
+    Then User enters 'email id' in 'email' field of login page
+    Then User enters 'password' in 'password' field of login page
+    And User clicks on 'login' button in login page
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    And User clicks on 'config' sidebar menu
+    Then User verify 'activities tab' in activities page
+    And User clicks on 'activities tab' in activities page
+    And User verify 'activities list' in activities page
+    Then User verify 'new activity' in activities page
+    And User verifies 'activities list table column headers' in activities page
+  
+    And User clicks on 'new activity' in activities page
+    Then User verify 'label name' in activities page
+    Then User enters 'text activity name' in 'name' field of activities page
+    Then User enters 'text activity description' in 'description' field of activities page
+    Then User enters 'text meaning of signature' in 'meaning of signature' field of activities page
+    And User clicks on 'electronic signature yes' button in activities page
+    Then User clicks on 'comments yes' button in activities page
+    And User clicks on 'save' button
+    Then User verify 'activity created successfully message' in activities page
     
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'activities option' as 'category name' in audit trail page
+    And User selects 'created option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'activities tab' in audit trail page
+    Then User verifies 'create activities audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    #Then User verify activities audit tail table data 'txt_create_activity_audit_table_data' for 'create' event in row 1
     
+    And User clicks on 'config' sidebar menu
+    Then User verify 'activities tab' in activities page
+    And User clicks on 'activities tab' in activities page
+    And User verify 'activities list' in activities page
+    Then User verify 'new activity' in activities page
+    And User verifies 'activities list table column headers' in activities page
+    And User clicks on 'edit' icon in activities page
+    Then User verify 'edit activities header' in activities page
+    #Then User verify 'label name' in activities page
+    Then User enters 'text edit activity description' in 'description' field of activities page
+    And User clicks on 'update' button in activities page
+    Then User verify 'activity updated successfully message' in activities page
+    Then User verify 'search option default value' in activities page
+    And User selects 'name option' as 'search option' in activities page
+    Then User enters 'text activity name' in 'search' field of activities page
+    #Then User verify 'text_edit_activity_table_data' in row 1 of activities page
     
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'activities option' as 'category name' in audit trail page
+    And User selects 'updated option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'activities tab' in audit trail page
+    Then User verifies 'update activities audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    #Then User verify activities audit tail table data 'txt_update_activity_audit_table_data' for 'create' event in row 1
+        
+     And User clicks on 'config' sidebar menu
+     Then User verify 'activities tab' in activities page
+    And User clicks on 'activities tab' in activities page
+    And User verify 'activities list' in activities page
+    Then User verify 'new activity' in activities page
+    And User verifies 'activities list table column headers' in activities page
+  	And User selects 'name option' as 'search option' in activities page
+    Then User enters 'text activity name' in 'search' field of activities page
+    #Then User verify 'text_edit_activity_table_data' in row 1 of activities page
+     And User clicks on 'delete icon' in activities page
+    Then User verify 'confirm you delete' in activities page
+    Then User verify 'delete' button in activities page
+    And User clicks on 'delete' button in activities page
+    #Then User verify 'activities deleted message' in activities page  
+    Then User verify 'reset filter' button in activities page  
+    And User selects 'name option' as 'search option' in activities page
+    Then User enters 'text tag name' in 'search' field of activities page  
+    Then User verify 'no rows' in activities page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'activities option' as 'category name' in audit trail page
+    And User selects 'deleted option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'activities tab' in audit trail page
+    Then User verifies 'delete activities audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    #Then User verify tag audit tail table data 'txt_delete_activities_audit_table_data' for 'delete' event in row 1
+    
+    Then User clicks on 'logged in user drop down'
+    And User verifies 'logout option name' is displayed in 'logout' field
+    Then User clicks on 'logout option' 
+    
+    @Audit12
+    Scenario: 12_verify checklist create, update, delete functionality in audit tral
+   Given User launched the application
+    Then User enters 'email id' in 'email' field of login page
+    Then User enters 'password' in 'password' field of login page
+    And User clicks on 'login' button in login page
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    And User clicks on 'config' sidebar menu
+    Then User verify 'checklist' in checklist page
+    And User clicks on 'checklist' in checklist page
+    And User verify 'checklist tab' in checklist page
+    Then User verify 'new checklist' in checklist page
+    And User verifies 'checklist table column headers' in checklist page
+
+  
+ 		And User clicks on 'new checklist' in checklist page
+    Then User verify 'label name' in checklist page
+    Then User enters 'text checklist name' in 'name' field of checklist page
+    Then User enters 'text checklist description' in 'description' field of checklist page
+    And User clicks on 'add checkpoint' button in checklist page
+		Then User verify 'label add checkpoint' in checklist page
+    Then User enters 'text checkpoint name' in 'checkpoint name' field of checklist page
+    And User clicks on 'add table column button' in checklist page
+    Then User verify 'table column 1' in checklist page
+    Then User verify 'label select type' in checklist page
+    And User selects 'string and selection option' as 'select type' in checklist page 
+    Then User enters 'text header name' in 'header name' field of checklist page
+    And User enters 'text enter string name' in 'enter string name' field of checklist page
+    And User selects 'label yes' as 'enter selection value' in checklist page 
+    And User clicks on 'apply' button in checklist page 
+    And User clicks on 'add' button in checklist page
+    And User save 'id column' row 1 data in checklist page
+    And User clicks on 'save' button
+    Then User verify 'checklist has been added message' in checklist page
+
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'checklist option' as 'category name' in audit trail page
+    And User selects 'created option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'checklist tab' in audit trail page
+    Then User verifies 'create checklist audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify checklist audit tail table data 'txt_create_checklist_audit_table_data' for 'create' event in row 1
+    
+    And User clicks on 'config' sidebar menu
+    Then User verify 'checklist' in checklist page
+    And User clicks on 'checklist' in checklist page
+    And User verify 'checklist tab' in checklist page
+    Then User verify 'new checklist' in checklist page
+    And User verifies 'checklist table column headers' in checklist page
+    And User selects 'name option' as 'search option' in checklist page
+    Then User enters 'text checklist name' in 'search' field of checklist page
+    And User verify 'text checklist name' in row 1 column 1 in checklist page
+    And User clicks on 'edit' icon in checklist page
+    Then User verify 'edit checklist header' in checklist page
+    Then User verify 'label name' in checklist page
+    Then User enters 'text edit checklist description' in 'description' field of checklist page
+    And User clicks on 'update' button in checklist page
+    Then User verify 'checklist updated message' in checklist page
+    Then User verify 'text_edit_checklist_table_data' in row 1 of checklist page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'checklist option' as 'category name' in audit trail page
+    And User selects 'updated option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'checklist tab' in audit trail page
+    Then User verifies 'update checklist audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify checklist audit tail table data 'txt_update_checklist_audit_table_data' for 'create' event in row 1
+        
+    And User clicks on 'config' sidebar menu
+    Then User verify 'checklist' in checklist page
+    And User clicks on 'checklist' in checklist page
+    And User verify 'checklist tab' in checklist page
+    Then User verify 'new checklist' in checklist page
+    And User verifies 'checklist table column headers' in checklist page
+    And User selects 'name option' as 'search option' in checklist page
+    Then User enters 'text checklist name' in 'search' field of checklist page
+    And User clicks on 'delete icon' in checklist page
+    Then User verify 'confirm you delete' in checklist page
+    Then User verify 'delete' button in checklist page
+    And User clicks on 'delete' button in checklist page
+    Then User verify 'checklist deleted message' in checklist page
+    Then User clicks on 'reset filter' button in checklist page  
+    And User selects 'name option' as 'search option' in checklist page
+    Then User enters 'text checklist name' in 'search' field of checklist page
+    Then User verify 'no rows' in checklist page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'checklist option' as 'category name' in audit trail page
+    And User selects 'deleted option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'activities tab' in audit trail page
+    Then User verifies 'delete checklist audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify checklist audit tail table data 'txt_delete_checklist_audit_table_data' for 'delete' event in row 1
+    
+    Then User clicks on 'logged in user drop down'
+    And User verifies 'logout option name' is displayed in 'logout' field
+    Then User clicks on 'logout option' 
+     
     
   
   

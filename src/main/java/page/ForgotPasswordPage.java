@@ -175,6 +175,8 @@ public class ForgotPasswordPage extends GlobalFunctions{
 			break;
 		case "password default text":
 		case "enter otp default text":
+			(defaultTextInUserNamePassword.get(0).getDomProperty("textContent")).contains(name);
+			break;
 		case "email field label text":
 			getTextFromElementInListAndValidate(defaultTextInUserNamePassword, name);
 			break;

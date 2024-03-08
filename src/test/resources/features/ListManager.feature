@@ -1,7 +1,7 @@
-@regression @lifeCycleStates
+@regression @listmanager
 Feature: Life Cycle States functionality
 
-  @lifeCycleStates
+  @listmanager
   Scenario: 1_verify Life Cycle States functionality
     Given User launched the application
     Then User enters 'email id' in 'email' field of login page

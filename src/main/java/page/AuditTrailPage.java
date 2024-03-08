@@ -15,6 +15,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import core.BaseClass;
 import page.admin.TagsPage;
+import page.config.ActivitiesPage;
 import page.config.LifeCycleStatesPage;
 import page.config.NumberingSystemPage;
 import utility.Constant;
@@ -100,7 +101,7 @@ public class AuditTrailPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Generate']")
 	List<WebElement> generateBtns;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-yzgz6o']")
+	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ldem18']")
 	WebElement enableGenerateBtn;
 
 	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInfo MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textInfo MuiButton-sizeMedium MuiButton-textSizeMedium css-1ub7g1i']")
@@ -142,21 +143,29 @@ public class AuditTrailPage extends GlobalFunctions {
 	@FindBy(id = "audit_trail_enter_name")
 	List<WebElement> enterNameInNewEvent;
 
-	@FindBy(xpath = "//*[@class='MuiDataGrid-virtualScroller css-1grl8tv']")
+	@FindBy(xpath = "//*[@class='MuiDataGrid-virtualScroller css-1pzb349']")
 	WebElement auditTrailTable;
+	
+	@FindBy(xpath = "//*[@class='MuiDataGrid-columnHeaderTitleContainerContent']")
+	List<WebElement> columnHeader;
 
 	@FindBy(xpath = "//*[@role='tab' and text()='Login']")
 	WebElement loginTab;
 
 	@FindBy(xpath = "//*[@role='tab' and text()='Life Cycle States']")
 	WebElement lifeCycleStatesTab;
-	
+
 	@FindBy(xpath = "//*[@role='tab' and text()='Numbering System']")
 	WebElement numberingSystemTab;
-	
+
 	@FindBy(xpath = "//*[@role='tab' and text()='Tag']")
 	WebElement tagTab;
-
+	
+	@FindBy(xpath = "//*[@role='tab' and text()='Activities']")
+	WebElement activitiesTab;
+	
+	@FindBy(xpath = "//*[@role='tab' and text()='Checklist']")
+	WebElement checklistTab;
 
 	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1jhhc83']")
 	WebElement removeEventCategoryHeader;
@@ -175,7 +184,7 @@ public class AuditTrailPage extends GlobalFunctions {
 		String date = getXmlFilesData(expecteddate);
 
 		if (date.equals("current date")) {
-			date = dateTimeiFunctions.getCurrentMonthDateYear();
+			date = dateTimeiFunctions.getCurrentMonthDateYear("/");
 		}
 		if (fieldName.equals("start date")) {
 			String test = dateFeild.get(0).getAttribute("value");
@@ -334,16 +343,15 @@ public class AuditTrailPage extends GlobalFunctions {
 	 */
 	public void verifyAuditTrailTableColumnHeaders(String columnHeaders) {
 		// wait for element to load
-		waitTillAttributeDisplay(auditTrailTable, "class", "MuiDataGrid-virtualScroller css-1grl8tv",
+		waitTillAttributeDisplay(auditTrailTable, "class", "MuiDataGrid-virtualScroller css-1pzb349",
 				Duration.ofSeconds(60));
 		String columnHeaderValue = getXmlFilesData(columnHeaders);
 		String[] ExpectedColumnHeader = columnHeaderValue.split("\\|");
 		List<String> columnHeadersText = new ArrayList<>();
-		for (int i = 1; i <= ExpectedColumnHeader.length; i++) {
-			String columnHeader = auditTrailColumnHeader.replace("#", Integer.toString(i));
-			WebElement element = driver.findElement(By.xpath(columnHeader));
-			columnHeadersText.add(getText(element));
-		}
+		for (int i = 0; i < columnHeader.size(); i++) {	
+			columnHeadersText.add(getText(columnHeader.get(i)));
+			 scrollScrollBar(auditTrailTable, 10, Constant.RIGHT);
+		}	
 		// compare expected and actual column headers
 		log.info("audit trail table column headers " + columnHeadersText);
 		Assert.assertTrue(compareArrayAndList(ExpectedColumnHeader, columnHeadersText));
@@ -497,6 +505,12 @@ public class AuditTrailPage extends GlobalFunctions {
 		case "tag tab":
 			verifyText(tagTab, name);
 			break;
+		case "activities tab":
+			verifyText(activitiesTab, name);
+			break;
+		case "checklist tab":
+			verifyText(checklistTab, name);
+			break;		
 		case "remove event category header":
 			verifyText(removeEventCategoryHeader, name);
 			break;
@@ -526,7 +540,6 @@ public class AuditTrailPage extends GlobalFunctions {
 			Assert.fail("failed");
 			break;
 		}
-
 	}
 
 	/**
@@ -606,7 +619,6 @@ public class AuditTrailPage extends GlobalFunctions {
 			Assert.fail("failed");
 			break;
 		}
-
 	}
 
 	/**
@@ -620,7 +632,6 @@ public class AuditTrailPage extends GlobalFunctions {
 		WebElement element = null;
 		element = driver.findElement(By.xpath("//*[text()='" + name + "']"));
 		verifyText(element, name);
-
 	}
 
 	/**
@@ -686,9 +697,7 @@ public class AuditTrailPage extends GlobalFunctions {
 				scrollScrollBar(auditTrailTable, 40, Constant.DOWN);
 			} else {
 				scrollScrollBar(auditTrailTable, 30, Constant.DOWN);
-
 			}
-
 		}
 
 		Assert.assertTrue(rows == rowData.size());
@@ -717,7 +726,6 @@ public class AuditTrailPage extends GlobalFunctions {
 		}
 		if (expectedData[3].contains("##")) {
 			expectedData[3] = expectedData[3].replace("##", LifeCycleStatesPage.lifeCycleName);
-					
 		}
 		switch (eventName) {
 		case "create":
@@ -734,7 +742,7 @@ public class AuditTrailPage extends GlobalFunctions {
 			Assert.fail("failed");
 			break;
 		}
-		for (int i = 1; i <= columnLength+1; i++) {
+		for (int i = 1; i <= columnLength + 1; i++) {
 			String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']//*[@aria-colindex='"
 					+ Integer.toString(i) + "']";
 			WebElement element = driver.findElement(By.xpath(rowItem));
@@ -750,7 +758,7 @@ public class AuditTrailPage extends GlobalFunctions {
 		Assert.assertTrue(dateTimeiFunctions.validateTimeWithInDuration(expectedTime, actualTime, "", 60));
 
 	}
-	
+
 	/**
 	 * validate mentioned row number data in numbering system audit trail table
 	 * 
@@ -773,7 +781,6 @@ public class AuditTrailPage extends GlobalFunctions {
 		}
 		if (expectedData[3].contains("##")) {
 			expectedData[3] = expectedData[3].replace("##", NumberingSystemPage.numberingSystemName);
-					
 		}
 		switch (eventName) {
 		case "create":
@@ -790,7 +797,60 @@ public class AuditTrailPage extends GlobalFunctions {
 			Assert.fail("failed");
 			break;
 		}
-		for (int i = 1; i <= columnLength+1; i++) {
+		for (int i = 1; i <= columnLength + 1; i++) {
+			String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']//*[@aria-colindex='"
+					+ Integer.toString(i) + "']";
+			WebElement element = driver.findElement(By.xpath(rowItem));
+			if (i != 3) {
+				rowData.add(getText(element));
+			} else {
+				actualTime = getText(element);
+			}
+			// scrollScrollBar(auditTrailTable, 90, Constant.RIGHT);
+		}
+		log.info(String.format("mentioned row %s %s", rowNumber, expectedData));
+		Assert.assertTrue(compareArrayAndList(expectedData, rowData));
+		Assert.assertTrue(dateTimeiFunctions.validateTimeWithInDuration(expectedTime, actualTime, "", 60));
+	}
+
+	/**
+	 * validate mentioned row number data in Tag audit trail table
+	 * 
+	 * @param rowNumber
+	 * @param data
+	 */
+	public void validateMentionedRowNumberDataForTagAuditTrail(String data, String eventName, int rowNumber) {
+		String expectedTime = null;
+		String actualTime = null;
+		List<String> rowData = new ArrayList<>();
+		String lifeCycleStateData = getXmlFilesData(data);
+		String[] expectedData = lifeCycleStateData.split("\\|");
+		int columnLength = expectedData.length;
+		if (expectedData[0].equals("##")) {
+			expectedData[0] = Integer.toString(rowNumber);
+		}
+		if (expectedData[1].equals("##")) {
+			expectedData[1] = dateTimeiFunctions.getCurrentDateMonthNameYear();
+		}
+		if (expectedData[3].contains("##")) {
+			expectedData[3] = expectedData[3].replace("##", TagsPage.tagName);
+		}
+		switch (eventName) {
+		case "create":
+			expectedTime = (TagsPage.tagCreatedTime).toLowerCase();
+			break;
+		case "update":
+			expectedTime = (TagsPage.tagUpdatedTime).toLowerCase();
+			break;
+		case "delete":
+			expectedTime = (TagsPage.tagDeletedTime).toLowerCase();
+			break;
+		default:
+			log.error("invalid field" + eventName);
+			Assert.fail("failed");
+			break;
+		}
+		for (int i = 1; i <= columnLength + 1; i++) {
 			String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']//*[@aria-colindex='"
 					+ Integer.toString(i) + "']";
 			WebElement element = driver.findElement(By.xpath(rowItem));
@@ -808,13 +868,12 @@ public class AuditTrailPage extends GlobalFunctions {
 	}
 
 	/**
-	 * validate mentioned row number data in Tag audit trail table
+	 * validate mentioned row number data in Activities audit trail table
 	 * 
 	 * @param rowNumber
 	 * @param data
 	 */
-	public void validateMentionedRowNumberDataForTagAuditTrail(String data, String eventName,
-			int rowNumber) {
+	public void validateMentionedRowNumberDataForActivitiesAuditTrail(String data, String eventName, int rowNumber) {
 		String expectedTime = null;
 		String actualTime = null;
 		List<String> rowData = new ArrayList<>();
@@ -828,25 +887,24 @@ public class AuditTrailPage extends GlobalFunctions {
 			expectedData[1] = dateTimeiFunctions.getCurrentDateMonthNameYear();
 		}
 		if (expectedData[3].contains("##")) {
-			expectedData[3] = expectedData[3].replace("##", TagsPage.tagName);
-					
+			expectedData[3] = expectedData[3].replace("##", ActivitiesPage.activityName);
 		}
 		switch (eventName) {
 		case "create":
-			expectedTime = (TagsPage.tagCreatedTime).toLowerCase();
+			expectedTime = (ActivitiesPage.activityCreatedTime).toLowerCase();
 			break;
 		case "update":
-			expectedTime = (TagsPage.tagUpdatedTime).toLowerCase();
+			expectedTime = (ActivitiesPage.activityUpdatedTime).toLowerCase();
 			break;
 		case "delete":
-			expectedTime = (TagsPage.tagDeletedTime).toLowerCase();
+			expectedTime = (ActivitiesPage.activityDeletedTime).toLowerCase();
 			break;
 		default:
 			log.error("invalid field" + eventName);
 			Assert.fail("failed");
 			break;
 		}
-		for (int i = 1; i <= columnLength+1; i++) {
+		for (int i = 1; i <= columnLength + 1; i++) {
 			String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']//*[@aria-colindex='"
 					+ Integer.toString(i) + "']";
 			WebElement element = driver.findElement(By.xpath(rowItem));
@@ -862,5 +920,58 @@ public class AuditTrailPage extends GlobalFunctions {
 		Assert.assertTrue(dateTimeiFunctions.validateTimeWithInDuration(expectedTime, actualTime, "", 60));
 
 	}
+	
+	/**
+	 * validate mentioned row number data in checklist audit trail table
+	 * 
+	 * @param rowNumber
+	 * @param data
+	 */
+	public void validateMentionedRowNumberDataForChecklistAuditTrail(String data, String eventName, int rowNumber) {
+		String expectedTime = null;
+		String actualTime = null;
+		List<String> rowData = new ArrayList<>();
+		String lifeCycleStateData = getXmlFilesData(data);
+		String[] expectedData = lifeCycleStateData.split("\\|");
+		int columnLength = expectedData.length;
+		if (expectedData[0].equals("##")) {
+			expectedData[0] = Integer.toString(rowNumber);
+		}
+		if (expectedData[1].equals("##")) {
+			expectedData[1] = dateTimeiFunctions.getCurrentDateMonthNameYear();
+		}
+		if (expectedData[3].contains("##")) {
+			expectedData[3] = expectedData[3].replace("##", ActivitiesPage.activityName);
+		}
+		switch (eventName) {
+		case "create":
+			expectedTime = (ActivitiesPage.activityCreatedTime).toLowerCase();
+			break;
+		case "update":
+			expectedTime = (ActivitiesPage.activityUpdatedTime).toLowerCase();
+			break;
+		case "delete":
+			expectedTime = (ActivitiesPage.activityDeletedTime).toLowerCase();
+			break;
+		default:
+			log.error("invalid field" + eventName);
+			Assert.fail("failed");
+			break;
+		}
+		for (int i = 1; i <= columnLength + 1; i++) {
+			String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']//*[@aria-colindex='"
+					+ Integer.toString(i) + "']";
+			WebElement element = driver.findElement(By.xpath(rowItem));
+			if (i != 3) {
+				rowData.add(getText(element));
+			} else {
+				actualTime = getText(element);
+			}
+			// scrollScrollBar(auditTrailTable, 90, Constant.RIGHT);
+		}
+		log.info(String.format("mentioned row %s %s", rowNumber, expectedData));
+		Assert.assertTrue(compareArrayAndList(expectedData, rowData));
+		Assert.assertTrue(dateTimeiFunctions.validateTimeWithInDuration(expectedTime, actualTime, "", 60));
 
+	}
 }

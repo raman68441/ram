@@ -43,7 +43,7 @@ public class CommonPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Notifications']")
 	WebElement notificationsOption;
 
-	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-body2 css-1tulygb']")
+	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-body2 css-19p8bze']")
 	WebElement loginEmailId;
 
 	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-body1 css-j5a1ma']")
@@ -100,6 +100,25 @@ public class CommonPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@type='file']")
 	WebElement fileupload;
 	
+	@FindBy(xpath = "//*[text()='Delete']")
+	WebElement deleteBtn;
+	
+	@FindBy(xpath = "//*[text()='Next']")
+	WebElement nextBtn;
+	
+	@FindBy(xpath = "//*[text()='Cancel']")
+	WebElement cancelBtn;
+
+	@FindBy(xpath = "//*[text()='Save']")
+	WebElement saveBtn;
+
+	@FindBy(xpath = "//*[text()='Update']")
+	WebElement updateBtn;
+	
+	@FindBy(xpath = "//*[text()='Back']")
+	WebElement backBtn;
+	
+	
 	public static String loggedInUserfullName;
 
 	public CommonPage(WebDriver driver) {
@@ -130,6 +149,12 @@ public class CommonPage extends GlobalFunctions {
 			break;
 		case "back button":
 			driver.navigate().back();
+			try {
+				Thread.sleep(400);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		case "forward button":
 			driver.navigate().forward();
@@ -167,6 +192,24 @@ public class CommonPage extends GlobalFunctions {
 		case "dashboard":
 			clickElement(dashBoardMenu);
 			break;
+		case "delete":
+			clickElement(deleteBtn);
+			break;
+		case "next":
+			clickElement(nextBtn);
+			break;
+		case "cancel":
+			clickElement(cancelBtn);
+			break;
+		case "save":
+			clickElement(saveBtn);
+			break;
+		case "update":
+			clickElement(updateBtn);
+			break;
+		case "back":
+			clickElement(backBtn);
+			break;
 		default:
 			Assert.fail("failed");
 			System.out.println("invalid name");
@@ -198,6 +241,24 @@ public class CommonPage extends GlobalFunctions {
 			break;
 		case "notifications":
 			verifyText(notificationsOption, name);
+			break;
+		case "delete":
+			verifyText(deleteBtn, name);
+			break;
+		case "save button":
+			verifyText(saveBtn, name);
+			break;
+		case "update":
+			verifyText(updateBtn, name);
+			break;
+		case "next":
+			verifyText(nextBtn, name);
+			break;	
+		case "back":
+			verifyText(backBtn, name);
+			break;
+		case "cancel button":
+			verifyText(cancelBtn, name);
 			break;
 		default:
 			log.info("***failed***");

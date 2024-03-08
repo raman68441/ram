@@ -8,7 +8,7 @@
       <string name="invalid password3">abc111</string>
       <string name="invalid password4">abc155</string>
        <string name="valid password">dms@234</string>
-       <string name="invalid email id">jaya</string> 
+       <string name="invalid email id">test</string> 
        <string name="email id not registered">Jayalakshmi.X-Hegde@nevton.com</string>
  <string name="invalid digit otp">12345</string>
   <string name="invalid otp">123456</string>
@@ -46,11 +46,11 @@
        <!--life cycle states texts-->
          <string name="text life cycle state name">Test</string>	
          <string name="text life cycle state description">Test description</string>	
-         <string name="txt_life_cycle_states_table_data">##|Test description|No|##|Jayalakshmi Hegde|#|#|</string>	
+         <string name="txt_life_cycle_states_table_data">##|Test description|No|##|Jayalakshmi Hegde|-|#|Active</string>	
          <string name="text edit life cycle state name">Test1</string>	
          <string name="text edit life cycle state description">Test1 description</string>
          <string name="txt_life_cycle_states_table_data1">##|Test description|No|##|Jayalakshmi Hegde|##|||</string>	
-         <string name="txt_lock_life_cycle_states_table_data">##|Test description|Yes|##|Jayalakshmi Hegde|#|#|</string>	
+         <string name="txt_lock_life_cycle_states_table_data">##|Test description|Yes|##|Jayalakshmi Hegde|-|#|Active</string>	
           <string name="txt_edit_lock_life_cycle_states_table_data">##|Test1 description|Yes|##|Jayalakshmi Hegde|##|Jayalakshmi Hegde</string>	
          <string name="txt_create_lock_life_cycle_states_auit_table_data">##|##|Jayalakshmi Hegde|Name = ##|created</string>	
          <string name="txt_update_lock_life_cycle_states_auit_table_data">##|##|Jayalakshmi Hegde|Name = ##|updated|LifeCycleDescription|Test1 description|Test description</string>	
@@ -96,6 +96,43 @@
      <string name="txt_create_tag_audit_table_data">##|##|Jayalakshmi Hegde|Tag Name = ##|created</string>	
 	 <string name="txt_update_tag_audit_table_data">##|##|Jayalakshmi Hegde|Tag Name = ##|updated|TagCode|456|123</string>	
 	 <string name="txt_delete_tag_audit_table_data">##|##|Jayalakshmi Hegde|Tag Name = ##|deleted</string>	
+
+  <!--Role texts--> 
+     <string name="text role name">Tester</string>	
+     <string name="text role description">Testing</string>	
+     <string name="text select user name">Jayalakshmi Hegde</string>	
+     <string name="txt_role_list_table_data">##|Testing|View All|##|Jayalakshmi Hegde|#|#|Active</string>	
+
+<!--Activities texts--> 
+    <string name="text activity name">review</string>	
+ 	<string name="text activity description">Reviewing the Documents</string>	
+    <string name="text meaning of signature">Reviewed</string>	
+    <string name="text_activity_table_data">##|Reviewing the Documents|Enable|Reviewed|##|Jayalakshmi Hegde|#|#|Enable|Active</string>	
+ 	<string name="text edit activity description">Reviewing the Documents updated</string>	
+    <string name="text_edit_activity_table_data">##|Reviewing Documents updated|Disabled|Reviewed|##|Jayalakshmi Hegde|#|Jayalakshmi Hegde|Disabled|Active</string>	
+  	<string name="txt_create_activity_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|created</string>	
+	<string name="txt_update_activity_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|updated|Description|Reviewing Documents updated|Reviewing the Documents</string>	
+	<string name="txt_delete_activity_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|deleted</string>	
+
+<!--Chekcklist texts--> 
+    <string name="text checklist name">checklistworkflow</string>	
+    <string name="text checklist description">checklist description</string>	
+    <string name="text checkpoint name">check point</string>
+    <string name="text header name">Header1</string>
+    <string name="text enter string name">Test</string>
+    <string name="text enter string name">Test</string>
+    <string name="text_checklist_table_data">##|checklist description|##|Jayalakshmi Hegde|-|-|Active</string>
+    <string name="text edit checklist description">update checklist description</string>
+    <string name="text_edit_checklist_table_data">##|update checklist description|##|Jayalakshmi Hegde|##|Jayalakshmi Hegde|Active</string>
+
+
+
+
+
+    
+ 
+    
+    
 
 
 

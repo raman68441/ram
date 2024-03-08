@@ -9,9 +9,9 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 	features = {"src/test/resources/features"},
 	glue = {"stepdefinitions", "hooks"},
-	tags= "@audit",
+	tags= "@Audit12",
 	plugin={"pretty",
-			"html:target/cucumber-html-report",
+			"html:target/cucumber-html-report.html",
 			"json:target/cucumber-reports/cucumber.json",
 			"junit:target/cucumber-reports/cucumber.xml",
 			"rerun:target/cucumber-reports/rerun.txt",

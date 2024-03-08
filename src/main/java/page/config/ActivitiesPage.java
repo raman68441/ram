@@ -1,4 +1,4 @@
-package page.admin;
+package page.config;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -21,35 +21,38 @@ import page.PaginationPage;
 import utility.Constant;
 import utility.DateTimeiFunctions;
 
-public class BusinessUnitPage extends GlobalFunctions {
-	Logger log = LogManager.getLogger(BusinessUnitPage.class);
+/*
+ * This class explains about Activities screen functionality
+ */
+public class ActivitiesPage extends GlobalFunctions {
+	Logger log = LogManager.getLogger(ActivitiesPage.class);
 	private WebDriver driver;
 	PaginationPage paginationPage = new PaginationPage(BaseClass.getDriver());
 	DateTimeiFunctions dateTimeiFunctions = new DateTimeiFunctions();
 
-	public BusinessUnitPage(WebDriver driver) {
+	public ActivitiesPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//*[@role='tab' and text()='Business Unit List']")
-	WebElement businessUnitList;
+	@FindBy(xpath = "//*[@role='tab' and text()='Activities List']")
+	WebElement activitiesList;
 
-	@FindBy(xpath = "//*[text()='Business Unit']")
-	WebElement businessUnitTab;
+	@FindBy(xpath = "//*[text()='Activities']")
+	WebElement activitiesTab;
 
-	@FindBy(xpath = "//*[@role='tab' and text()='New Business Unit']")
-	WebElement newBusinessUnit;
+	@FindBy(xpath = "//*[@role='tab' and text()='New Activity']")
+	WebElement newActivity;
 
-	@FindBy(xpath = "//*[@class='MuiDataGrid-virtualScroller css-1grl8tv']")
-	WebElement businessUnitTable;
-	
-	@FindBy(xpath ="//*[@class='MuiDataGrid-columnHeaderTitleContainerContent']")
+	@FindBy(xpath = "//*[@class='MuiDataGrid-virtualScroller css-1pzb349']")
+	WebElement activitiesTable;
+
+	@FindBy(xpath = "//*[@class='MuiDataGrid-columnHeaderTitleContainerContent']")
 	List<WebElement> columnHeader;
 
-	public String businessUnitColumnHeader = "//*[@class='MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable' and  @aria-colindex='#']";
+	public String activitiesColumnHeader = "//*[@class='MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable' and  @aria-colindex='#']";
 
-	public String businessUnitData = "//*[@data-colindex='#']";
+	public String activitiesData = "//*[@data-colindex='#']";
 
 	@FindBy(xpath = "//*[@data-testid='DriveFileRenameOutlineOutlinedIcon']")
 	List<WebElement> editIcon;
@@ -58,7 +61,7 @@ public class BusinessUnitPage extends GlobalFunctions {
 	List<WebElement> deleteIcon;
 
 	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-gix94l']")
-	List<WebElement> newBusinessUnitLabels;
+	List<WebElement> newActivityLabels;
 
 	@FindBy(xpath = "//*[text()='Cancel']")
 	WebElement cancelBtn;
@@ -69,56 +72,44 @@ public class BusinessUnitPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Update']")
 	WebElement updateBtn;
 
-	@FindBy(xpath = "//*[@name='businessUnitName']")
-	WebElement businessUnitNameField;
+	@FindBy(id = "activity_name")
+	WebElement nameField;
 
-	@FindBy(xpath = "//*[@name='businessUnitCode']")
-	WebElement businessUnitCodeField;
+	@FindBy(id = "activity_description")
+	List<WebElement> descriptionAndSignatureField;
 
-	@FindBy(id = "organisation")
-	WebElement organizationField;
+	@FindBy(xpath = "//*[text()='Electronic Signature:']")
+	WebElement labelElectronicSignature;
 
-	@FindBy(xpath = "//*[@name='address']")
-	WebElement addressField;
+	@FindBy(xpath = "//*[text()='Comments:']")
+	WebElement labelComments;
 
-	@FindBy(id = "location")
-	WebElement countryField;
+	@FindBy(xpath = "//*[@class='PrivateSwitchBase-input css-1m9pwf3']")
+	List<WebElement> radioBtns;
 
-	@FindBy(id = "timezone")
-	WebElement timeZoneField;
+	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-j5a1ma']")
+	List<WebElement> labelYesNoLabel;
 
-	@FindBy(id = "date")
-	WebElement dateFormatField;
-
-	@FindBy(id = "business_unit")
-	WebElement businessUnit;
+	@FindBy(xpath = "//*[text()='Yes']")
+	List<WebElement> yesLabel;
 
 	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 css-j5a1ma']")
-	WebElement confirmDelete;
+	List<WebElement> confirmDelete;
 
 	@FindBy(xpath = "//*[text()='Delete']")
 	WebElement deleteBtn;
 
 	@FindBy(xpath = "//*[@class='MuiAlert-message css-1xsto0d']")
-	WebElement businessUnitMessage;
+	WebElement activitiesMessage;
 
-	@FindBy(xpath = "//*[text()='BusinessUnit Name is required']")
-	WebElement businessUnitNameRequired;
+	@FindBy(xpath = "//*[text()= Name is required']")
+	WebElement nameRequired;
 
-	@FindBy(xpath = "//*[text()='BusinessUnit Code is required']")
-	WebElement businessUnitCodeRequired;
+	@FindBy(xpath = "//*[text()='Description is required']")
+	WebElement descriptioneRequired;
 
-	@FindBy(xpath = "//*[text()='Please select an organisation']")
-	WebElement organisationRequired;
-
-	@FindBy(xpath = "//*[text()='Please select a Location']")
-	WebElement pleaseSelectLocation;
-
-	@FindBy(xpath = "//*[text()='Please select a Time Zone']")
-	WebElement pleaseSelectTimeZone;
-
-	@FindBy(xpath = "//*[text()='Date Format is required']")
-	WebElement dateFormatRequired;
+	@FindBy(xpath = "//*[text()='Meaning OfS ignature is Required']")
+	WebElement meaningOfSignatureRequired;
 
 	@FindBy(xpath = "//*[@role='option']")
 	List<WebElement> option;
@@ -128,27 +119,15 @@ public class BusinessUnitPage extends GlobalFunctions {
 
 	@FindBy(xpath = "//*[@class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-1oxzkbe']")
 	List<WebElement> dropdownIcons;
-	
-	@FindBy(id="organisation")
-	WebElement organisationField;
-	
-	@FindBy(id="location")
-	WebElement locationField;
-	
-	@FindBy(id="timezone")
-	WebElement timezoneField;
-	
-	@FindBy(id="date")
-	WebElement dateField;
-	
+
 	@FindBy(xpath = "//*[@data-colindex='1']")
 	List<WebElement> firstColumnData;
 
 	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-aqsgr9']")
 	WebElement deactiveIcon;
 
-	@FindBy(xpath = "//*[text()='Edit Business Unit']")
-	WebElement editBusinessUnitHeader;
+	@FindBy(xpath = "//*[text()='Edit Activities']")
+	WebElement editActivityHeader;
 
 	@FindBy(id = "table-filter-option")
 	WebElement tableFilterOption;
@@ -168,16 +147,16 @@ public class BusinessUnitPage extends GlobalFunctions {
 	@FindBy(id = "table-search")
 	WebElement tableSearchField;
 
-	@FindBy(xpath = "//*[@class='MuiDataGrid-overlay css-11utb8v']")
+	@FindBy(xpath = "//*[@class='MuiDataGrid-overlay css-14349d1']")
 	WebElement emptyTable;
 
-	@FindBy(xpath = "//*[@class='MuiBox-root css-hnbbyq']")
+	@FindBy(xpath = "//*[@class='MuiBox-root css-f0fbul']")
 	WebElement scrollPage;
 
 	public String optionName = "//*[@role ='option' and @data-value='#']";
 
-	public static String businessUnitCreatedTime, businessUnitUpdatedTime, businessUnitDeletedTime, businessUnitName,
-			businessUnitCode, organisationName, businessLocation, businessTimezone, businessDateFormat, businessAddress;
+	public static String activityCreatedTime, activityUpdatedTime, activityDeletedTime, activityName,
+			activityDescription, activitySignature;
 
 	/**
 	 * verify the field name
@@ -189,66 +168,78 @@ public class BusinessUnitPage extends GlobalFunctions {
 		WebElement element = null;
 		String text = null;
 		switch (fieldName) {
-		case "business unit tab":
-			verifyText(businessUnitTab, name);
+		case "activities tab":
+			verifyText(activitiesTab, name);
 			break;
-		case "business unit list":
-			waitTillAttributeDisplay(businessUnitList, "role", "tab", Duration.ofSeconds(20));
-			verifyText(businessUnitList, name);
+		case "activities list":
+			waitTillAttributeDisplay(activitiesList, "role", "tab", Duration.ofSeconds(20));
+			verifyText(activitiesList, name);
 			break;
-		case "new business unit":
-			verifyText(newBusinessUnit, name);
+		case "new activity":
+			verifyText(newActivity, name);
 			break;
-		case "label business unit name":
-		case "label business unit code":
-		case "label organisation":
-		case "label address":
-		case "label country":
-		case "label time zone":
-		case "label date format":
-			getTextFromElementInListAndValidate(newBusinessUnitLabels, name);
+		case "label name":
+		case "label description":
+		case "label meaning of signature":
+			getTextFromElementInListAndValidate(newActivityLabels, name);
+			break;
+		case "label electronic signature":
+			verifyText(labelElectronicSignature, name);
+			break;
+		case "label comments":
+			verifyText(labelComments, name);
+			break;
+		case "label yes in electronic signature":
+			text = getTextFromElementInListInMentionedPosition(labelYesNoLabel, 0);
+			compareTwoString(text, "Yes");
+			break;
+		case "label no in electronic signature":
+			text = getTextFromElementInListInMentionedPosition(labelYesNoLabel, 1);
+			compareTwoString(text, "No");
+			break;
+		case "label yes in comments":
+			text = getTextFromElementInListInMentionedPosition(labelYesNoLabel, 2);
+			compareTwoString(text, "Yes");
+			break;
+		case "label no in comments":
+			text = getTextFromElementInListInMentionedPosition(labelYesNoLabel, 3);
+			compareTwoString(text, "No");
 			break;
 		case "cancel":
 			verifyText(cancelBtn, name);
+			break;		
+		case "warning message name required":
+			verifyText(nameRequired, name);
 			break;
-		case "warning message business unit name required":
-			verifyText(businessUnitNameRequired, name);
+		case "warning message description required":
+			verifyText(descriptioneRequired, name);
 			break;
-		case "warning message business unit code required":
-			verifyText(businessUnitCodeRequired, name);
+		case "warning message meaning of signature required":
+			verifyText(meaningOfSignatureRequired, name);
 			break;
-		case "warning message please select organisation":
-			verifyText(organisationRequired, name);
-			break;
-		case "warning message please select location":
-			verifyText(pleaseSelectLocation, name);
-			break;
-		case "warning message please select time zone":
-			verifyText(pleaseSelectTimeZone, name);
-			break;
-		case "warning message date format required":
-			verifyText(dateFormatRequired, name);
-			break;
-		case "Business Unit Created Successfully message":
-		case "business unit already exist message":
-		case "Business Unit updated message":
-		case "Business Unit deleted message":
-			verifyText(businessUnitMessage, name);
+		case "activity created successfully message":
+		case "activity name is allready present message":
+		case "activity updated successfully message":
 			if (fieldName.contains("created")) {
-				businessUnitCreatedTime = dateTimeiFunctions.getCurrentTime();
+				activityCreatedTime = dateTimeiFunctions.getCurrentTime();
 			} else if (fieldName.contains("updated")) {
-				businessUnitUpdatedTime = dateTimeiFunctions.getCurrentTime();
-			} else if (fieldName.contains("deleted"))
-				businessUnitDeletedTime = dateTimeiFunctions.getCurrentTime();
+				activityUpdatedTime = dateTimeiFunctions.getCurrentTime();
+			}
+			break;
+		case "activities deleted message":
+			text = name.replace("#", activityName);
+			activityDeletedTime = dateTimeiFunctions.getCurrentTime();
+			verifyText(activitiesMessage, text);
 			break;
 		case "confirm you delete":
-			verifyText(confirmDelete, name);
+			text = getTextFromElementInListInMentionedPosition(confirmDelete, 1);
+			compareTwoString(text, name);
 			break;
 		case "delete":
 			verifyText(deleteBtn, name);
 			break;
-		case "edit business unit header":
-			verifyText(editBusinessUnitHeader, name);
+		case "edit activities header":
+			verifyText(editActivityHeader, name);
 			break;
 		case "search option default value":
 			verifyText(tableSearchOption, name);
@@ -271,6 +262,9 @@ public class BusinessUnitPage extends GlobalFunctions {
 		case "update":
 			verifyText(updateBtn, name);
 			break;
+		case "no rows":
+			verifyText(emptyTable, name);
+			break;
 		default:
 			Assert.fail("failed");
 			log.error("invalid field " + fieldName);
@@ -279,24 +273,26 @@ public class BusinessUnitPage extends GlobalFunctions {
 	}
 
 	/**
-	 * verify business unit table column headers name
+	 * verify activities table column headers name
 	 * 
-	 * @param columnHeaders -business unit column headers name
+	 * @param columnHeaders -activities column headers name
 	 */
-	public void verifyBusinessUnitTableColumnHeaders(String expectedColumnHeaders) {
+	public void verifyActivitesListTableColumnHeaders(String expectedColumnHeaders) {
 		// wait for element to load
-		waitTillAttributeDisplay(businessUnitTable, "class", "MuiDataGrid-virtualScroller css-1grl8tv",
+		waitTillAttributeDisplay(activitiesTable, "class", "MuiDataGrid-virtualScroller css-1pzb349",
 				Duration.ofSeconds(60));
 		String columnHeaderValue = getXmlFilesData(expectedColumnHeaders);
 		String[] ExpectedColumnHeader = columnHeaderValue.split("\\|");
 		List<String> actualColumnHeadersText = new ArrayList<>();
 		for (int i = 0; i < columnHeader.size(); i++) {
 			actualColumnHeadersText.add(getText(columnHeader.get(i)));
+			 scrollScrollBar(activitiesTable, 17, Constant.RIGHT);
 		}
+		scrollScrollBar(activitiesTable, 300, Constant.LEFT);
 		// compare expected and actual column headers
-		log.info("business unit column headers " + actualColumnHeadersText);
+		log.info("activities column headers " + actualColumnHeadersText);
 		Assert.assertTrue(compareArrayAndList(ExpectedColumnHeader, actualColumnHeadersText));
-		log.info("business unit column headers displayed");
+		log.info("activities column headers displayed");
 	}
 
 	/**
@@ -304,7 +300,7 @@ public class BusinessUnitPage extends GlobalFunctions {
 	 * 
 	 * @param rows
 	 */
-	public void verifyNumberOfRowsInBusinessUnitTable() {
+	public void verifyNumberOfRowsInActivitesTable() {
 
 		scrollScrollBar(scrollPage, 5000, Constant.DOWN);
 		int rowsInPage = Integer.valueOf(getText(paginationPage.rowsPerPage));
@@ -326,14 +322,14 @@ public class BusinessUnitPage extends GlobalFunctions {
 	public void clickOnBtn(String fieldName) {
 		String name = fieldName.toLowerCase();
 		switch (name) {
-		case "business unit tab":
-			clickElement(businessUnitTab);
+		case "activities tab":
+			clickElement(activitiesTab);
 			break;
-		case "business unit list":
-			clickElement(businessUnitList);
+		case "activities list":
+			clickElement(activitiesList);
 			break;
-		case "new business unit":
-			clickElement(newBusinessUnit);
+		case "new activity":
+			clickElement(newActivity);
 			break;
 		case "cancel":
 			clickElement(cancelBtn);
@@ -365,6 +361,18 @@ public class BusinessUnitPage extends GlobalFunctions {
 		case "reset all":
 			clickElement(resetFilterBtn);
 			break;
+		case "electronic signature yes":
+			clickOnPerticularListElement(radioBtns,0);
+			break;	
+		case "comments yes":
+			clickOnPerticularListElement(radioBtns,2);
+			break;	
+		case "electronic signature no":
+			clickOnPerticularListElement(radioBtns,1);
+			break;	
+		case "comments no":
+			clickOnPerticularListElement(radioBtns,3);
+			break;	
 		default:
 			Assert.fail("failed");
 			log.error("invalid field " + fieldName);
@@ -380,35 +388,38 @@ public class BusinessUnitPage extends GlobalFunctions {
 	public void enterValue(String text, String fieldName) {
 		String fieldValue = getXmlFilesData(text);
 		switch (fieldName) {
-		case "business unit name":
-			if (businessUnitName == null) {
-				businessUnitName = String.format("%s%s", fieldValue, generateRandomString(4));
+		case "name":
+			if (activityName == null) {
+				activityName = String.format("%s%s", fieldValue, generateRandomString(4));
 			}
-			businessUnitNameField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(businessUnitNameField, businessUnitName);
+			nameField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			enterValue(nameField, activityName);
 			break;
-		case "business unit code":
-			businessUnitCodeField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(businessUnitCodeField, fieldValue);
-			businessUnitCode = fieldValue;
+		case "description":
+			descriptionAndSignatureField.get(0).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			enterDataOnPerticularListElement(descriptionAndSignatureField, 0, fieldValue);
+			activityDescription = fieldValue;
 			break;
-		case "address":
-			addressField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(addressField, fieldValue);
-			businessAddress = fieldValue;
+		case "meaning of signature":
+			descriptionAndSignatureField.get(1).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			enterDataOnPerticularListElement(descriptionAndSignatureField, 1, fieldValue);
+			activitySignature = fieldValue;
 			break;
 		case "search":
 			tableSearchField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			if (text.equals("text business unit description")) {
+			if (text.equals("text activity description")) {
 				enterValue(tableSearchField, fieldValue);
-			} else {
-				enterValue(tableSearchField, businessUnitName);
+			} else if(text.equals("text meaning of signature")) {
+				enterValue(tableSearchField, fieldValue);
+			}
+			else {
+				enterValue(tableSearchField, activityName);
 			}
 			break;
-		case "edit business name":
-			businessUnitName = String.format("%s%s", fieldValue, generateRandomString(7));
-			businessUnitNameField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(businessUnitNameField, businessUnitName);
+		case "edit name":
+			activityName = String.format("%s%s", fieldValue, generateRandomString(7));
+			nameField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			enterValue(nameField, activityName);
 			break;
 		default:
 			System.out.println("invalid name");
@@ -417,38 +428,40 @@ public class BusinessUnitPage extends GlobalFunctions {
 	}
 
 	/**
-	 * validate mentioned row number data in business unit
+	 * validate mentioned row number data in activities
 	 * 
 	 * @param rowNumber
 	 * @param data
 	 */
-	public void validateMentionedRowNumberDataForBusinessUnit(String data, int rowNumber) {
+	public void validateMentionedRowNumberDataFromTable(String data, int rowNumber) {
 		String rowData = getXmlFilesData(data);
-		String[] businessUnitExpectedData = rowData.split("\\|");
-		if (businessUnitExpectedData[0].equals("##")) {
-			businessUnitExpectedData[0] = Integer.toString(rowNumber);
-		}
-		if (businessUnitExpectedData[1].equals("##")) {
-			businessUnitExpectedData[1] = businessUnitName;
-		}
-		if (businessUnitExpectedData[3].equals("#")) {
-			businessUnitExpectedData[3] = "";
-		}
-		if (businessUnitExpectedData[4].equals("##")) {
-			businessUnitExpectedData[4] = dateTimeiFunctions.getCurrentDateMonthNameYear();
+		String[] ActivitiesExpectedData = rowData.split("\\|");
 
+		if (ActivitiesExpectedData[0].equals("##")) {
+			ActivitiesExpectedData[0] = activityName;
 		}
-		int columnLength = businessUnitExpectedData.length;
+		if (ActivitiesExpectedData[4].equals("##")) {
+			ActivitiesExpectedData[4] = dateTimeiFunctions.getCurrentMonthDateYear("-");
+		}
+		if (ActivitiesExpectedData[6].equals("#")) {
+			ActivitiesExpectedData[6] = "";
+		} else {
+			ActivitiesExpectedData[6] = dateTimeiFunctions.getCurrentMonthDateYear("-");
+		}
+		if (ActivitiesExpectedData[7].equals("#")) {
+			ActivitiesExpectedData[7] = "";
+		}
+		int columnLength = ActivitiesExpectedData.length;
 		List<String> actualData = new ArrayList<>();
 		for (int i = 1; i <= columnLength; i++) {
 			String rowItem = "//*[@data-rowindex='" + Integer.toString(rowNumber) + "']/..//*[@data-colindex='"
 					+ Integer.toString(i) + "']";
 			WebElement element = driver.findElement(By.xpath(rowItem));
 			actualData.add(getText(element));
-			// scrollScrollBar(businessUnitTable, 10, Constant.RIGHT);
+			 scrollScrollBar(activitiesTable, 15, Constant.RIGHT);
 		}
-		log.info(String.format("mentioned row %s %s", rowNumber, businessUnitExpectedData));
-		Assert.assertTrue(compareArrayAndList(businessUnitExpectedData, actualData));
+		log.info(String.format("mentioned row %s %s", rowNumber, ActivitiesExpectedData));
+		Assert.assertTrue(compareArrayAndList(ActivitiesExpectedData, actualData));
 	}
 
 	/**
@@ -456,7 +469,7 @@ public class BusinessUnitPage extends GlobalFunctions {
 	 * 
 	 * @param value - value or index or text
 	 */
-	public void selectDropDownfromBusinessUnitPage(String data, String fieldName) {
+	public void selectDropDownfromActivityPage(String data, String fieldName) {
 		String value = getXmlFilesData(data);
 		WebElement element = null;
 		String optionValue = null;
@@ -493,84 +506,7 @@ public class BusinessUnitPage extends GlobalFunctions {
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-
 			}
-			break;
-		case "organization":
-			clickElement(organisationField);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			optionValue = optionName.replace("#", value);
-			element = driver.findElement(By.xpath(optionValue));
-			clickElement(element);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			organisationName = value;
-			break;
-		case "country":
-			clickElement(locationField);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			optionValue = optionName.replace("#", value);
-			element = driver.findElement(By.xpath(optionValue));
-			clickElement(element);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			businessLocation = value;
-			break;
-		case "time zone":
-			clickElement(timezoneField);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			optionValue = optionName.replace("#", value);
-			element = driver.findElement(By.xpath(optionValue));
-			clickElement(element);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			businessTimezone = value;
-			break;
-		case "date format":
-			clickElement(dateField);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			optionValue = optionName.replace("#", value);
-			element = driver.findElement(By.xpath(optionValue));
-			clickElement(element);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			businessTimezone = value;
 			break;
 		default:
 			log.error("invalid field" + fieldName);
@@ -597,7 +533,7 @@ public class BusinessUnitPage extends GlobalFunctions {
 				System.out.println("i= " + i);
 				actualStatus = (activeInactiveTogleIcon.get(i)).getDomProperty("defaultChecked");
 				Assert.assertTrue(actualStatus.equals(status));
-				scrollScrollBar(businessUnitTable, 2, Constant.DOWN);
+				scrollScrollBar(activitiesTable, 2, Constant.DOWN);
 			}
 		} else {
 			try {
@@ -610,11 +546,11 @@ public class BusinessUnitPage extends GlobalFunctions {
 				actualStatus = (activeInactiveTogleIcon.get(i)).getDomProperty("defaultChecked");
 				System.out.println(actualStatus);
 				Assert.assertTrue(actualStatus.equals(status));
-				scrollScrollBar(businessUnitTable, 2, Constant.DOWN);
+				scrollScrollBar(activitiesTable, 2, Constant.DOWN);
 			}
 		}
 
-		scrollScrollBar(businessUnitTable, 20, Constant.TOP);
+		scrollScrollBar(activitiesTable, 20, Constant.TOP);
 	}
 
 	/**
@@ -625,8 +561,14 @@ public class BusinessUnitPage extends GlobalFunctions {
 	 * @param data
 	 */
 	public void verifyMentionedCellDataInTable(String data, int rowNumber, int columnNumber) {
-		String rowData = getXmlFilesData(data);
-		String rowItem = "//*[@data-rowindex='" + Integer.toString(rowNumber) + "']/..//*[@data-colindex='"
+		String rowData = null;
+		if(data.equals("text activity name")) {
+			rowData = activityName;
+		} else {
+		  rowData = getXmlFilesData(data);
+		}
+		
+		String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']/..//*[@data-colindex='"
 				+ Integer.toString(columnNumber) + "']";
 		WebElement element = driver.findElement(By.xpath(rowItem));
 		compareTwoString(rowData, getText(element));

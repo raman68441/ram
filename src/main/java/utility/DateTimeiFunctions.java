@@ -41,9 +41,9 @@ public class DateTimeiFunctions {
 	 * 
 	 * @return date
 	 */
-	public String getCurrentMonthDateYear() {
+	public String getCurrentMonthDateYear(String delimeter) {
 		Date date = new Date(); // You can replace this with your own date
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+		SimpleDateFormat dateFormat = new SimpleDateFormat(String.format("MM%sdd%syyyy",delimeter,delimeter), Locale.ENGLISH);
 		String formattedDate = dateFormat.format(date);
 		log.info(String.format("formated date %s", formattedDate));
 		return formattedDate;

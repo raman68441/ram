@@ -291,6 +291,9 @@ public class GlobalFunctions {
 		} else if (direction.equals(Constant.TOP)) {
 			js.executeScript("arguments[0].scrollTop = 0;", element);
 			log.info("moved to top of the element");
+		} else if (direction.equals(Constant.LEFT)) {
+			js.executeScript("arguments[0].scrollLeft -=" + pixel + ";", element);
+			log.info(String.format("moved toward down for %s pixels ", pixel));
 		}
 		try {
 			Thread.sleep(200);
@@ -411,6 +414,7 @@ public class GlobalFunctions {
 				found = true;
 				break;
 			}
+
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
@@ -628,6 +632,56 @@ public class GlobalFunctions {
 		}
 		log.info("checked all the element in list");
 		return textContent;
+	}
+
+	/**
+	 * get value from DOM property for element in a list and validate
+	 * 
+	 * @param elements
+	 */
+	public void getDomPropertyFromElementInListAndValidate(List<WebElement> elements, String property, String text) {
+		boolean found = false;
+		int elementsCount = elements.size();
+		for (int x = 0; x < elementsCount; x++) {
+			System.out.println(x);
+			WebElement element = elements.get(x);
+			String value = element.getDomProperty(property);
+			System.out.println(value);
+			System.out.println(text);
+			if (value.equals(text)) {
+				found = true;
+				break;
+			}
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		log.info("checked all the element in list");
+		if (found == false) {
+			Assert.fail(String.format("%s is not displaying", text));
+		}
+	}
+
+	/**
+	 * enter data in mentioned number element in a list
+	 * 
+	 * @param elements -> elements in list
+	 * @param number -> index
+	 * @param value -> value
+	 */
+	public void enterDataOnPerticularListElement(List<WebElement> elements, int number, String value) {
+		WebElement element = elements.get(number);
+		if (isExists(element)) {
+			clearFieldData(element);
+			element.sendKeys(value);
+			log.info(String.format("Enter the value %s", value));
+		} else {
+			Assert.fail(String.format("Element is not displayed %s", element));
+			log.error(String.format("Element is not displayed %s", element));
+		}
 	}
 
 }

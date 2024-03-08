@@ -13,7 +13,7 @@ import page.ConfigurationPage;
 import page.GlobalFunctions;
 
 public class ListManagerPage extends GlobalFunctions {
-	Logger log = LogManager.getLogger(ConfigurationPage.class);
+	Logger log = LogManager.getLogger(ListManagerPage.class);
 	private WebDriver driver;
 	
 	public ListManagerPage(WebDriver driver) {

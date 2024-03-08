@@ -93,4 +93,14 @@ public class AuditTrailStep {
 		auditTrailPage.validateMentionedRowNumberDataForTagAuditTrail(data, eventName, rowNumber);
 	}
 	
+	@Then("User verify activities audit tail table data {string} for {string} event in row {int}")
+	public void userVerifyActivitiesTrailTableMentionedRowDataForTag(String data, String eventName, int rowNumber) {
+		auditTrailPage.validateMentionedRowNumberDataForActivitiesAuditTrail(data, eventName, rowNumber);
+	}
+	
+	@Then("User verify checklist audit tail table data {string} for {string} event in row {int}")
+	public void userVerifyChecklistTrailTableMentionedRowDataForTag(String data, String eventName, int rowNumber) {
+		auditTrailPage.validateMentionedRowNumberDataForChecklistAuditTrail(data, eventName, rowNumber);
+	}
+	
 }

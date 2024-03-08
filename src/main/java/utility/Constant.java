@@ -10,6 +10,7 @@ public class Constant {
 	 public static final String RIGHT = "RIGHT";
 	 public static final String DOWN = "DOWN";
 	 public static final String TOP = "TOP";
+	 public static final String LEFT = "LEFT";
 	 public static final String ASCENDING = "ASCENDING";
 	 public static final String ENTER="ENTER";
      public static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

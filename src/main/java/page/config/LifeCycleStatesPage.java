@@ -43,9 +43,12 @@ public class LifeCycleStatesPage extends GlobalFunctions {
 	
 	@FindBy(xpath="//*[@role='tab'and text()='Life Cycle States List']")
 	WebElement lifeCycleStatesList;
-
-	@FindBy(xpath = "//*[@class='MuiDataGrid-virtualScroller css-1grl8tv']")
+	
+	@FindBy(xpath = "//*[@class='MuiDataGrid-virtualScroller css-1pzb349']")
 	WebElement lifeCycleStatesListTable;
+	
+	@FindBy(xpath = "//*[@class='MuiDataGrid-columnHeaderTitleContainerContent']")
+	List<WebElement> columnHeader;
 
 	public String lifeCycleListTableHeader = "//*[@class='MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable' and  @aria-colindex='#']";
 
@@ -138,7 +141,7 @@ public class LifeCycleStatesPage extends GlobalFunctions {
 	@FindBy(xpath="//*[@alt='fileName']")
 	WebElement image;
 	
-	@FindBy(xpath="//*[@class='MuiDataGrid-overlay css-11utb8v']")
+	@FindBy(xpath = "//*[@class='MuiDataGrid-overlay css-14349d1']")
 	WebElement emptyTable;
 	
 	String fileName = "//*[text()='#']";
@@ -238,28 +241,28 @@ public class LifeCycleStatesPage extends GlobalFunctions {
 			break;
 		}
 	}
-
+	
 	/**
-	 * verify life cycle states table column headers name
+	 * verify audit trail column headers name
 	 * 
-	 * @param columnHeaders -life cycle states column headers name
+	 * @param columnHeaders - audit trail table column headers name
 	 */
 	public void verifyLifeCycleStatesTableColumnHeaders(String columnHeaders) {
 		// wait for element to load
-		waitTillAttributeDisplay(lifeCycleStatesListTable, "class", "MuiDataGrid-virtualScroller css-1grl8tv",
+		waitTillAttributeDisplay(lifeCycleStatesListTable, "class", "MuiDataGrid-virtualScroller css-1pzb349",
 				Duration.ofSeconds(60));
 		String columnHeaderValue = getXmlFilesData(columnHeaders);
 		String[] ExpectedColumnHeader = columnHeaderValue.split("\\|");
 		List<String> columnHeadersText = new ArrayList<>();
-		for (int i = 2; i <= ExpectedColumnHeader.length + 1; i++) {
-			String columnHeader = lifeCycleListTableHeader.replace("#", Integer.toString(i));
-			WebElement element = driver.findElement(By.xpath(columnHeader));
-			columnHeadersText.add(getText(element));
-		}
+		for (int i = 0; i < columnHeader.size(); i++) {	
+			columnHeadersText.add(getText(columnHeader.get(i)));
+			 scrollScrollBar(lifeCycleStatesListTable, 19, Constant.RIGHT);
+		}	
 		// compare expected and actual column headers
-		log.info("life cycle states column headers " + columnHeadersText);
+		log.info("life cycle states table column headers " + columnHeadersText);
+		 scrollScrollBar(lifeCycleStatesListTable, 300, Constant.LEFT);
 		Assert.assertTrue(compareArrayAndList(ExpectedColumnHeader, columnHeadersText));
-		log.info("life cycle states column headers displayed");
+		log.info("audit trail table column headers displayed");
 	}
 
 	/**
@@ -396,21 +399,22 @@ public class LifeCycleStatesPage extends GlobalFunctions {
 			lifeCycleStatesExpectedData[5] = "";
 		}
 		else if (lifeCycleStatesExpectedData[5].equals("##")) {
-			lifeCycleStatesExpectedData[5] = dateTimeiFunctions.getCurrentDateMonthYear();
+			lifeCycleStatesExpectedData[5] = dateTimeiFunctions.getCurrentMonthDateYear("-");
 			
 		}
 		if (lifeCycleStatesExpectedData[6].equals("#")) {
 			lifeCycleStatesExpectedData[6] = "";
 		}
-		lifeCycleStatesExpectedData[3] = dateTimeiFunctions.getCurrentDateMonthYear();
+		lifeCycleStatesExpectedData[3] = dateTimeiFunctions.getCurrentMonthDateYear("-");
 		int columnLength = lifeCycleStatesExpectedData.length;
 		List<String> actualData = new ArrayList<>();
 		for (int i = 1; i <= columnLength; i++) {
 			String rowItem = lifeCycleStatesCellData.replace("#", Integer.toString(i));
 			WebElement element = driver.findElement(By.xpath(rowItem));
 			actualData.add(getText(element));
-			// scrollScrollBar(auditTrailTable, 90, Constant.RIGHT);
+			 scrollScrollBar(lifeCycleStatesListTable, 15, Constant.RIGHT);
 		}
+		 scrollScrollBar(lifeCycleStatesListTable, 200, Constant.LEFT);
 		log.info(String.format("mentioned row %s %s", rowNumber, lifeCycleStatesExpectedData));
 		Assert.assertTrue(compareArrayAndList(lifeCycleStatesExpectedData, actualData));
 	}
@@ -449,7 +453,7 @@ public class LifeCycleStatesPage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			element = driver.findElement(By.xpath("//*[text()='" + value + "']"));
+			element = driver.findElement(By.xpath("//*[@data-value='" + value + "']"));
 			clickElement(element);
 			try {
 				Thread.sleep(300);

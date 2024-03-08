@@ -4,8 +4,8 @@
 	 <string name="logout option name">Logout</string>
 	 <string name="login to dms">Login To DMS</string>
 	 <string name="enter your login details">Please Enter Your Login Details</string>
-	 <string name="email default text">Enter Your Email *</string>
-	 <string name="password default text">Enter Your Password *</string>
+	 <string name="email default text">Enter Your Email</string>
+	 <string name="password default text">Enter Your Password</string>
 	 <string name="powered by text">Powered By</string>
 	 <string name="arcolab logo text">arcolab</string>
 	 <string name="email is required field">Email is a required field</string>
@@ -27,7 +27,7 @@
 	 <string name="email id filed diabled">true</string>
 	 <string name="reset password text">Reset Password</string>
 	 <string name="sent otp text">We sent you an OTP to the registered email, Please check</string>
-	 <string name="enter otp default text">Enter OTP *</string>
+	 <string name="enter otp default text">Enter Your OTP</string>
 	 <string name="email field label text">Enter Your Registered Email *</string>
 	 <string name="otp warning message">Enter valid OTP</string>
 	 <string name="your profile option name">Your Profile</string>
@@ -118,7 +118,7 @@
 	<string name="warning message department code required">Department Code is required</string>
     <string name="warning message please select business unit">Please select a business unit</string>
     <string name="edit department header">Edit Department</string>
-	<string name="life cycle states table column headers">Name|Description|Locked State|Created On|Created By|Modified On|Modified By</string>
+	<string name="life cycle states table column headers">Action|Name|Description|Locked State|Created On|Created By|Modified On|Modified By|Status|Active/Inactive</string>
 	<string name="life cycle state delete message">Life Cycle State Deleted Successfully</string>
 	<string name="life cycle state create message">Life Cycle State Created Successfully</string>
 	<string name="life cycle state is allready present">Life Cycle State is allready present</string>
@@ -242,9 +242,111 @@
     <string name="update tag audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
     <string name="delete tag audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
     <string name="tag option">Tag</string>
-	
+    
+    <string name="role tab">Role</string>
+    <string name="role list">Role List</string>
+	<string name="new role">New Role</string>
+	<string name="role details header">ROLE DETAILS</string>
+	<string name="privileges header">PRIVILEGES</string>
+	<string name="role list table column headers">Action|Name|Description|Users|Created On|Created By|Modified On|Modified By|Status|Active/Inactive</string>
+	<string name="label access level">Access Level *</string>
+	<string name="warning message access level required">Access Level is required</string>
+	<string name="role created successfully message">Role created successfully</string>
+	<string name="role updated successfully message">Role updated successfully</string>
+	<string name="role name already exists message">Role name already exists</string>
+	<string name="role deleted successfully message">Role Deleted Successfully</string>
+    <string name="no user selected message">No user selected</string>
+    <string name="no role privileges selected message">No role privileges selected</string>
+    <string name="no user selected add message">No user selected to Add</string>
+	<string name="select user table column headers">User Name|Domain|Job Title|Employee No|Department|Email|Status</string>
+	<string name="all privileges types">Dashboard|Admin|Config|System|Task|Workflow|Repository|Template|Document|Reports</string>
+    <string name="privileges column headers">All|View|Create|Edit|Delete|Others</string>
+    <string name="dashboard option names">Dashboard</string>
+    <string name="admin option names">Organisation|Business Unit|Department|Role|User Creation|User Group|Tag</string>
+    <string name="config option names">Business Unit Theme|List Manager|System Data Fields Types|Numbering System|Life Cycle States|Activities|Checklist|Workflow Type|Document Type</string>
+	<string name="system option names">Audit Trail</string>
+	<string name="task option names">My Task|Assign Task|Completed Task|Cancelled Task|Task</string>
+	<string name="workflow option names">Workflow</string>
+	<string name="repository option names">Repository</string>
+	<string name="template option names">Template</string>
+	<string name="document option names">Document</string>
+	<string name="reports option names">Reports</string>
+	<string name="next">NEXT</string>
+	<string name="back">BACK</string>
+	<string name="add users">ADD USERS</string>
+	<string name="clear selected users">CLEAR SELECTED USERS</string>
+	<string name="select user">SELECT USER</string>
+	<string name="label selected users">Selected Users</string>
+	<string name="edit role header">Edit Role</string>
+	<string name="create role audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="update role audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+    <string name="delete role audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="role option">Role</string>
+	<string name="activities tab">Activities</string>
+    <string name="activities list">Activities List</string>
+	<string name="new activity">New Activity</string>
+	<string name="meaning of signature option">Meaning Of Signature</string>
+	<string name="activities list table column headers">Action|Name|Description|E-Signature|Meaning Of Signature|Created On|Created By|Modified On|Modified By|Comments|Status|Active/Inactive</string>
+	<string name="label meaning of signature">Meaning of Signature*</string>
+	<string name="label electronic signature">Electronic Signature:</string>
+	<string name="label comments">Comments:</string>
+	<string name="warning message meaning of signature required">meaning of signature is required</string>	
+	<string name="activity created successfully message">Activity has been Created Successfully</string>
+	<string name="activity updated successfully message">Activity has been Updated Successfully</string>
+	<string name="activity name is allready present message">Activity Name is already present</string>
+	<string name="activities deleted message">Activty # has been Deleted</string>
+    <string name="edit activities header">Edit Activities</string>
+    <string name="update">UPDATE</string>
+    <string name="activities option">Activities</string>
+    <string name="create activities audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="update activities audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+    <string name="delete activities audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+
+	<string name="checklist">Checklist</string>
+    <string name="checklist tab">Checklist</string>
+	<string name="new checklist">New Checklist</string>
+	<string name="label dependent on">Depended On:</string>
+	<string name="label add checkpoint">ADD CHECKPOINT</string>
+	<string name="label checkpoint and picklist categories">Checkpoints &amp; String/Picklist Categories:</string>
+	<string name="column header checkpoint name">Checkpoint Name</string>
+	<string name="column header id">ID</string>
+	<string name="label enter checkpoint">Enter Checkpoint Name*</string>
+	<string name="add table column button">ADD TABLE COLUMN</string>
+	<string name="add">ADD</string>
+	<string name="added columns">Added columns: 0</string>
+	<string name="remove">REMOVE</string>	
+	<string name="apply">APPLY</string>	
+	<string name="label select type">Select Type*</string>
+	<string name="label header name">Header Name*</string>
+	<string name="label enter string name">Enter String Name*</string>
+	<string name="label enter selection value">Enter Selection Value*</string>	
+	<string name="string and selection option">String and Selection</string>	
+	<string name="constant string option">Constant String</string>	
+	<string name="warning message checklist name is a required field">Checkpoint name is a required field</string>	
+	<string name="warning message checklist description is a required field">Checkpoint description is a required field</string>	
+	<string name="warning message at least one checkpoint is required">At least one checkpoint is required</string>	
+	<string name="checklist table column headers">Action|Name|Description|Created On|Created By|Modified On|Modified By|status|Active/Inactive</string>	
+	<string name="warning message checkpoint name is a required field">Checkpoint name is a required field</string>	
+	<string name="warning message atleast 1 column should be added">Atleast 1 column should be added</string>	
+	<string name="table column 1">Column 1</string>
+	<string name="checklist has been added message">Checklist has been added.</string>
+	<string name="checklist updated message">Checklist has been updated.</string>
+	<string name="checklist name is allready present message">Checklist with same name already exist</string>
+	<string name="checklist deleted message">Checklist deleted.</string>
+	<string name="edit checklist header">Edit Checklist</string>
+   <string name="checklist option">Checklist</string>
+ 	<string name="create checklist audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="update checklist audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+    <string name="delete checklist audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+
 
 	
+
+
+	
+	
+
+
 
 
 

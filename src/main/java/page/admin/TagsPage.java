@@ -25,7 +25,7 @@ import utility.DateTimeiFunctions;
  * This class explains about Tag functionality
  */
 public class TagsPage extends GlobalFunctions {
-	Logger log = LogManager.getLogger(DateSelectionPage.class);
+	Logger log = LogManager.getLogger(TagsPage.class);
 	private WebDriver driver;
 	PaginationPage paginationPage = new PaginationPage(BaseClass.getDriver());
 	DateTimeiFunctions dateTimeiFunctions = new DateTimeiFunctions();

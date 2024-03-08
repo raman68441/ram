@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import utility.DateTimeiFunctions;
 
 public class PaginationPage extends GlobalFunctions {
-	Logger log = LogManager.getLogger(AuditTrailPage.class);
+	Logger log = LogManager.getLogger(PaginationPage.class);
 	private WebDriver driver;
 
 	public PaginationPage(WebDriver driver) {

@@ -23,6 +23,7 @@ public class CommonStep {
 	}
 	@Then("User clicks on {string}")
 	@Then("User navigate to {string}")
+	@Then("User clicks on {string} button")
 	@Then("User clicks on {string} sidebar menu")
 	public void userClicksOnOPtion(String btn) {
 		commonPage.clickOnBtn(btn);

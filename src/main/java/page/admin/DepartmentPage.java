@@ -25,7 +25,7 @@ import utility.Constant;
  * This class has department functionality
  */
 public class DepartmentPage extends GlobalFunctions {
-	Logger log = LogManager.getLogger(DateSelectionPage.class);
+	Logger log = LogManager.getLogger(DepartmentPage.class);
 	private WebDriver driver;
 	PaginationPage paginationPage = new PaginationPage(BaseClass.getDriver());
 
