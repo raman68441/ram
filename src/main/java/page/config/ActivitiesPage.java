@@ -225,6 +225,7 @@ public class ActivitiesPage extends GlobalFunctions {
 			} else if (fieldName.contains("updated")) {
 				activityUpdatedTime = dateTimeiFunctions.getCurrentTime();
 			}
+			verifyText(activitiesMessage, name);
 			break;
 		case "activities deleted message":
 			text = name.replace("#", activityName);

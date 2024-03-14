@@ -56,7 +56,7 @@
    <string name="label reset all filters">Reset All Filters</string>
    <string name="label remove added event category">Remove Added Event Category</string>
    <string name="label download">Download</string>
-  <string name="system data fields types option">System Data Fields Types</string>
+   <string name="system data fields types option">System Data Fields Types</string>
    <string name="login option">Login</string>
 	<string name="life cycle states option">Life Cycle States</string>
 	<string name="list manager option">List Manager</string>
@@ -170,7 +170,6 @@
  	<string name="system data field Type option">System Data Fields Types</string>
  	<string name="list manager option">List Manager</string>
  	<string name="document type option">Document Type</string>
- 	<string name="constant string option">Constant String</string>
  	<string name="year option">Year</string>	
  	<string name="label select system data field Type">Select System Data Field Type</string>
  	<string name="label select list manager">Select List Manager</string>
@@ -321,7 +320,6 @@
 	<string name="label enter string name">Enter String Name*</string>
 	<string name="label enter selection value">Enter Selection Value*</string>	
 	<string name="string and selection option">String and Selection</string>	
-	<string name="constant string option">Constant String</string>	
 	<string name="warning message checklist name is a required field">Checkpoint name is a required field</string>	
 	<string name="warning message checklist description is a required field">Checkpoint description is a required field</string>	
 	<string name="warning message at least one checkpoint is required">At least one checkpoint is required</string>	
@@ -334,15 +332,48 @@
 	<string name="checklist name is allready present message">Checklist with same name already exist</string>
 	<string name="checklist deleted message">Checklist deleted.</string>
 	<string name="edit checklist header">Edit Checklist</string>
-   <string name="checklist option">Checklist</string>
+    <string name="checklist option">Checklist</string>
  	<string name="create checklist audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
     <string name="update checklist audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
     <string name="delete checklist audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+
+	<string name="system data fields type list tab">System Data Fields Types List</string>
+	<string name="system data fields types">System Data Fields Types</string>
+	<string name="new system data field types">New System Data Fields Types</string>
+	<string name="system data fields types table column headers">Action|Name|Data Field Type|Created On|Created By|Modified On|Modified By|Status|Active/Inactive</string>	
+	<string name="label data field type">Data Field Type *</string>
+	<string name="label define no">Define No *</string>
+	<string name="label select picklist">Select Picklist *</string>
+	<string name="label pick list name">Pick List Name *</string>
+	<string name="string option">String</string>
+	<string name="warning message data field type is required">Data Field Type is required</string>	
+	<string name="warning message name is required">Name is required</string>	
+	<string name="warning message pick list is required">Picklist is required</string>	
+	<string name="warning message pick list name is required">Pick List Name is required</string>	
+	<string name="warning message no of character is required">No of Character is required</string>	
+	<string name="system data field type created successfully message">System data field created successfully</string>
+	<string name="system data field type already present message">System data field is already present</string>
+	<string name="system data field type updated successfully message">System data field updated successfully</string>
+	<string name="system data field type delete message">System data field has been deleted</string>
+	<string name="edit system data fields types header">Edit System Data Fields Types</string>	
+	<string name="create system data fields types audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="update system data fields types audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+    <string name="delete system data fields types audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+
+
+
+
+
+
+
+
 
 
 	
 
 
+	
+	
 	
 	
 

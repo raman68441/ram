@@ -18,6 +18,7 @@ import page.admin.TagsPage;
 import page.config.ActivitiesPage;
 import page.config.LifeCycleStatesPage;
 import page.config.NumberingSystemPage;
+import page.config.SystemDataFieldsTypesPage;
 import utility.Constant;
 import utility.DateTimeiFunctions;
 
@@ -101,7 +102,7 @@ public class AuditTrailPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Generate']")
 	List<WebElement> generateBtns;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-1ldem18']")
+	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-19sik90']")
 	WebElement enableGenerateBtn;
 
 	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInfo MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textInfo MuiButton-sizeMedium MuiButton-textSizeMedium css-1ub7g1i']")
@@ -167,6 +168,9 @@ public class AuditTrailPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@role='tab' and text()='Checklist']")
 	WebElement checklistTab;
 
+	@FindBy(xpath = "//*[@role='tab' and text()='System Data Fields Types']")
+	WebElement systemDataFieldsTypesTab;
+	
 	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-1jhhc83']")
 	WebElement removeEventCategoryHeader;
 
@@ -502,6 +506,9 @@ public class AuditTrailPage extends GlobalFunctions {
 		case "business unit tab":
 			verifyText(numberingSystemTab, name);
 			break;
+		case "system data fields types":
+			verifyText(systemDataFieldsTypesTab, name);
+			break;					
 		case "tag tab":
 			verifyText(tagTab, name);
 			break;
@@ -952,6 +959,60 @@ public class AuditTrailPage extends GlobalFunctions {
 			break;
 		case "delete":
 			expectedTime = (ActivitiesPage.activityDeletedTime).toLowerCase();
+			break;
+		default:
+			log.error("invalid field" + eventName);
+			Assert.fail("failed");
+			break;
+		}
+		for (int i = 1; i <= columnLength + 1; i++) {
+			String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']//*[@aria-colindex='"
+					+ Integer.toString(i) + "']";
+			WebElement element = driver.findElement(By.xpath(rowItem));
+			if (i != 3) {
+				rowData.add(getText(element));
+			} else {
+				actualTime = getText(element);
+			}
+			// scrollScrollBar(auditTrailTable, 90, Constant.RIGHT);
+		}
+		log.info(String.format("mentioned row %s %s", rowNumber, expectedData));
+		Assert.assertTrue(compareArrayAndList(expectedData, rowData));
+		Assert.assertTrue(dateTimeiFunctions.validateTimeWithInDuration(expectedTime, actualTime, "", 60));
+
+	}
+	
+	/**
+	 * validate mentioned row number data in system data fields types audit trail table
+	 * 
+	 * @param rowNumber
+	 * @param data
+	 */
+	public void validateMentionedRowNumberDataForSystemDataFieldsTypesAuditTrail(String data, String eventName, int rowNumber) {
+		String expectedTime = null;
+		String actualTime = null;
+		List<String> rowData = new ArrayList<>();
+		String lifeCycleStateData = getXmlFilesData(data);
+		String[] expectedData = lifeCycleStateData.split("\\|");
+		int columnLength = expectedData.length;
+		if (expectedData[0].equals("##")) {
+			expectedData[0] = Integer.toString(rowNumber);
+		}
+		if (expectedData[1].equals("##")) {
+			expectedData[1] = dateTimeiFunctions.getCurrentDateMonthNameYear();
+		}
+		if (expectedData[3].contains("##")) {
+			expectedData[3] = expectedData[3].replace("##", SystemDataFieldsTypesPage.systemDataFieldsTypeName);
+		}
+		switch (eventName) {
+		case "create":
+			expectedTime = (SystemDataFieldsTypesPage.systemDataFieldsTypeCreatedTime).toLowerCase();
+			break;
+		case "update":
+			expectedTime = (SystemDataFieldsTypesPage.systemDataFieldsTypeUpdatedTime).toLowerCase();
+			break;
+		case "delete":
+			expectedTime = (SystemDataFieldsTypesPage.systemDataFieldsTypeDeletedTime).toLowerCase();
 			break;
 		default:
 			log.error("invalid field" + eventName);

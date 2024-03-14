@@ -49,7 +49,7 @@ public class SystemDataFieldsTypesStep {
 		systemDataFieldsTypesPage.selectDropDownfromSystemDataFieldsTypesPage(data, fieldName);
 	}
 	
-	@When("User verify only {string} activities records will display")
+	@When("User verify only {string} system data fields types records will display")
 	public void userVerifyActiveInactiveRecords(String activeOrInactiveRecords) {
 		systemDataFieldsTypesPage.verifyActiveInactiveState(activeOrInactiveRecords);
 	}
@@ -59,5 +59,10 @@ public class SystemDataFieldsTypesStep {
 		systemDataFieldsTypesPage.verifyMentionedRowCellDataInTable(data, rowNumber, columnNumber);
 	}
 	
+	@When("User selects {int} index option in {string} in system data fields types page")
+	public void userSelectsIndexFromDropDown(int index, String fieldName) {
+		systemDataFieldsTypesPage.selectDropDownfromSystemDataFieldsTypesPage(index, fieldName);
+	}
+
 
 }

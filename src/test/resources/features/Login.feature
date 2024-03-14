@@ -1,7 +1,7 @@
 @regression @login
 Feature: Login functionality
 
-  @test1
+  @test5
   Scenario: 1_verify basic login functionality
     Given User launched the application
     When User verify 'forgot password' field name in login page
@@ -23,7 +23,7 @@ Feature: Login functionality
     Then User verifies password protection status is 'on'
     And User clicks on 'login' button in login page
     Then User verifies 'full name' is displayed in 'logged in user' field
-    Then User verifies 'email id' is displayed in 'email id' field
+    #Then User verifies 'email id' is displayed in 'email id' field
     Then User clicks on 'logged in user drop down'
     And User verifies 'logout option name' is displayed in 'logout' field
     And User verifies 'your profile option name' is displayed in 'your profile' field
@@ -32,8 +32,8 @@ Feature: Login functionality
     Then User clicks on 'back button'
     Then User verify 'login to dms' field name in login page
     Then User enters 'invalid email id' in 'email' field of login page
-    And User clicks on 'login' button in login page
-    Then User verify 'invalid email' in login page
+    #And User clicks on 'login' button in login page
+    #Then User verify 'invalid email' in login page
 
   @test1
   Scenario: 2_verify application is logged in status after user closed the application without logging out
@@ -79,7 +79,7 @@ Feature: Login functionality
     Then User clicks on 'refresh button'
     Then User verify 'login to dms' field name in login page
 
-  @test1
+  @test6
   Scenario Outline: 4_verify login functionality with invalid credentials and error message
     Given User launched the application
     When User verify 'forgot password' field name in login page

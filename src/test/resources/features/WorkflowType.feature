@@ -1,8 +1,8 @@
- @regression @systemdatafieldstypes
-Feature: System data fields types screen functionality
+ @regression @workflowtypes
+Feature: Workflow Type screen functionality
  
- @systemdatafieldstypes
- Scenario: 1_verify system data fields types page functionality
+ @workflowtypes
+ Scenario: 1_verify Workflow Type page functionality
     Given User launched the application
     Then User enters 'email id' in 'email' field of login page
     Then User enters 'password' in 'password' field of login page

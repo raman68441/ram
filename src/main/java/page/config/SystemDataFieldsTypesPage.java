@@ -34,13 +34,13 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//*[@role='tab' and text()='System Data Fields Type List']")
+	@FindBy(xpath = "//*[@role='tab' and text()='System Data Fields Types List']")
 	WebElement systemDataFieldsTypeList;
 
 	@FindBy(xpath = "//*[text()='System Data Fields Types']")
 	WebElement systemDataFieldsTypesTab;
 
-	@FindBy(xpath = "//*[@role='tab' and text()='New System Data Field Types']")
+	@FindBy(xpath = "//*[@role='tab' and text()='New System Data Fields Types']")
 	WebElement newsystemDataFieldsType;
 
 	@FindBy(xpath = "//*[@class='MuiDataGrid-virtualScroller css-1pzb349']")
@@ -71,12 +71,31 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Update']")
 	WebElement updateBtn;
 
-	@FindBy(id = "activity_name")
+	@FindBy(id = "sdft_name")
 	WebElement nameField;
-
-	@FindBy(id = "activity_description")
-	List<WebElement> descriptionAndSignatureField;
-
+	
+	@FindBy(id = "data_field_type")
+	WebElement dataFieldType;
+	
+	@FindBy(id = "sdft_define_no")
+	WebElement defineNoField;
+	
+	@FindBy(id = "sdft_define_no_edit")
+	WebElement editDefineNoField;
+	
+	
+	@FindBy(id = "select_picklist")
+	WebElement selectPicklistOption;
+	
+	@FindBy(id = "select_picklist_edit")
+	WebElement selectEditPicklistOption;
+	
+	@FindBy(id = "select_picklist_name")
+	WebElement selectPicklistNameOption;
+	
+	@FindBy(id = "select_picklist_name_edit")
+	WebElement selectEditPicklistNameOption;
+	
 	@FindBy(xpath = "//*[text()='Electronic Signature:']")
 	WebElement labelElectronicSignature;
 
@@ -101,14 +120,20 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='MuiAlert-message css-1xsto0d']")
 	WebElement systemDataFieldsTypeMessage;
 
-	@FindBy(xpath = "//*[text()= Name is required']")
+	@FindBy(xpath = "//*[text()= 'Name is required']")
 	WebElement nameRequired;
 
-	@FindBy(xpath = "//*[text()='Description is required']")
-	WebElement descriptioneRequired;
+	@FindBy(xpath = "//*[text()='Data Field Type is required']")
+	WebElement dataFieldTypeRequired;
 
-	@FindBy(xpath = "//*[text()='Meaning OfS ignature is Required']")
-	WebElement meaningOfSignatureRequired;
+	@FindBy(xpath = "//*[text()='Picklist is required']")
+	WebElement picklistRequired;
+	
+	@FindBy(xpath = "//*[text()='Pick List Name is required']")
+	WebElement picklistNameRequired;
+	
+	@FindBy(xpath = "//*[text()='No of Character is required']")
+	WebElement noOfCharachterRequired;
 
 	@FindBy(xpath = "//*[@role='option']")
 	List<WebElement> option;
@@ -146,7 +171,7 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='MuiDataGrid-overlay css-14349d1']")
 	WebElement emptyTable;
 
-	@FindBy(xpath = "//*[@class='MuiBox-root css-f0fbul']")
+	@FindBy(xpath = "//*[@class='MuiBox-root css-po9yhb']")
 	WebElement scrollPage;
 
 	public String optionName = "//*[@role ='option' and @data-value='#']";
@@ -155,7 +180,7 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 	List<WebElement> activeInactiveTogleIcon;
 
 	public static String systemDataFieldsTypeCreatedTime, systemDataFieldsTypeUpdatedTime, systemDataFieldsTypeDeletedTime, systemDataFieldsTypeName,
-	systemDataFieldsTypeDescription;
+	systemDataFieldsTypeValue, systemDataFieldsDefineNoValue, selectPickListFieldValue, pickListNameFieldValue;
 	
 
 	/**
@@ -168,59 +193,46 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 		WebElement element = null;
 		String text = null;
 		switch (fieldName) {
-		case "system data fields types tab":
+		case "system data fields types":
 			verifyText(systemDataFieldsTypesTab, name);
 			break;
-		case "system data fields type list":
+		case "system data fields type list tab":
 			waitTillAttributeDisplay(systemDataFieldsTypeList, "role", "tab", Duration.ofSeconds(20));
 			verifyText(systemDataFieldsTypeList, name);
 			break;
-		case "new system data fields type":
+		case "new system data field types":
 			verifyText(newsystemDataFieldsType, name);
 			break;
-		case "label name":
-		case "label description":
-		case "label meaning of signature":
+		case "label name field":
+		case "label data field type":
+		case "label select picklist":
+		case "label pick list name":
+		case "label define no":
 			getTextFromElementInListAndValidate(newsystemDataFieldsTypesLabels, name);
-			break;
-		case "label electronic signature":
-			verifyText(labelElectronicSignature, name);
-			break;
-		case "label comments":
-			verifyText(labelComments, name);
-			break;
-		case "label yes in electronic signature":
-			text = getTextFromElementInListInMentionedPosition(labelYesNoLabel, 0);
-			compareTwoString(text, "Yes");
-			break;
-		case "label no in electronic signature":
-			text = getTextFromElementInListInMentionedPosition(labelYesNoLabel, 1);
-			compareTwoString(text, "No");
-			break;
-		case "label yes in comments":
-			text = getTextFromElementInListInMentionedPosition(labelYesNoLabel, 2);
-			compareTwoString(text, "Yes");
-			break;
-		case "label no in comments":
-			text = getTextFromElementInListInMentionedPosition(labelYesNoLabel, 3);
-			compareTwoString(text, "No");
 			break;
 		case "cancel":
 			verifyText(cancelBtn, name);
 			break;		
-		case "warning message name required":
+		case "warning message name is required":
 			verifyText(nameRequired, name);
 			break;
-		case "warning message description required":
-			verifyText(descriptioneRequired, name);
+		case "warning message data field type is required":
+			verifyText(dataFieldTypeRequired, name);
 			break;
-		case "warning message meaning of signature required":
-			verifyText(meaningOfSignatureRequired, name);
+		case "warning message pick list is required":
+			verifyText(picklistRequired, name);
+			break;
+		case "warning message pick list name is required":
+			verifyText(picklistNameRequired, name);
+			break;
+		case "warning message no of character is required":
+			verifyText(noOfCharachterRequired, name);
 			break;
 		case "system data field type created successfully message":
-		case "system data field type is allready present message":
+		case "system data field type already present message":
 		case "system data field type updated successfully message":
-		case "system data field type deleted message":		
+		case "system data field type delete message":
+			verifyText(systemDataFieldsTypeMessage, name);
 			if (fieldName.contains("created")) {
 				systemDataFieldsTypeCreatedTime = dateTimeiFunctions.getCurrentTime();
 			} else if (fieldName.contains("updated")) {
@@ -320,13 +332,13 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 	public void clickOnBtn(String fieldName) {
 		String name = fieldName.toLowerCase();
 		switch (name) {
-		case "system data fields types tab":
+		case "system data fields types":
 			clickElement(systemDataFieldsTypesTab);
 			break;
-		case "system data fields type list":
+		case "system data fields type list tab":
 			clickElement(systemDataFieldsTypeList);
 			break;
-		case "new system data fields type":
+		case "new system data field types":
 			clickElement(newsystemDataFieldsType);
 			break;
 		case "cancel":
@@ -393,20 +405,24 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 			nameField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
 			enterValue(nameField, systemDataFieldsTypeName);
 			break;
-		case "description":
-			descriptionAndSignatureField.get(0).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterDataOnPerticularListElement(descriptionAndSignatureField, 0, fieldValue);
-			systemDataFieldsTypeDescription = fieldValue;
+		case "define no":
+			defineNoField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			enterValue(defineNoField, fieldValue);
+			systemDataFieldsDefineNoValue = fieldValue;
 			break;
+		case "edit define no":
+			editDefineNoField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			enterValue(editDefineNoField, fieldValue);
+			systemDataFieldsDefineNoValue = fieldValue;
+			break;		
+			
 		case "search":
 			tableSearchField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			if (text.equals("text system data fields types description")) {
-				enterValue(tableSearchField, fieldValue);
-			} else if(text.equals("text meaning of signature")) {
-				enterValue(tableSearchField, fieldValue);
+			if (text.equals("text system data fields types name")) {
+				enterValue(tableSearchField, systemDataFieldsTypeName);
 			}
 			else {
-				enterValue(tableSearchField, systemDataFieldsTypeName);
+				enterValue(tableSearchField, fieldValue);
 			}
 			break;
 		case "edit name":
@@ -433,26 +449,22 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 		if (systemDataFieldsTypesExpectedData[0].equals("##")) {
 			systemDataFieldsTypesExpectedData[0] = systemDataFieldsTypeName;
 		}
+		if (systemDataFieldsTypesExpectedData[2].equals("##")) {
+			systemDataFieldsTypesExpectedData[2] = dateTimeiFunctions.getCurrentMonthDateYear("-");
+		}
 		if (systemDataFieldsTypesExpectedData[4].equals("##")) {
 			systemDataFieldsTypesExpectedData[4] = dateTimeiFunctions.getCurrentMonthDateYear("-");
-		}
-		if (systemDataFieldsTypesExpectedData[6].equals("#")) {
-			systemDataFieldsTypesExpectedData[6] = "";
-		} else {
-			systemDataFieldsTypesExpectedData[6] = dateTimeiFunctions.getCurrentMonthDateYear("-");
-		}
-		if (systemDataFieldsTypesExpectedData[7].equals("#")) {
-			systemDataFieldsTypesExpectedData[7] = "";
 		}
 		int columnLength = systemDataFieldsTypesExpectedData.length;
 		List<String> actualData = new ArrayList<>();
 		for (int i = 1; i <= columnLength; i++) {
-			String rowItem = "//*[@data-rowindex='" + Integer.toString(rowNumber) + "']/..//*[@data-colindex='"
+			String rowItem = "//*[@aria-rowindex='" + Integer.toString(rowNumber+1) + "']/..//*[@data-colindex='"
 					+ Integer.toString(i) + "']";
 			WebElement element = driver.findElement(By.xpath(rowItem));
 			actualData.add(getText(element));
 			 scrollScrollBar(systemDataFieldsTypesTable, 15, Constant.RIGHT);
 		}
+		 scrollScrollBar(systemDataFieldsTypesTable, 200, Constant.LEFT);
 		log.info(String.format("mentioned row %s %s", rowNumber, systemDataFieldsTypesExpectedData));
 		Assert.assertTrue(compareArrayAndList(systemDataFieldsTypesExpectedData, actualData));
 	}
@@ -493,6 +505,23 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 				e.printStackTrace();
 			}
 			element = driver.findElement(By.xpath("//*[@data-value='" + value + "']"));
+			clickElement(element);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case "data field type":
+			clickElement(dataFieldType);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			element = driver.findElement(By.xpath("//*[@role='option' and text()='" + value + "']"));
 			clickElement(element);
 			try {
 				Thread.sleep(1000);
@@ -555,16 +584,99 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 	 */
 	public void verifyMentionedRowCellDataInTable(String data, int rowNumber, int columnNumber) {
 		String rowData = null;
-		if(data.equals("text system data fields types name")) {
+		if(data.equals("text data field type name")) {
 			rowData = systemDataFieldsTypeName;
 		} else {
 		  rowData = getXmlFilesData(data);
 		}
 		
-		String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']/..//*[@data-colindex='"
+		String rowItem = "//*[@aria-rowindex='" + Integer.toString(rowNumber+1) + "']/..//*[@data-colindex='"
 				+ Integer.toString(columnNumber) + "']";
 		WebElement element = driver.findElement(By.xpath(rowItem));
 		compareTwoString(rowData, getText(element));
 	}
 	
+	/**
+	 * Select index from drop down
+	 * 
+	 * @param value - value or index or text
+	 */
+	public void selectDropDownfromSystemDataFieldsTypesPage(int index, String fieldName) {
+		switch (fieldName) {
+		case "select pick list":
+			clickElement(selectPicklistOption);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			clickOnPerticularListElement(option, index);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			selectPickListFieldValue = getText(selectPicklistOption);
+			break;
+		case "edit select pick list":
+			clickElement(selectEditPicklistOption);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			clickOnPerticularListElement(option, index);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			selectPickListFieldValue = getText(selectEditPicklistOption);
+			break;
+		case "pick list name":
+			clickElement(selectPicklistNameOption);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			clickOnPerticularListElement(option, index);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
+			}
+				pickListNameFieldValue = getText(selectPicklistNameOption);
+			break;
+		case "edit pick list name":
+			clickElement(selectEditPicklistNameOption);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			clickOnPerticularListElement(option, index);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			selectPickListFieldValue = getText(selectEditPicklistNameOption);
+			break;
+		default:
+			log.error("invalid field" + fieldName);
+			Assert.fail("failed");
+			break;
+		}
+	}
+
 }

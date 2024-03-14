@@ -103,4 +103,9 @@ public class AuditTrailStep {
 		auditTrailPage.validateMentionedRowNumberDataForChecklistAuditTrail(data, eventName, rowNumber);
 	}
 	
+	@Then("User verify system data fields types audit tail table data {string} for {string} event in row {int}")
+	public void userVerifySystemDataFieldsTypesTrailTableMentionedRowDataForTag(String data, String eventName, int rowNumber) {
+		auditTrailPage.validateMentionedRowNumberDataForSystemDataFieldsTypesAuditTrail(data, eventName, rowNumber);
+	}
+	
 }

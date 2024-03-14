@@ -2,20 +2,20 @@
 <!--login page texts-->	
   <string name="email id">Jayalakshmi.X-Hegde@neviton.com</string>
    <string name="password">dms@234</string>   
-     <string name="invalid email id1">srinivas@neviton.com</string>
-      <string name="invalid password1">abc123</string>
-      <string name="invalid password2">abc345</string>
-      <string name="invalid password3">abc111</string>
-      <string name="invalid password4">abc155</string>
-       <string name="valid password">dms@234</string>
-       <string name="invalid email id">test</string> 
-       <string name="email id not registered">Jayalakshmi.X-Hegde@nevton.com</string>
- <string name="invalid digit otp">12345</string>
+ <string name="invalid email id1">srinivas@neviton.com</string>
+  <string name="invalid password1">abc123</string>
+  <string name="invalid password2">abc345</string>
+  <string name="invalid password3">abc111</string>
+  <string name="invalid password4">abc155</string>
+  <string name="valid password">dms@234</string>
+  <string name="invalid email id">test</string> 
+  <string name="email id not registered">Jayalakshmi.X-Hegde@nevton.com</string>
+  <string name="invalid digit otp">12345</string>
   <string name="invalid otp">123456</string>
  
  <!--Menu options texts-->	  
  <string name="full name">Jayalakshmi Hegde</string>
-   <string name="email id">Jayalakshmi.X-Hegde@neviton.com</string>
+ <string name="email id">Jayalakshmi.X-Hegde@neviton.com</string>
    
     <!--audit trail texts-->	  
    <string name="txt_audit_trail_login_data">1|##|Jayalakshmi Hegde (NS1105)|Logged In</string>"
@@ -125,6 +125,15 @@
     <string name="text edit checklist description">update checklist description</string>
     <string name="text_edit_checklist_table_data">##|update checklist description|##|Jayalakshmi Hegde|##|Jayalakshmi Hegde|Active</string>
 
+    <string name="text system data fields types name">system name</string>	
+    <string name="text system data define no">5</string>
+    <string name="edit text system data define no">6</string>  	
+    <string name="text_system_field_type_table_data">##|List Manager|##|Jayalakshmi Hegde|-|-|Active</string>
+	<string name="txt_create_system_data_fields_types_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|created</string>	
+	<string name="txt_update_system_data_fields_types_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|updated|Define no|6|5</string>	
+	<string name="txt_delete_system_data_fields_types_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|deleted</string>	
+
+   
 
 
 

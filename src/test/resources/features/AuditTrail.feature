@@ -854,7 +854,7 @@ Feature: Audit Trail functionality
     Then User verifies 'create checklist audit trail table headers' in audit trail page
     Then User verify 'generate' button is 'disabled' in audit trail page
     And User clicks on 'download' button in audit trail page
-    Then User verify checklist audit tail table data 'txt_create_checklist_audit_table_data' for 'create' event in row 1
+    Then User verify checklist audit tail table data 'text_create_checklist_audit_table_data' for 'create' event in row 1
     
     And User clicks on 'config' sidebar menu
     Then User verify 'checklist' in checklist page
@@ -928,7 +928,122 @@ Feature: Audit Trail functionality
     Then User clicks on 'logout option' 
      
     
-  
+   @Audit13
+    Scenario: 13_verify system data fields types create, update, delete functionality in audit tral
+   Given User launched the application
+    Then User enters 'email id' in 'email' field of login page
+    Then User enters 'password' in 'password' field of login page
+    And User clicks on 'login' button in login page
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    And User clicks on 'config' sidebar menu
+    Then User verify 'system data fields types' in system data fields types page
+    And User clicks on 'system data fields types' in system data fields types page
+    And User verify 'system data fields type list tab' in system data fields types page
+    Then User verify 'new system data field types' in system data fields types page
+    And User verifies 'system data fields types table column headers' in system data fields types page
+
+ 		And User clicks on 'new system data field types' in system data fields types page
+    Then User verify 'label name field' in system data fields types page
+    Then User enters 'text system data fields types name' in 'name' field of system data fields types page
+    And User selects 'string option' as 'data field type' in system data fields types page 
+    Then User verify 'label define no' in system data fields types page
+    Then User enters 'text system data define no' in 'define no' field of system data fields types page   
+    And User clicks on 'save' button
+    Then User verify 'system data field type created successfully message' in system data fields types page
+
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'system data fields types option' as 'category name' in audit trail page
+    And User selects 'created option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'system data fields types' in audit trail page
+    Then User verifies 'create system data fields types audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify system data fields types audit tail table data 'txt_create_system_data_fields_types_audit_table_data' for 'create' event in row 1
+    
+    And User clicks on 'config' sidebar menu
+    Then User verify 'system data fields types' in system data fields types page
+    And User clicks on 'system data fields types' in system data fields types page
+    And User verify 'system data fields type list tab' in system data fields types page
+    Then User verify 'new system data field types' in system data fields types page
+    And User verifies 'system data fields types table column headers' in system data fields types page
+		And User selects 'name option' as 'search option' in system data fields types page
+    Then User enters 'text system data fields types name' in 'search' field of system data fields types page
+    And User verify 'text data field type name' in row 1 column 1 in system data fields types page
+    And User clicks on 'edit' icon in system data fields types page
+    Then User verify 'edit system data fields types header' in system data fields types page
+    Then User verify 'label name field' in system data fields types page
+    Then User enters 'edit text system data define no' in 'edit define no' field of system data fields types page   
+   	And User clicks on 'update' button in system data fields types page  
+    Then User verify 'system data field type updated successfully message' in system data fields types page
+ 
+      
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'system data fields types option' as 'category name' in audit trail page
+    And User selects 'updated option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'system data fields types' in audit trail page
+    Then User verifies 'update system data fields types audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify system data fields types audit tail table data 'txt_update_system_data_fields_types_audit_table_data' for 'create' event in row 1
+        
+    And User clicks on 'config' sidebar menu
+    Then User verify 'system data fields types' in system data fields types page
+    And User clicks on 'system data fields types' in system data fields types page
+    And User verify 'system data fields type list tab' in system data fields types page
+    Then User verify 'new system data field types' in system data fields types page
+    And User verifies 'system data fields types table column headers' in system data fields types page
+		And User selects 'name option' as 'search option' in system data fields types page
+    Then User enters 'text system data fields types name' in 'search' field of system data fields types page
+    And User verify 'text data field type name' in row 1 column 1 in system data fields types page
+ 		And User clicks on 'delete icon' in system data fields types page
+    Then User verify 'confirm you delete' in system data fields types page
+    Then User verify 'delete' button in system data fields types page
+    And User clicks on 'delete' button in system data fields types page
+    Then User verify 'system data field type delete message' in system data fields types page
+    
+    And User clicks on 'delete icon' in system data fields types page
+    Then User verify 'confirm you delete' in system data fields types page
+    Then User verify 'delete' button in system data fields types page
+    And User clicks on 'delete' button in system data fields types page
+    Then User verify 'checklist deleted message' in system data fields types page
+    Then User clicks on 'reset filter' button in system data fields types page
+    And User selects 'name option' as 'search option' in system data fields types page
+    Then User enters 'text data field type name' in 'search' field of system data fields types page
+    Then User verify 'no rows' in system data fields types page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'system data fields types option' as 'category name' in audit trail page
+    And User selects 'deleted option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'system data fields types' in audit trail page
+    Then User verifies 'delete system data fields types audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify system data fields types audit tail table data 'txt_delete_system_data_fields_types_audit_table_data' for 'delete' event in row 1
+    
+    Then User clicks on 'logged in user drop down'
+    And User verifies 'logout option name' is displayed in 'logout' field
+    Then User clicks on 'logout option' 
   
   
   
