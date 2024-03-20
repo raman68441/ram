@@ -360,16 +360,61 @@
     <string name="update system data fields types audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
     <string name="delete system data fields types audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
 
+	<string name="workflow type tab">Workflow Type</string>
+	<string name="workflow type">Workflow Type</string>
+	<string name="new workflow type">New Workflow Type</string>
+	<string name="workflow type table column headers">Action|Name|Description|Created On|Created By|Modified On|Modified By|Status|Active/Inactive</string>	
+	<string name="label prefix">Prefix*</string>
+	<string name="label serial number length in digit">WF-Serial Number length in digits*</string>
+	<string name="label serial number start value">WF-Serial Number Start Value*</string>
+	<string name="label release condtions">Workflow Release Conditions*</string>
+	<string name="label workflow sequence">Workflow Sequence *</string>
+	<string name="label workflow activation required">Workflow Activation Required?*</string>
+	<string name="label associate documents">Associate Documents</string>
+	<string name="label delete draft">Delete Draft</string>
+	<string name="label serial">Serial</string>
+	<string name="label parallel">Parallel</string>
+	<string name="label added lifecycle states">Added Lifecycle States:</string>
+	<string name="add life cycle state">ADD LIFECYCLE STATE</string>
+	<string name="warning message workflow type name is required">Workflow Type Name is required</string>
+	<string name="warning message workflow type description is required">Workflow Type Description is required</string>
+	<string name="warning message prefix is required">Prefix is required</string>
+	<string name="warning message serial number start value is required">Serial Number Start Value is required</string>
+	<string name="warning message serial number length is required">Serial Number Length is required</string>
+	<string name="warning message please select workflow release condition">Please select workflow release condition</string>
+	<string name="label select lifecycle state">Select Lifecycle State*</string>
+	<string name="label select role">Select Role*</string>
+	<string name="label select action/activity">Select Action/Activity*</string>
+	<string name="label select checklist">Select Checklist*</string>
+	<string name="label select notification type">Select Notification Type*</string>
+	<string name="label select print type">Select Print Type*</string>
+	<string name="label select department">Select Department*</string>
+	<string name="label meaning of signature">Meaning of Signature*</string>
+	<string name="label minimum user count">Minimum User Count*</string>
+	<string name="label increment type">Increment Type*</string>
+	<string name="label sla/days">SLA/Days*:</string>
+	<string name="map">MAP</string>
+	<string name="manual option">Manual</string>
+	<string name="fixed option">Fixed</string>
+	<string name="immediate option">Immediate</string>
+	<string name="delay option">Delay</string>
+	<string name="workflow">Workflow</string>
+	<string name="workflow type created successfully message">New workflow type created successfully!</string>
+	<string name="workflow type already present message">Workflow type is already present</string>
+	<string name="workflow type updated successfully message">Workflow type updated successfully</string>
+	<string name="workflow type delete message">Successfully deleted workflow type</string>
+	<string name="edit workflow type header">Edit Workflow Type</string>
+	<string name="workflow type option">Workflow Type</string>
+ 	<string name="create workflow type audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="update workflow type audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+    <string name="delete workflow type audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
 
 
 
 
 
+ 
 
-
-
-
-	
 
 
 	

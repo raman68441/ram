@@ -1045,5 +1045,132 @@ Feature: Audit Trail functionality
     And User verifies 'logout option name' is displayed in 'logout' field
     Then User clicks on 'logout option' 
   
-  
+  @Audit14
+    Scenario: 14_verify workflow type create, update, delete functionality in audit tral
+    Given User launched the application
+    Then User enters 'email id' in 'email' field of login page
+    Then User enters 'password' in 'password' field of login page
+    And User clicks on 'login' button in login page
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    And User clicks on 'config' sidebar menu
+    Then User verify 'workflow type' in workflow type page
+    And User clicks on 'workflow type' in workflow type page
+    And User verify 'workflow type tab' in workflow type page
+    Then User verify 'new workflow type' in workflow type page
+    Then User verify 'reset filter' button in workflow type page
+    
+
+ 		And User clicks on 'new workflow type' in workflow type page
+    Then User verify 'label name' in workflow type page
+    Then User enters 'text workflow type name' in 'name' field of workflow type page
+    Then User enters 'text workflow type description' in 'description' field of workflow type page
+    Then User enters 'text workflow type prefix' in 'prefix' field of workflow type page
+    Then User enters 'text wf serial number start value' in 'serial number start value' field of workflow type page
+    Then User enters 'text wf serial number length' in 'serial number length in digit' field of workflow type page  
+    And User selects 'manual option' as 'work flow release condition' in workflow type page  
+   	And User clicks on 'add life cycle state' in workflow type page
+    Then User verify 'label select lifecycle state' in workflow type page    
+    And User selects 0 index option in 'select life cycle state' in workflow type page
+    Then User selects 0 index option in 'select role' in workflow type page
+    Then User selects 0 index option in 'select department' in workflow type page
+    Then User selects 0 index option in 'select action/activity' in workflow type page
+    Then User selects 0 index option in 'select checklist' in workflow type page
+    And User enters 'text worflow minimum user count' in 'minimum user count' field of workflow type page  
+    Then User selects 0 index option in 'select notification type' in workflow type page
+    Then User selects 0 index option in 'increment type' in workflow type page
+    Then User selects 0 index option in 'select print type' in workflow type page
+    And User enters 'text worflow sla/days' in 'sla/days' field of workflow type page  
+    And User clicks on 'map' button in workflow type page  
+    Then User clicks on 'save' button in workflow type page  
+    Then User verify 'workflow type created successfully message' in workflow type page
+    Then User verify 'reset filter' button in workflow type page
+ 		And User selects 'name option' as 'search option' in workflow type page
+    Then User enters 'text workflow type name' in 'search' field of workflow type page
+    And User verify 'text workflow type name' in row 1 column 1 in workflow type page
+    And User clicks on 'reset filter' button in workflow type page
+ 
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'workflow type option' as 'category name' in audit trail page
+    And User selects 'created option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'workflow type tab' in audit trail page
+    Then User verifies 'create workflow type audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify workflow type audit tail table data 'txt_create_workflow_type_audit_table_data' for 'create' event in row 1
+    
+    And User clicks on 'config' sidebar menu
+    Then User verify 'workflow type' in workflow type page
+    And User clicks on 'workflow type' in workflow type page
+    And User verify 'workflow type tab' in workflow type page
+    Then User verify 'new workflow type' in workflow type page
+    And User selects 'name option' as 'search option' in workflow type page
+    Then User enters 'text workflow type name' in 'search' field of workflow type page
+    And User verify 'text workflow type name' in row 1 column 1 in workflow type page
+    And User clicks on 'edit' icon in workflow type page
+    Then User verify 'edit workflow type header' in workflow type page
+    Then User verify 'label name' in workflow type page
+    Then User enters 'text edit workflow type description' in 'description' field of workflow type page   
+    And User clicks on 'update' button in workflow type page  
+    Then User verify 'workflow type updated successfully message' in workflow type page
+          
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'workflow type option' as 'category name' in audit trail page
+    And User selects 'updated option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'workflow type tab' in audit trail page
+    Then User verifies 'update workflow type audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+   # Then User verify workflow type audit tail table data 'txt_update_workflow_type_audit_table_data' for 'update' event in row 1
+        
+    And User clicks on 'config' sidebar menu
+    Then User verify 'workflow type' in workflow type page
+    And User clicks on 'workflow type' in workflow type page
+    And User verify 'workflow type tab' in workflow type page
+    Then User verify 'new workflow type' in workflow type page
+    And User selects 'name option' as 'search option' in workflow type page
+    Then User enters 'text workflow type name' in 'search' field of workflow type page
+    And User verify 'text workflow type name' in row 1 column 1 in workflow type page
+    And User clicks on 'delete icon' in workflow type page
+    Then User verify 'confirm you delete' in workflow type page
+    Then User verify 'delete' button in workflow type page
+    And User clicks on 'delete' button in workflow type page
+    Then User verify 'workflow type delete message' in workflow type page   		     		
+    Then User clicks on 'reset filter' button in workflow type page
+    And User selects 'name option' as 'search option' in workflow type page
+    Then User enters 'text data field type name' in 'search' field of workflow type page
+    Then User verify 'no rows' in workflow type page
+    
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'workflow type option' as 'category name' in audit trail page
+    And User selects 'deleted option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'workflow type tab' in audit trail page
+    Then User verifies 'delete system data fields types audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify workflow type audit tail table data 'txt_delete_workflow_type_audit_table_data' for 'delete' event in row 1
+    
+    Then User clicks on 'logged in user drop down'
+    And User verifies 'logout option name' is displayed in 'logout' field
+    Then User clicks on 'logout option' 
   

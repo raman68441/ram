@@ -108,4 +108,9 @@ public class AuditTrailStep {
 		auditTrailPage.validateMentionedRowNumberDataForSystemDataFieldsTypesAuditTrail(data, eventName, rowNumber);
 	}
 	
+	@Then("User verify workflow type audit tail table data {string} for {string} event in row {int}")
+	public void userVerifyWorkflowTypeTrailTableMentionedRowDataForTag(String data, String eventName, int rowNumber) {
+		auditTrailPage.validateMentionedRowNumberDataForWorkflowTypeAuditTrail(data, eventName, rowNumber);
+	}
+	
 }

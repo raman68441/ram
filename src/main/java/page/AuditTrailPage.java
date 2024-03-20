@@ -19,6 +19,7 @@ import page.config.ActivitiesPage;
 import page.config.LifeCycleStatesPage;
 import page.config.NumberingSystemPage;
 import page.config.SystemDataFieldsTypesPage;
+import page.config.WorkflowTypePage;
 import utility.Constant;
 import utility.DateTimeiFunctions;
 
@@ -102,7 +103,7 @@ public class AuditTrailPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Generate']")
 	List<WebElement> generateBtns;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-19sik90']")
+	@FindBy(xpath = "//*[contains(@class,'MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css')]")
 	WebElement enableGenerateBtn;
 
 	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInfo MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textInfo MuiButton-sizeMedium MuiButton-textSizeMedium css-1ub7g1i']")
@@ -167,6 +168,9 @@ public class AuditTrailPage extends GlobalFunctions {
 	
 	@FindBy(xpath = "//*[@role='tab' and text()='Checklist']")
 	WebElement checklistTab;
+	
+	@FindBy(xpath = "//*[@role='tab' and text()='Workflow Type']")
+	WebElement workflowTypeTab;
 
 	@FindBy(xpath = "//*[@role='tab' and text()='System Data Fields Types']")
 	WebElement systemDataFieldsTypesTab;
@@ -517,7 +521,10 @@ public class AuditTrailPage extends GlobalFunctions {
 			break;
 		case "checklist tab":
 			verifyText(checklistTab, name);
-			break;		
+			break;	
+		case "workflow type tab":
+			verifyText(workflowTypeTab, name);
+			break;			
 		case "remove event category header":
 			verifyText(removeEventCategoryHeader, name);
 			break;
@@ -1013,6 +1020,60 @@ public class AuditTrailPage extends GlobalFunctions {
 			break;
 		case "delete":
 			expectedTime = (SystemDataFieldsTypesPage.systemDataFieldsTypeDeletedTime).toLowerCase();
+			break;
+		default:
+			log.error("invalid field" + eventName);
+			Assert.fail("failed");
+			break;
+		}
+		for (int i = 1; i <= columnLength + 1; i++) {
+			String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']//*[@aria-colindex='"
+					+ Integer.toString(i) + "']";
+			WebElement element = driver.findElement(By.xpath(rowItem));
+			if (i != 3) {
+				rowData.add(getText(element));
+			} else {
+				actualTime = getText(element);
+			}
+			// scrollScrollBar(auditTrailTable, 90, Constant.RIGHT);
+		}
+		log.info(String.format("mentioned row %s %s", rowNumber, expectedData));
+		Assert.assertTrue(compareArrayAndList(expectedData, rowData));
+		Assert.assertTrue(dateTimeiFunctions.validateTimeWithInDuration(expectedTime, actualTime, "", 60));
+
+	}
+	
+	/**
+	 * validate mentioned row number data in workflow type audit trail table
+	 * 
+	 * @param rowNumber
+	 * @param data
+	 */
+	public void validateMentionedRowNumberDataForWorkflowTypeAuditTrail(String data, String eventName, int rowNumber) {
+		String expectedTime = null;
+		String actualTime = null;
+		List<String> rowData = new ArrayList<>();
+		String lifeCycleStateData = getXmlFilesData(data);
+		String[] expectedData = lifeCycleStateData.split("\\|");
+		int columnLength = expectedData.length;
+		if (expectedData[0].equals("##")) {
+			expectedData[0] = Integer.toString(rowNumber);
+		}
+		if (expectedData[1].equals("##")) {
+			expectedData[1] = dateTimeiFunctions.getCurrentDateMonthNameYear();
+		}
+		if (expectedData[3].contains("##")) {
+			expectedData[3] = expectedData[3].replace("##", WorkflowTypePage.workflowTypeName);
+		}
+		switch (eventName) {
+		case "create":
+			expectedTime = (WorkflowTypePage.workflowTypeCreatedTime).toLowerCase();
+			break;
+		case "update":
+			expectedTime = (WorkflowTypePage.workflowTypeUpdatedTime).toLowerCase();
+			break;
+		case "delete":
+			expectedTime = (WorkflowTypePage.workflowTypeDeletedTime).toLowerCase();
 			break;
 		default:
 			log.error("invalid field" + eventName);

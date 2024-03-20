@@ -414,7 +414,6 @@ public class GlobalFunctions {
 				found = true;
 				break;
 			}
-
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {

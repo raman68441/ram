@@ -64,5 +64,4 @@ public class SystemDataFieldsTypesStep {
 		systemDataFieldsTypesPage.selectDropDownfromSystemDataFieldsTypesPage(index, fieldName);
 	}
 
-
 }

@@ -125,6 +125,7 @@
     <string name="text edit checklist description">update checklist description</string>
     <string name="text_edit_checklist_table_data">##|update checklist description|##|Jayalakshmi Hegde|##|Jayalakshmi Hegde|Active</string>
 
+<!--system data fields texts--> 
     <string name="text system data fields types name">system name</string>	
     <string name="text system data define no">5</string>
     <string name="edit text system data define no">6</string>  	
@@ -133,11 +134,24 @@
 	<string name="txt_update_system_data_fields_types_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|updated|Define no|6|5</string>	
 	<string name="txt_delete_system_data_fields_types_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|deleted</string>	
 
-   
+<!--workflow texts-->    
+    <string name="text workflow type name">Test</string>	
+    <string name="text workflow type description">Description</string>	
+    <string name="text workflow type prefix">QA</string>	
+    <string name="text wf serial number start value">QA123</string>	
+    <string name="text wf serial number length">5</string>	
+    <string name="text worflow minimum user count">6</string>	
+    <string name="text worflow sla/days">5</string>	
+    <string name="text_workflow_type_table_data">##|Description|##|Jayalakshmi Hegde|-|-|Active</string>
+    <string name="text edit workflow type description">Edit Description</string>	
+	<string name="txt_create_workflow_type_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|created</string>	
+	<string name="txt_update_workflow_type_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|updated|WorkflowTypeDescription|Edit Description|Description</string>	
+	<string name="txt_delete_workflow_type_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|deleted</string>	
 
 
 
 
+ 
     
  
     
