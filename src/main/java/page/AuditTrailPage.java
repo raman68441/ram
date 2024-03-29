@@ -171,6 +171,9 @@ public class AuditTrailPage extends GlobalFunctions {
 	
 	@FindBy(xpath = "//*[@role='tab' and text()='Workflow Type']")
 	WebElement workflowTypeTab;
+	
+	@FindBy(xpath = "//*[@role='tab' and text()='User Creation']")
+	WebElement userCreationTab;
 
 	@FindBy(xpath = "//*[@role='tab' and text()='System Data Fields Types']")
 	WebElement systemDataFieldsTypesTab;
@@ -524,7 +527,10 @@ public class AuditTrailPage extends GlobalFunctions {
 			break;	
 		case "workflow type tab":
 			verifyText(workflowTypeTab, name);
-			break;			
+			break;		
+		case "user creation tab":
+			verifyText(userCreationTab, name);
+			break;		
 		case "remove event category header":
 			verifyText(removeEventCategoryHeader, name);
 			break;

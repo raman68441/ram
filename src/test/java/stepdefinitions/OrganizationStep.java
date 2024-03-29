@@ -33,15 +33,5 @@ public class OrganizationStep {
 	public void userClicksOnElement(String fieldName) {
 		organizationPage.clickOnBtn(fieldName);
 	}
-	
-	@Then("User enters {string} in {string} field of organization page")
-	public void userEntersValue(String text, String fieldName) {
-		organizationPage.enterValue(text, fieldName);
-	}
-	
-	@Then("User verify {string} in organization table row {int}")
-	public void userVerifyOrganizationTableMentionedRowData(String data, int rowNumber) {
-		organizationPage.validateMentionedRowNumberDataForOrganization(data, rowNumber);
-	}
 
 }

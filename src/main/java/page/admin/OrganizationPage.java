@@ -43,18 +43,18 @@ public class OrganizationPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@role='tab' and text()='New Organisation '] ")
 	WebElement newOrganization;
 
-	@FindBy(xpath = "//*[@class='MuiDataGrid-virtualScroller css-1grl8tv']")
+	@FindBy(xpath = "//*[@class='MuiDataGrid-virtualScroller css-1pzb349']")
 	WebElement organizationListTable;
 
 	public String organizationColumnHeader = "//*[@class='MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable' and  @aria-colindex='#']";
 
 	public String orgaizationData = "//*[@data-colindex='#']";
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeSmall css-12ef6ku']")
-	List<WebElement> editIcon;
+	@FindBy(xpath = "//*[@data-testid='DriveFileRenameOutlineOutlinedIcon']")
+	WebElement editIcon;
 
 	@FindBy(xpath = "//*[@data-testid='DeleteOutlineOutlinedIcon']")
-	List<WebElement> deleteIcon;
+	WebElement deleteIcon;
 
 	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-gix94l']")
 	List<WebElement> newOrganizationFieldLabels;
@@ -94,6 +94,15 @@ public class OrganizationPage extends GlobalFunctions {
 
 	@FindBy(id = "org_description")
 	WebElement orgDescription;
+	
+	@FindBy(xpath = "//*[@class='MuiDataGrid-columnHeaderTitleContainerContent']")
+	List<WebElement> columnHeader;
+	
+	@FindBy(xpath = "//*[@class='MuiBox-root css-1km9knq']")
+	WebElement scrollPage;
+	
+	@FindBy(xpath = "//*[@data-colindex='1']")
+	List<WebElement> firstColumnData;
 
 	/**
 	 * verify the field name
@@ -111,39 +120,15 @@ public class OrganizationPage extends GlobalFunctions {
 			waitTillAttributeDisplay(organizationList, "role", "tab", Duration.ofSeconds(20));
 			verifyText(organizationList, name);
 			break;
-		case "new organization":
-			verifyText(newOrganization, name);
+		case "new organization does not displayed":
+			Assert.assertFalse(isElementPresent(newOrganization));
 			break;
-		case "label organization name":
-		case "label organization code":
-		case "label organization description":
-			getTextFromElementInListAndValidate(newOrganizationFieldLabels, name);
-		case "cancel":
-			verifyText(cancelBtn, name);
+		case "edit icon does not displayed":
+			Assert.assertFalse(isElementPresent(editIcon));
 			break;
-		case "save":
-			verifyText(saveBtn, name);
-			break;
-		case "warning message organization name required":
-			verifyText(organizationNameRequired, name);
-			break;
-		case "warning message organization code required":
-			verifyText(organizationCodeRequired, name);
-			break;
-		case "organization create message":
-		case "organization allready exist message":
-		case "organization updated successfully message":
-			verifyText(organizationMessage, name);
-			break;
-		case "confirm you delete":
-			verifyText(confirmDelete, name);
-			break;
-		case "delete":
-			verifyText(deleteBtn, name);
-			break;
-		case "edit organization header":
-			verifyText(editOrganizationHeader, name);
-			break;
+		case "delete icon does not displayed":
+			Assert.assertFalse(isElementPresent(deleteIcon));
+			break;		
 		default:
 			Assert.fail("failed");
 			log.error("invalid field " + fieldName);
@@ -156,53 +141,40 @@ public class OrganizationPage extends GlobalFunctions {
 	 * 
 	 * @param columnHeaders -organization column headers name
 	 */
-	public void verifyOrganizationTableColumnHeaders(String columnHeaders) {
-		// wait for element to load
-		waitTillAttributeDisplay(organizationListTable, "class", "MuiDataGrid-virtualScroller css-1grl8tv",
+	public void verifyOrganizationTableColumnHeaders(String expectedColumnHeaders) {
+		waitTillAttributeDisplay(organizationListTable, "class", "MuiDataGrid-virtualScroller css-1pzb349",
 				Duration.ofSeconds(60));
-		String columnHeaderValue = getXmlFilesData(columnHeaders);
+		String columnHeaderValue = getXmlFilesData(expectedColumnHeaders);
 		String[] ExpectedColumnHeader = columnHeaderValue.split("\\|");
-		List<String> columnHeadersText = new ArrayList<>();
-		for (int i = 2; i <= ExpectedColumnHeader.length + 1; i++) {
-			String columnHeader = organizationColumnHeader.replace("#", Integer.toString(i));
-			WebElement element = driver.findElement(By.xpath(columnHeader));
-			columnHeadersText.add(getText(element));
+		List<String> actualColumnHeadersText = new ArrayList<>();
+		for (int i = 0; i < columnHeader.size(); i++) {
+			actualColumnHeadersText.add(getText(columnHeader.get(i)));                                
 		}
+		scrollScrollBar(organizationListTable, 300, Constant.LEFT);
 		// compare expected and actual column headers
-		log.info("organization column headers " + columnHeadersText);
-		Assert.assertTrue(compareArrayAndList(ExpectedColumnHeader, columnHeadersText));
-		log.info("organization column headers displayed");
+		log.info("Organization column headers " + actualColumnHeadersText);
+		Assert.assertTrue(compareArrayAndList(ExpectedColumnHeader, actualColumnHeadersText));
+		log.info("Organization type column headers displayed");
 	}
-
+		
 	/**
 	 * verify total number of rows
 	 * 
 	 * @param rows
 	 */
 	public void verifyNumberOfRowsInOrganizationTable() {
-		scrollUpOrDownWindows(500);
+		scrollScrollBar(scrollPage, 5000, Constant.DOWN);
 		int rowsInPage = Integer.valueOf(getText(paginationPage.rowsPerPage));
 		int totalRecords = Integer.valueOf(paginationPage.totalNumberOfRecords);
 		if (rowsInPage > totalRecords) {
 			rowsInPage = totalRecords;
 		}
-		List<String> rowData = new ArrayList<>();
-		for (int i = 1; i <= rowsInPage; i++) {
-			String rowItem = "//*[@data-colindex='" + Integer.toString(i) + "']";
-			WebElement element = driver.findElement(By.xpath(rowItem));
-			rowData.add(getText(element));
-			if (i > 31) {
-				scrollScrollBar(organizationListTable, 40, Constant.DOWN);
-			} else {
-				scrollScrollBar(organizationListTable, 30, Constant.DOWN);
+		int NumberOfRowsINTable = firstColumnData.size();
 
-			}
-
-		}
-
-		Assert.assertTrue(rowsInPage == rowData.size());
-		scrollScrollBar(organizationListTable, 20, Constant.TOP);
+		Assert.assertTrue(rowsInPage == NumberOfRowsINTable);
+		scrollScrollBar(scrollPage, 5000, Constant.TOP);
 	}
+
 
 	/**
 	 * Click on Button
@@ -227,58 +199,11 @@ public class OrganizationPage extends GlobalFunctions {
 		case "delete":
 			clickElement(deleteBtn);
 			break;
-		case "delete icon":
-			clickOnPerticularListElement(deleteIcon, 1);
-			break;
 		default:
 			Assert.fail("failed");
 			log.error("invalid field " + fieldName);
 			break;
 		}
-	}
-
-	/**
-	 * Enter value in field
-	 * 
-	 * @param value - value to be enter in text box
-	 */
-	public void enterValue(String text, String fieldName) {
-		String fieldValue = getXmlFilesData(text);
-		switch (fieldName) {
-		case "organization name":
-			enterValue(orgName, fieldValue);
-			break;
-		case "organization code":
-			enterValue(orgCode, fieldValue);
-			break;
-		case "description":
-			enterValue(orgDescription, fieldValue);
-			break;
-		default:
-			System.out.println("invalid name");
-			break;
-		}
-	}
-
-	/**
-	 * validate mentioned row number data in organization
-	 * 
-	 * @param rowNumber
-	 * @param data
-	 */
-	public void validateMentionedRowNumberDataForOrganization(String data, int rowNumber) {
-		String organizationData = getXmlFilesData(data);
-		String[] organizationExpectedData = organizationData.split("\\|");
-		int columnLength = organizationExpectedData.length;
-		List<String> rowData = new ArrayList<>();
-		for (int i = 0; i <= columnLength; i++) {
-			String rowItem = orgaizationData.replace("#", Integer.toString(i));
-			WebElement element = driver.findElement(By.xpath(rowItem));
-			rowData.add(getText(element));
-			// scrollScrollBar(auditTrailTable, 90, Constant.RIGHT);
-		}
-		log.info(String.format("mentioned row %s %s", rowNumber, organizationExpectedData));
-		Assert.assertTrue(compareArrayAndList(organizationExpectedData, rowData));
 	}
 
 }

@@ -84,11 +84,11 @@
    <string name="label add new event show identification id">Show Identification ID</string>
 	<string name="label add new event all day">All Day</string>
 	<string name="life cycle states tab">Life Cycle States</string>
-	<string name="organization table column headers">Organisation Code|Organisation Name|Organisation Description|Created On|Created By|Modified On|Modified By</string>
+	<string name="organization table column headers">Organisation Name|Organisation Code|Organisation Description|Created On|Created By|Modified On|Modified By|Status</string>
 	<string name="organization delete message">Organisation Deleted Successfully</string>
 	<string name="organization create message">Organisation Created Successfully</string>
 	<string name="organization allready exist message">Organisation is allready present</string>
- 		<string name="organization updated successfully message">Organisation Updated Successfully</string>
+ 	<string name="organization updated successfully message">Organisation Updated Successfully</string>
  	<string name="organization tab">Organisation</string>
  	<string name="organization list">Organisation List</string>
  	<string name="new organization">New Organisation</string>
@@ -409,15 +409,44 @@
     <string name="update workflow type audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
     <string name="delete workflow type audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
 
+	<string name="user creation">User Creation</string>
+	<string name="user list tab">User List</string>
+	<string name="create new user">Create New User</string>
+	<string name="user list table column headers">Actions|Login Id|Name|Login Status|Account Status|Created By|Created On|Modified By|Modified On</string>	
+	<string name="label login id">Login Id*</string>
+	<string name="label empoloyee number">Employee Number*</string>
+	<string name="label user type">User Type*</string>
+	<string name="label domain">Domain*</string>
+	<string name="label authentication type">Authentication Type*</string>
+	<string name="label email address">Email Address*</string>
+	<string name="label job title">Job Title*</string>
+	<string name="label account status">Account Status: Active</string>
+	<string name="label login status">Login Status: Active</string>
+	<string name="add privileges">ADD PRIVILEGES</string>
+	<string name="label is system admin">Is System Admin: Yes</string>
+	<string name="select organisation option">Select Organisation*</string>
+	<string name="select business unit option">Select BusinessUnit*</string>
+	<string name="select department option">Select Department*</string>
+	<string name="select roles option">Select Roles*</string>
+	<string name="select user group option">User Group*</string>
+	<string name="select department view option">Select Department View</string>
+	<string name="select department create option">Select Department Create</string>
+	<string name="warning message primary business unit is required">Primary Business Unit is required</string>
+	<string name="warning message primary department is required">Primary Department is required</string>
+	<string name="warning message role is required">Role is required</string>
+	<string name="warning message user group is required">User Group is required</string>
+	<string name="edit user creation header">Edit User Creation</string>
+	<string name="view user creation header">View User Creation</string>
+	<string name="view edit added privileges">VIEW/EDIT ADDED PRIVILEGES</string>
+	<string name="view edit previleges header">View/Edit Privileges</string>
+	<string name="view edit privileges table column headers">Action|Organisation|Business Unit|Department|Roles|User Group|Department To View|Department To Create</string>	
+	<string name="user creation option">User Creation</string>
+	<string name="user creation tab">User Creation</string>
+	<string name="create user creation audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+	<string name="update user creation audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+	<string name="workflow">Workflow</string>
 
 
-
-
- 
-
-
-
-	
 	
 	
 	

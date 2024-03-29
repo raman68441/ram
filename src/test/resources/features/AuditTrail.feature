@@ -1134,7 +1134,7 @@ Feature: Audit Trail functionality
     Then User verifies 'update workflow type audit trail table headers' in audit trail page
     Then User verify 'generate' button is 'disabled' in audit trail page
     And User clicks on 'download' button in audit trail page
-   # Then User verify workflow type audit tail table data 'txt_update_workflow_type_audit_table_data' for 'update' event in row 1
+    Then User verify workflow type audit tail table data 'txt_update_workflow_type_audit_table_data' for 'update' event in row 1
         
     And User clicks on 'config' sidebar menu
     Then User verify 'workflow type' in workflow type page
@@ -1170,6 +1170,48 @@ Feature: Audit Trail functionality
     And User clicks on 'download' button in audit trail page
     Then User verify workflow type audit tail table data 'txt_delete_workflow_type_audit_table_data' for 'delete' event in row 1
     
+    Then User clicks on 'logged in user drop down'
+    And User verifies 'logout option name' is displayed in 'logout' field
+    Then User clicks on 'logout option' 
+    
+    @Audit15
+    Scenario: 15_verify user creation functionality in audit tral
+    Given User launched the application
+    Then User enters 'email id' in 'email' field of login page
+    Then User enters 'password' in 'password' field of login page
+    And User clicks on 'login' button in login page
+    Then User verifies 'full name' is displayed in 'logged in user' field    
+ 
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'user creation option' as 'category name' in audit trail page
+    And User selects 'created option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'all day' checkbox in audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'user creation tab' in audit trail page
+    Then User verifies 'create user creation audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+              
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'user creation option' as 'category name' in audit trail page
+    And User selects 'updated option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'all day' checkbox in audit trail page   
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'user creation tab' in audit trail page
+    Then User verifies 'update user creation audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+            
     Then User clicks on 'logged in user drop down'
     And User verifies 'logout option name' is displayed in 'logout' field
     Then User clicks on 'logout option' 

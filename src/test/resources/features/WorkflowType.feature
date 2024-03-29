@@ -1,4 +1,4 @@
- @regression @workflowtype
+@regression @workflowtype
 Feature: Workflow Type screen functionality
  
  @workflowtype

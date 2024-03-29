@@ -257,9 +257,6 @@ public class SystemDataFieldsTypesPage extends GlobalFunctions {
 		case "table filter default value":
 			verifyText(tableFilterOption, name);
 			break;
-		case "now rows":
-			verifyText(emptyTable, name);
-			break;
 		case "download":
 			verifyText(downloadBtn, name);
 			break;
