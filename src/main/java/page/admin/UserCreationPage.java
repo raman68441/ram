@@ -20,7 +20,7 @@ import page.PaginationPage;
 import utility.Constant;
 import utility.DateTimeiFunctions;
 /**
- * This class has User 
+ * This class has User creation functionality
  */
 public class UserCreationPage extends GlobalFunctions {
 	Logger log = LogManager.getLogger(UserCreationPage.class);

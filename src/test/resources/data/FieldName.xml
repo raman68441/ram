@@ -444,14 +444,116 @@
 	<string name="user creation tab">User Creation</string>
 	<string name="create user creation audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
 	<string name="update user creation audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+	<string name="user group">User Group</string>
+	<string name="user group list tab">User Group List</string>
+	<string name="new user group">New User Group</string>
+	<string name="user group list table column headers">Action|User Group Name|User Group Description|Users|Created On|Created By|Modified On|Modified By|Status|Active/Inactive</string>	
+	<string name="add user group">ADD USER GROUP</string>
+	<string name="clear">CLEAR</string>	
+	<string name="warning message name is required field">Name is a required field</string>	
+	<string name="warning message description is required field">Description is a required field</string>	
+	<string name="warning message at least one user is required">At least one user is required</string>	
+	<string name="warning message at least one user group is required">At least one user group is required</string>	
+	<string name="warning message at least one privilege is required">At least one privilege is required</string>	
+	<string name="add users table column headers">|User Name|Login ID|Business Unit|Department|Login Status|Account Status</string>	
+	<string name="add user group table column headers">|User Group Name|Description|Users</string>	
+	<string name="add privileges group table column headers">Document Type|ALL|View|Create|Edit|Delete</string>	
+	<string name="add users link">Add Users</string>	
+	<string name="add user group link">Add User Group</string>	
+	<string name="add privileges link">Add Privileges</string>	
+	<string name="view/edit users link">View/Edit Users</string>	
+	<string name="view/edit user group link">View/Edit User Group</string>	
+	<string name="view/edit privileges link">View/Edit Privileges</string>	
+	<string name="user group delete message">UserGroup null has been Deleted</string>	
+	<string name="user group already present message">User Group is already present</string>	
+	<string name="user group updated successfully message">User Group Updated Successfully</string>
+	<string name="user group created successfully message">User Group Created Successfully</string>	
+	<string name="user group name option">User Group Name</string>	
+	<string name="user group description option">User Group Description</string>	
+	<string name="edit user group header">Edit User Group</string>	
+	<string name="user group option">User Group</string>	
+	<string name="create user group audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="update user group audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+    <string name="delete user group audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+
+	<string name="document type/template type">Document Type/ Template Type</string>
+	<string name="document type/template type list tab">Document/Template Type List</string>
+	<string name="new document type/template type">New Document/Template Type</string>
+	<string name="document type/template type list table column headers">Action|Name|Description|Numbering System|Created On|Created By|Modified On|Modified By|Status|Active/Inactive</string>	
+	<string name="label document type name">Document Type Name*</string>
+	<string name="label template type name">Template Type Name*</string>
+	<string name="label numbering system">Numbering System*</string>	
+	<string name="label default retention schedule">Default Retention Schedule (in days)*</string>	
+	<string name="label initial version">Initial Version *</string>
+	<string name="default format">Default Format</string>	
+	<string name="template">Template</string>	
+	<string name="external document">External Document</string>	
+	<string name="selected content default format">Default Format</string>	
+	<string name="no">NO</string>	
+	<string name="select location type manual">Manual</string>	
+	<string name="active">ACTIVE</string>	
+	<string name="inactive">Inactive</string>	
+	<string name="manual">Manual</string>	
+	<string name="auto">Auto</string>	
+	<string name="all the tabs in document type">GENERAL DETAILS|SYSTEM DATA FIELD|WORKFLOW|LIFECYCLE SETTINGS|NOTIFICATION</string>	
+	<string name="selected content template">Template</string>	
+	<string name="yes">YES</string>	
+	<string name="select status inactive">Inactive</string>	
+	<string name="select status active">Active</string>	
+	<string name="select location type auto">Auto</string>	
+	<string name="selected content external document">External Document</string>	
+	<string name="label selected content default format">Selected Content: Default Format</string>	
+	<string name="label select status active">Select Status: Active</string>	
+	<string name="label select status inactive">Select Status: Inactive</string>	
+	<string name="label selected content template">Selected Content: Template</string>	
+	<string name="label selected content external document">Selected Content: External Document</string>	
+	<string name="label selected location type manual">Select Location Type:  Manual </string>	
+	<string name="label selected location type auto">Select Location Type:  Auto </string>	
+	<string name="label delete draft no">Delete Draft: No</string>	
+	<string name="label delete draft yes">Delete Draft: Yes</string>	
+	<string name="warning message template type name is required">Template Type Name is required</string>	
+	<string name="warning message template type description is required">Template Type Description is required</string>	
+	<string name="warning message please select numbering system">Please select Numbering System</string>	
+	<string name="warning message retention schedule is required">Retention Schedule is required</string>	
+	<string name="warning message initial version is required">Initial version is required</string>	
+	<string name="warning message document type name is required">Document Type Name is required</string>	
+	<string name="warning message document type description is required">Document Type Description is required</string>	
+	<string name="warning message please add atleast one system data field">Please add atleast one system data field</string>	
+	<string name="label select system data field">Select System Data Field</string>	
+	<string name="label workflow type">Workflow Type*</string>	
+	<string name="warning message please add atleast one workflow type">Please add at least one workflow type</string>	
+	<string name="label review period duration">Review Period Duration*</string>	
+	<string name="label prior reminder starts from in days">Prior Reminder Starts from in Days*</string>
+	<string name="label reminder recurrence schedule in daily">Reminder Recurrence Schedule in Daily*</string>	
+	<string name="label review period applicable yes">Review Period Applicable: Yes</string>
+	<string name="label review period duration days">Review Period Duration:Days</string>	
+	<string name="label prior reminder starts from days">Prior Reminder Starts from: Days</string>	
+	<string name="label reminder recurrence schedule">Reminder Recurrence Schedule</string>	
+	<string name="daily">Daily</string>
+	<string name="weekly">Weekly</string>	
+	<string name="monthly">Monthly</string>
+	<string name="days">Days</string>	
+	<string name="months">MONTHS</string>
+	<string name="weeks">WEEKS</string>
+	<string name="warning message review period duration is required">Review Period Duration is required</string>	
+	<string name="warning message prior reminder is required">Prior Reminder is required</string>
+	<string name="warning message reminder recurrence schedule is required">Reminder Recurrence Schedule is required</string>	
+	<string name="label notification users list">Notification Users List</string>
+	<string name="label notification departments list">Notification Departments List</string>
+	<string name="label notification groups list">Notification Groups List</string>	
+	<string name="label notification roles list">Notification Roles List</string>
+	<string name="document type created successfully message">New Document Type created successfully</string>
+	<string name="edit docuement type/template type header">Edit Document/Template Type</string>	
+	<string name="view docuement type/template type header">View Document/Template Type</string>
+	<string name="document type deleted successfully message">Document type deleted successfully</string>
+	<string name="document type already present message">Document type/Template Type already exists</string>	
+	<string name="document type updated successfully message">Document Type updated successfully</string>
 	<string name="workflow">Workflow</string>
-
-
-	
-	
-	
-
-
+	<string name="workflow">Workflow</string>	
+	<string name="workflow">Workflow</string>
+	<string name="create document type/template type audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+    <string name="update document type/template type audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
+    <string name="delete document type/template type audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
 
 
 

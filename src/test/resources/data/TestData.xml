@@ -148,17 +148,33 @@
 	<string name="txt_update_workflow_type_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|updated|WorkflowTypeDescription|Edit Description|Description</string>	
 	<string name="txt_delete_workflow_type_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|deleted</string>	
 
+<!--user group texts-->  
+ 	<string name="text user group name">QA</string>	
+    <string name="text user group description">User Group Description</string>	
+	<string name="text_user_group_table_data">##|User Group Description|View All|##|Jayalakshmi Hegde|-|-|Active</string>	
+	<string name="text edit user group description">Edit User Group Description</string>	
+	<string name="text_create_user_group_audit_table_data">Workflow</string>
+	<string name="text_update_user_group_audit_table_data">Workflow</string>	
+	<string name="text_delete_user_group_audit_table_data">Workflow</string>	
+	<string name="workflow">Workflow</string>	
+	
+<!--document type/template type texts--> 
 
+	<string name="text document type name">QA process </string>
+	<string name="text document type description">Testing document description</string>	
+	<string name="text document type description1">Testing document description updated</string>	
+	<string name="text retention schedule days">5</string>	
+	<string name="text document type initial version">1.0</string>	
+	<string name="text review period duration">3</string>	
+	<string name="text prior reminder starts from">1</string>	
+	<string name="text reminder recurrence schedule">1</string>	
+	<string name="text_document_type_table_data">##|Testing document description|##|##|Jayalakshmi Hegde|-|-|Active</string>	
+	<string name="text_create_document_type_template_type_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|Created</string>	
+	<string name="text_update_document_type_template_type_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|Updated|General Details > Description|Testing document description updated|Testing document description</string>	
+	<string name="text_delete_document_type_template_type_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|Deleted</string>	
 
-
+  
  
-    
- 
-    
-    
-
-
-
 
 
 	     

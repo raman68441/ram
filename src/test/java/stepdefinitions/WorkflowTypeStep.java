@@ -23,7 +23,7 @@ public class WorkflowTypeStep {
 	}
 	
 	@Then("User verify number of rows in workflow type table workflow type page")
-	public void userVerifyNumberOfRowsInAuditTrailTable() {
+	public void userVerifyNumberOfRowsInWorkflowTypeTable() {
 		workflowTypePage.verifyNumberOfRowsInWorkflowTypeTable();
 	}
 	

@@ -34,33 +34,51 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//*[@role='tab' and text()='Workflow Type']")
-	WebElement workflowTypetab;
+	@FindBy(xpath = "//*[@role='tab' and text()='Document/Template Type List']")
+	WebElement documentTemplateTypetab;
 
-	@FindBy(xpath = "//*[text()='Workflow Type']")
-	List<WebElement> workflowType;
+	@FindBy(xpath = "//*[text()='Document Type/ Template Type']")
+	List<WebElement> documentTemplateType;
 
-	@FindBy(xpath = "//*[@role='tab' and text()='New Workflow Type']")
-	WebElement newWorkflowType;
+	@FindBy(xpath = "//*[@role='tab' and text()='New Document/Template Type']")
+	WebElement newdocumentTemplateType;
 
 	@FindBy(xpath = "//*[@class='MuiDataGrid-virtualScroller css-1pzb349']")
-	WebElement workflowTypeTable;
+	WebElement documentTemplateTypeTable;
 
 	@FindBy(xpath = "//*[@class='MuiDataGrid-columnHeaderTitleContainerContent']")
 	List<WebElement> columnHeader;
+	
+	@FindBy(xpath = "//*[@role='tab']")
+	List<WebElement> tabs;
+	
+	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 css-j5a1ma']")
+	List<WebElement> systemDataFieldTableData;
 
-	public String workflowTypeTableColumnHeader = "//*[@class='MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable' and  @aria-colindex='#']";
+	public String documentTemplateTypeTableColumnHeader = "//*[@class='MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable' and  @aria-colindex='#']";
 
-	public String workflowTypeTableData = "//*[@data-colindex='#']";
+	public String documentTemplateTypeTableData = "//*[@data-colindex='#']";
 
 	@FindBy(xpath = "//*[@data-testid='DriveFileRenameOutlineOutlinedIcon']")
 	List<WebElement> editIcon;
 
+	@FindBy(xpath = "//*[@data-testid='VisibilityIcon']")
+	List<WebElement> viewIcon;
+		
 	@FindBy(xpath = "//*[@data-testid='DeleteOutlineOutlinedIcon']")
 	List<WebElement> deleteIcon;
+	
+	@FindBy(xpath = "//*[@data-testid='ArrowBackIcon']")
+	WebElement backArrow;
+	
+	@FindBy(xpath="//span[text()='Template Type']")
+	WebElement templateTypeRadioBtn;
+	
+	@FindBy(xpath="//span[text()='Document Type']")
+	WebElement documentTypeRadioBtn;
 
 	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body2 MuiTypography-gutterBottom css-gix94l']")
-	List<WebElement> workflowTypeLabels;
+	List<WebElement> documentTemplateTypeLabels;
 
 	@FindBy(xpath = "//*[text()='Cancel']")
 	WebElement cancelBtn;
@@ -74,47 +92,89 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Update']")
 	WebElement updateBtn;
 
-	@FindBy(id = "workflow_type_name")
+	@FindBy(id = "doc-type-name")
 	WebElement nameField;
 
-	@FindBy(id = "workflow_type_Description")
+	@FindBy(id = "doc-type-description")
 	WebElement descriptionField;
 
-	@FindBy(id = "workflow_type_delay_num")
-	WebElement workflowTypeDelayNumField;
+	@FindBy(id = "doc-type-numbering-system")
+	WebElement docTypeNumberingSystemOption;
 
-	@FindBy(id = "workflow_type_prefix")
-	WebElement prefixield;
+	@FindBy(id = "doc-type-retention-schedule")
+	WebElement retentionScheduleField;
 
-	@FindBy(id = "workflow_type_sn_start")
-	WebElement serialNumberStartValueField;
+	@FindBy(id = "systemDataField")
+	WebElement systemDataFieldOption;
+	
+	@FindBy(id = "workflow_type")
+	WebElement workflowTypeOption;
+	
+	@FindBy(xpath="//*[@name='reviewPeriodDuration']")
+	WebElement reviewPerioDurationField;
+	
+	@FindBy(id = "doc-type-schedule-in-Daily")
+	WebElement reminderScheduleDailyField;
+	
+	@FindBy(id = "doc-type-notify-users-list")
+	WebElement notificationUserListOption;
+	
+	@FindBy(id = "doc-type-notify-department-list")
+	WebElement notificationDepartmentListOption;
+		
+	@FindBy(id = "doc-type-notify-group-list")
+	WebElement notificationGroupListOption;
+	
+	@FindBy(id = "doc-type-notify-role-list")
+	WebElement notificationRoleListOption;
+	
+	@FindBy(xpath="//*[@name='priorReminderStartOn']")
+	WebElement priorReminderStartOnField;	
+	
+	@FindBy(id = "doc-type-initial-ver")
+	WebElement docTypeInitialVersionField;
 
-	@FindBy(id = "workflow_type_sn_length")
-	WebElement serialNumberLengthInDigitField;
+	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-ahae4e']")
+	List<WebElement> documentTemplateTypeLabels1;
 
-	@FindBy(id = "workflow_type_release_conditions")
-	WebElement workflowTypeReleaseCondtionOption;
-
-	@FindBy(xpath = "//*[text()='Add Lifecycle State']")
-	WebElement addLifeCycleStateBtn;
-
-	@FindBy(xpath = "//*[text()='Added Lifecycle States:']")
-	WebElement labelAddedLifecycleStates;
-
-	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 css-j5a1ma']")
-	List<WebElement> workflowTypeLabels1;
-
-	@FindBy(xpath = "//*[@class='PrivateSwitchBase-input css-1m9pwf3']")
-	List<WebElement> radioBtns;
+	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-j5a1ma']")
+	List<WebElement> radioBtnsAndCheckBoxes;
 
 	@FindBy(xpath = "//*[@class='MuiSwitch-root MuiSwitch-sizeMedium css-ecvcn9']")
 	List<WebElement> togleBtns;
 
-	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-j5a1ma']")
-	List<WebElement> workflowTypeLabels2;
-
-	@FindBy(xpath = "//*[text()='Yes']")
-	List<WebElement> yesLabel;
+	@FindBy(xpath = "//*[text()='Add']")
+	WebElement addBtn;
+	
+	@FindBy(xpath = "//*[text()='Back']")
+	WebElement backBtn;
+	
+	@FindBy(xpath = "//button[text()='Yes']|//button[text()='YES']")
+	WebElement yesOption;
+	
+	@FindBy(xpath = "//button[text()='YES']")
+	WebElement yesBTn;
+	
+	@FindBy(xpath = "//button[text()='NO']")
+	WebElement noBtn;
+	
+	@FindBy(xpath = "//button[text()='No']|//button[text()='NO']")
+	WebElement noOption;
+	
+	@FindBy(xpath = "//*[text()='Active']")
+	WebElement activeOption;
+	
+	@FindBy(xpath = "//*[text()='Inactive']")
+	WebElement inactiveOption;
+	
+	@FindBy(xpath = "//*[text()='Manual']")
+	WebElement manualBtn;
+	
+	@FindBy(xpath = "//*[text()='Auto']")
+	WebElement autoBtn;
+	
+	@FindBy(xpath = "//*[@name='content']")
+	List<WebElement> contents;
 
 	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-body1 css-j5a1ma']")
 	List<WebElement> confirmDelete;
@@ -123,59 +183,56 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	WebElement deleteBtn;
 
 	@FindBy(xpath = "//*[@class='MuiAlert-message css-1xsto0d']")
-	WebElement workflowTypeMessage;
+	WebElement documentTypeMessage;
 
-	@FindBy(xpath = "//*[text()= 'Workflow Type Name is required']")
-	WebElement workflowTypeNameRequired;
+	@FindBy(xpath = "//*[text()= 'Document Type Name is required']")
+	WebElement documentTypeNameRequired;
 
-	@FindBy(xpath = "//*[text()='Workflow Type Description is required']")
-	WebElement workflowTypeDescriptionRequired;
+	@FindBy(xpath = "//*[text()='Document Type Description is required']")
+	WebElement documentTypeDescriptionRequired;
+	
+	@FindBy(xpath = "//*[text()= 'Template Type Name is required']")
+	WebElement templateTypeNameRequired;
 
-	@FindBy(xpath = "//*[text()='Prefix is required']")
-	WebElement prefixRequired;
+	@FindBy(xpath = "//*[text()='Template Type Description is required']")
+	WebElement templateTypeDescriptionRequired;
 
-	@FindBy(xpath = "//*[text()='Serial Number Start Value is required']")
-	WebElement serialNumberStartValueRequired;
+	@FindBy(xpath = "//*[text()='Please select Numbering System']")
+	WebElement numberSystemRequired;
 
-	@FindBy(xpath = "//*[text()='Serial Number Length is required']")
-	WebElement serialNumberLengthRequired;
+	@FindBy(xpath = "//*[text()='Retention Schedule is required']")
+	WebElement retentionScheduleRequired;
 
-	@FindBy(xpath = "//*[text()='Please select workflow release condition']")
-	WebElement selectWorkflowReleaseCondtionRequired;
+	@FindBy(xpath = "//*[text()='Initial version is required']")
+	WebElement initialVersionRequired;
+	
+	@FindBy(xpath = "//*[text()='Review Period Duration is required']")
+	WebElement reviewPeriodDurationRequired;
+	
+	@FindBy(xpath = "//*[text()='Please add atleast one system data field']")
+	WebElement systemDataFieldRequired;
+	
+	@FindBy(xpath = "//*[text()='Please add at least one workflow type']")
+	WebElement workflowFieldRequired;
+	
+	@FindBy(xpath = "//*[text()='Prior Reminder is required']")
+	WebElement priorReminderRequired;
+	
+	@FindBy(xpath = "//*[text()='Reminder Recurrence Schedule is required']")
+	WebElement reminderRecurrenceScheduleRequired;
 
-	@FindBy(xpath = "//*[text()='Map']")
-	WebElement mapBtn;
+	@FindBy(xpath = "//*[text()='Next']")
+	WebElement nextBtn;
 
-	@FindBy(xpath = "//*[text()='Add Lifecycle State']")
-	WebElement addLifecycleSateHeader;
-
-	@FindBy(id = "add_lifecycle_state")
-	WebElement selectLifeCycleStateOption;
-
-	@FindBy(id = "add_lifecycle_role")
-	WebElement selectRoleOption;
-
-	@FindBy(id = "add_lifecycle_department")
-	List<WebElement> selectDepartmentAndActionOption;
-
-	@FindBy(id = "add_lifecycle_checklist")
-	WebElement selectChecklistOption;
-
-	@FindBy(id = "add_lifecycle_notification_type")
-	WebElement addNotificationTypeOption;
-
-	@FindBy(id = "add_lifecycle_print_type")
-	WebElement addLifecyclePrintTypeOption;
-
-	@FindBy(id = "add_lifecycle_signature")
-	WebElement meaningOfSignatureField;
-
-	@FindBy(id = "add_lifecycle_user_count")
-	List<WebElement> minimumUserCountAndSLAField;
-
-	@FindBy(id = "add_lifecycle_increment_type")
-	WebElement incrementTypeOption;
-
+	@FindBy(xpath = "//button[text()='Days']")
+	List<WebElement> daysOption;
+	
+	@FindBy(xpath = "//button[text()='Months']")
+	WebElement monthsOption;
+	
+	@FindBy(xpath = "//button[text()='Weeks']")
+	WebElement weeksOption;
+	
 	@FindBy(xpath = "//*[@role='option']")
 	List<WebElement> option;
 
@@ -191,8 +248,11 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-aqsgr9']")
 	WebElement deactiveIcon;
 
-	@FindBy(xpath = "//*[text()='Edit Workflow Type']")
-	WebElement editWorkflowtypeHeader;
+	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-h5 css-tv5qfu']")
+	WebElement editDocumentTypeHeader;
+	
+	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-h5 css-tv5qfu']")
+	WebElement viewDocumentTypeHeader;
 
 	@FindBy(id = "table-filter-option")
 	WebElement tableFilterOption;
@@ -200,7 +260,7 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	@FindBy(id = "table-search-option")
 	WebElement tableSearchOption;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-10uacdu']")
+	@FindBy(xpath = "//*[text()='Reset Filter']")
 	WebElement resetFilterBtn;
 
 	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-7c3c59']")
@@ -212,7 +272,7 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='MuiDataGrid-overlay css-14349d1']")
 	WebElement emptyTable;
 
-	@FindBy(xpath = "//*[@class='MuiBox-root css-1km9knq']")
+	@FindBy(xpath = "//*[@class='MuiBox-root css-25g08g']")
 	WebElement scrollPage;
 
 	public String optionName = "//*[@role ='option' and @data-value='#']";
@@ -220,10 +280,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3']")
 	List<WebElement> activeInactiveTogleIcon;
 
-	public static String workflowTypeCreatedTime, workflowTypeUpdatedTime, workflowTypeDeletedTime, workflowTypeName,
-			workflowTypeDescriptionValue, prefixValue, workflowLifeCycleStateValue, workflowRoleValue,
-			workflowActionValue, workflowChecklistValue, workflowNotificationValue, workflowPrintValue,
-			workflowDepartmentValue, workflowIncrementTypeValue;
+	public static String documentTypeTemplateTypeCreatedTime,documentTypeTemplateTypeUpdatedTime, documentTypeTemplateTypeDeletedTime, documentTypeTemplateTypeName,
+			documemntTypeTemplateTypeDescription, documemntTypeTemplateTypeNumberingSystem, retentionScheduleInDays, documenTypeSystemDataTypeFieldValue, documenTypeWorkflowTypeValue,
+			documenTypeNotificationUserList, documenTypeNotificationDepartmentValue, documentTypeNotificationGroupValue, workflowPrintValue,
+			documentTypeNotificationRolesListValue;
 
 	/**
 	 * verify the field name
@@ -235,85 +295,138 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 		WebElement element = null;
 		String text = null;
 		switch (fieldName) {
-		case "workflow type":
-			getTextFromElementInListAndValidate(workflowType, name);
+		case "document type/template type":
+			getTextFromElementInListAndValidate(documentTemplateType, name);
 			break;
-		case "workflow type tab":
-			waitTillAttributeDisplay(workflowTypetab, "role", "tab", Duration.ofSeconds(20));
-			verifyText(workflowTypetab, name);
+		case "document type/template type list tab":
+			waitTillAttributeDisplay(documentTemplateTypetab, "role", "tab", Duration.ofSeconds(20));
+			verifyText(documentTemplateTypetab, name);
 			break;
-		case "new workflow type":
-			verifyText(newWorkflowType, name);
+		case "new document type/template type":
+			verifyText(newdocumentTemplateType, name);
 			break;
-		case "label name":
+		case "label document type name":
+		case "label template type name":
 		case "label description":
-		case "label prefix":
-		case "label serial number length in digit":
-		case "label serial number start value":
-		case "label release condtions":
-		case "label select lifecycle state":
-		case "label select role":
-		case "label select action/activity":
-		case "label select checklist":
-		case "label select notification type":
-		case "label select print type":
-		case "label select department":
-		case "label meaning of signature":
-		case "label minimum user count":
-		case "label increment type":
-		case "label sla/days":
-			getTextFromElementInListAndValidate(workflowTypeLabels, name);
+		case "label numbering system":
+		case "label default retention schedule":
+		case "label initial version":
+		case "label select system data field":
+		case "label workflow type":
+		case "label review period duration":
+		case "label prior reminder starts from in days":
+		case "label reminder recurrence schedule in daily":
+		case "label notification users list":
+		case "label notification departments list":
+		case "label notification groups list":
+		case "label notification roles list":			
+			getTextFromElementInListAndValidate(documentTemplateTypeLabels, name);
 			break;
-		case "label added lifecycle states":
-			verifyText(labelAddedLifecycleStates, name);
+		case "manual radio button":
+		case "auto radio button":
+		case "daily":
+		case "weekly":
+		case "monthly":
+			getTextFromElementInListAndValidate(radioBtnsAndCheckBoxes, name);
 			break;
-		case "add life cycle state":
-			verifyText(addLifeCycleStateBtn, name);
+		case "label selected content default format":
+		case "label selected content template":
+		case "label selected content external document":
+		case "label select location type":
+		case "label select status active":
+		case "label select status inactive":
+		case "label delete draft no":
+		case "label delete draft yes":
+		case "label selected location type manual":
+		case "label selected location type auto":
+		case "label review period applicable yes":
+		case "label review period duration days":
+		case "label prior reminder starts from days":
+		case "label reminder recurrence schedule":
+				getTextFromElementInListAndValidate(documentTemplateTypeLabels1, name);
+			break;				
+		case "yes":
+			verifyText(yesOption, name);
 			break;
-		case "label workflow sequence":
-		case "label workflow activation required":
-			getTextFromElementInListAndValidate(workflowTypeLabels1, name);
+		case "no":
+			verifyText(noOption, name);
 			break;
-		case "label associate documents":
-		case "label delete draft":
-		case "label serial":
-		case "label parallel":
-		case "label yes":
-		case "label no":
-			getTextFromElementInListAndValidate(workflowTypeLabels2, name);
+		case "active":
+			verifyText(activeOption, name);
 			break;
+		case "inactive":
+			verifyText(inactiveOption, name);
+			break;
+		case "manual":
+			verifyText(manualBtn, name);
+			break;
+		case "auto":
+			verifyText(autoBtn, name);
+			break;
+		case "default format":
+		case "template":
+		case "external document":
+			getTextFromElementInListAndValidate(contents, name);
+			break;	
+		case "days":
+			getTextFromElementInListAndValidate(daysOption, name);
+			break;
+		case "months":
+			verifyText(monthsOption, name);
+			break;	
+		case "weeks":
+			verifyText(weeksOption, name);
+			break;	
 		case "cancel":
 			verifyText(cancelBtn, name);
+			break;		
+		case "warning message document type name is required":
+			verifyText(documentTypeNameRequired, name);
 			break;
-		case "warning message workflow type name is required":
-			verifyText(workflowTypeNameRequired, name);
+		case "warning message document type description is required":
+			verifyText(documentTypeDescriptionRequired, name);
 			break;
-		case "warning message workflow type description is required":
-			verifyText(workflowTypeDescriptionRequired, name);
+		case "warning message please select numbering system":
+			verifyText(numberSystemRequired, name);
 			break;
-		case "warning message prefix is required":
-			verifyText(prefixRequired, name);
+		case "warning message retention schedule is required":
+			verifyText(retentionScheduleRequired, name);
 			break;
-		case "warning message serial number start value is required":
-			verifyText(serialNumberStartValueRequired, name);
+		case "warning message initial version is required":
+			verifyText(initialVersionRequired, name);
 			break;
-		case "warning message serial number length is required":
-			verifyText(serialNumberLengthRequired, name);
+		case "warning message template type name is required":
+			verifyText(templateTypeNameRequired, name);
+			break;	
+		case "warning message template type description is required":
+			verifyText(templateTypeDescriptionRequired, name);
+			break;	
+		case "warning message review period duration is required":
+			verifyText(reviewPeriodDurationRequired, name);
 			break;
-		case "warning message please select workflow release condition":
-			verifyText(selectWorkflowReleaseCondtionRequired, name);
+		case "warning message please add atleast one system data field":
+			verifyText(systemDataFieldRequired, name);
 			break;
-		case "workflow type created successfully message":
-		case "workflow type already present message":
-		case "workflow type updated successfully message":
-		case "workflow type delete message":
-			verifyText(workflowTypeMessage, name);
+		case "warning message please add atleast one workflow type":
+			verifyText(workflowFieldRequired, name);
+			break;
+		case "warning message prior reminder is required":
+			verifyText(priorReminderRequired, name);
+			break;
+		case "warning message reminder recurrence schedule is required":
+			verifyText(reminderRecurrenceScheduleRequired, name);
+			break;
+		case "document type created successfully message":
+		case "document type already present message":
+		case "document type updated successfully message":
+		case "document type deleted successfully message":
+			verifyText(documentTypeMessage, name);
 			if (fieldName.contains("created")) {
-				workflowTypeCreatedTime = dateTimeiFunctions.getCurrentTime();
+				documentTypeTemplateTypeCreatedTime = dateTimeiFunctions.getCurrentTime();
 			} else if (fieldName.contains("updated")) {
-				workflowTypeUpdatedTime = dateTimeiFunctions.getCurrentTime();
+				documentTypeTemplateTypeUpdatedTime = dateTimeiFunctions.getCurrentTime();
 			} else if (fieldName.contains("delete")) {
-				workflowTypeDeletedTime = dateTimeiFunctions.getCurrentTime();
+				documentTypeTemplateTypeDeletedTime = dateTimeiFunctions.getCurrentTime();
 			}
 			break;
 		case "confirm you delete":
@@ -323,8 +436,11 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 		case "delete":
 			verifyText(deleteBtn, name);
 			break;
-		case "edit workflow type header":
-			verifyText(editWorkflowtypeHeader, name);
+		case "edit docuement type/template type header":
+			verifyText(editDocumentTypeHeader, name);
+			break;
+		case "view docuement type/template type header":
+			verifyText(viewDocumentTypeHeader, name);
 			break;
 		case "search option default value":
 			verifyText(tableSearchOption, name);
@@ -350,8 +466,14 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 		case "no rows":
 			verifyText(emptyTable, name);
 			break;
-		case "map":
-			verifyText(mapBtn, name);
+		case "add":
+			verifyText(addBtn, name);
+			break;
+		case "next":
+			verifyText(nextBtn, name);
+			break;
+		case "back":
+			verifyText(backBtn, name);
 			break;
 		default:
 			Assert.fail("failed");
@@ -361,26 +483,26 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	}
 
 	/**
-	 * verify workflow type table column headers name
+	 * verify document/template type table column headers name
 	 * 
-	 * @param columnHeaders - workflow type column headers name
+	 * @param columnHeaders - document/template type column headers name
 	 */
-	public void verifyWorkflowTypeTableColumnHeaders(String expectedColumnHeaders) {
+	public void verifyDocumentTemplateTypeTableColumnHeaders(String expectedColumnHeaders) {
 		// wait for element to load
-		waitTillAttributeDisplay(workflowTypeTable, "class", "MuiDataGrid-virtualScroller css-1pzb349",
+		waitTillAttributeDisplay(documentTemplateTypeTable, "class", "MuiDataGrid-virtualScroller css-1pzb349",
 				Duration.ofSeconds(60));
 		String columnHeaderValue = getXmlFilesData(expectedColumnHeaders);
 		String[] ExpectedColumnHeader = columnHeaderValue.split("\\|");
 		List<String> actualColumnHeadersText = new ArrayList<>();
 		for (int i = 0; i < columnHeader.size(); i++) {
 			actualColumnHeadersText.add(getText(columnHeader.get(i)));
-			scrollScrollBar(workflowTypeTable, 17, Constant.RIGHT);
+			scrollScrollBar(documentTemplateTypeTable, 17, Constant.RIGHT);
 		}
-		scrollScrollBar(workflowTypeTable, 300, Constant.LEFT);
+		scrollScrollBar(documentTemplateTypeTable, 300, Constant.LEFT);
 		// compare expected and actual column headers
-		log.info("Workflow type column headers " + actualColumnHeadersText);
+		log.info("document/template type column headers " + actualColumnHeadersText);
 		Assert.assertTrue(compareArrayAndList(ExpectedColumnHeader, actualColumnHeadersText));
-		log.info("Workflow type column headers displayed");
+		log.info("document/template type column headers displayed");
 	}
 
 	/**
@@ -388,7 +510,7 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	 * 
 	 * @param rows
 	 */
-	public void verifyNumberOfRowsInWorkflowTypeTable() {
+	public void verifyNumberOfRowsInDocumentTemplateTypeTable() {
 		scrollScrollBar(scrollPage, 5000, Constant.DOWN);
 		int rowsInPage = Integer.valueOf(getText(paginationPage.rowsPerPage));
 		int totalRecords = Integer.valueOf(paginationPage.totalNumberOfRecords);
@@ -409,14 +531,47 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	public void clickOnBtn(String fieldName) {
 		String name = fieldName.toLowerCase();
 		switch (name) {
-		case "workflow type":
-			clickOnPerticularListElement(workflowType, 0);
+		case "document type/template type":
+			clickOnPerticularListElement(documentTemplateType, 0);
 			break;
-		case "workflow type tab":
-			clickElement(workflowTypetab);
+		case "document type/template type list tab":
+			clickElement(documentTemplateTypetab);
 			break;
-		case "new workflow type":
-			clickElement(newWorkflowType);
+		case "new document type/template type":
+			clickElement(newdocumentTemplateType);
+			break;
+		case "template type":
+			clickElement(templateTypeRadioBtn);
+			break;
+		case "document type":
+			clickElement(documentTypeRadioBtn);
+			break;			
+		case "default format":
+			clickOnPerticularListElement(contents, 0);
+			break;
+		case "template":
+			clickOnPerticularListElement(contents, 1);
+			break;
+		case "external document":
+			clickOnPerticularListElement(contents, 2);
+			break;				
+		case "yes":
+			clickElement(yesOption);
+			break;
+		case "no":
+			clickElement(noOption);
+			break;
+		case "active":
+			clickElement(activeOption);
+			break;
+		case "inactive":
+			clickElement(inactiveOption);
+			break;
+		case "manual":
+			clickElement(manualBtn);
+			break;
+		case "auto":
+			clickElement(autoBtn);
 			break;
 		case "cancel":
 			clickElement(cancelBtn);
@@ -433,6 +588,9 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 		case "edit":
 			clickOnPerticularListElement(editIcon, 0);
 			break;
+		case "view":
+			clickOnPerticularListElement(viewIcon, 0);
+			break;
 		case "delete icon":
 			clickOnPerticularListElement(deleteIcon, 0);
 			break;
@@ -442,35 +600,23 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 		case "download":
 			clickElement(downloadBtn);
 			break;
+		case "back arrow":
+			clickElement(backArrow);
+			break;		
 		case "save":
 			clickElement(saveBtn);
 			break;
-		case "map":
-			clickElement(mapBtn);
+		case "add":
+			clickElement(addBtn);
 			break;
-		case "add life cycle state":
-			clickElement(addLifeCycleStateBtn);
+		case "next":
+			clickElement(nextBtn);
 			break;
 		case "select field type option":
 			clickElement(dropdownIcon);
 			break;
 		case "reset all":
 			clickElement(resetFilterBtn);
-			break;
-		case "serial":
-			clickOnPerticularListElement(radioBtns, 0);
-			break;
-		case "parallel":
-			clickOnPerticularListElement(radioBtns, 1);
-			break;
-		case "activation yes":
-			clickOnPerticularListElement(radioBtns, 2);
-			break;
-		case "activation no":
-			clickOnPerticularListElement(radioBtns, 3);
-			break;
-		case "associate documents":
-			clickOnPerticularListElement(togleBtns, 0);
 			break;
 		case "delete draft":
 			clickOnPerticularListElement(togleBtns, 1);
@@ -492,52 +638,50 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 		WebElement element = null;
 		switch (fieldName) {
 		case "name":
-			if (workflowTypeName == null) {
-				workflowTypeName = String.format("%s%s", fieldValue, generateRandomString(4));
+			if (documentTypeTemplateTypeName == null) {
+				documentTypeTemplateTypeName = String.format("%s%s", fieldValue, generateRandomString(3));
 			}
 			nameField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(nameField, workflowTypeName);
+			enterValue(nameField, documentTypeTemplateTypeName);
 			break;
 		case "description":
 			descriptionField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
 			enterValue(descriptionField, fieldValue);
-			workflowTypeDescriptionValue = fieldValue;
+			documemntTypeTemplateTypeDescription = fieldValue;
 			break;
-		case "prefix":
-			prefixield.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(prefixield, fieldValue);
-			prefixValue = fieldValue;
+		case "retention schedule":
+			retentionScheduleField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			enterValue(retentionScheduleField, fieldValue);
+			retentionScheduleInDays = fieldValue;
 			break;
-		case "serial number start value":
-			serialNumberStartValueField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(serialNumberStartValueField, fieldValue);
+		case "initial version":
+			docTypeInitialVersionField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			enterValue(docTypeInitialVersionField, fieldValue);
 			break;
-		case "serial number length in digit":
-			serialNumberLengthInDigitField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(serialNumberLengthInDigitField, fieldValue);
+		case "review period duration":
+			reviewPerioDurationField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			enterValue(reviewPerioDurationField, fieldValue);
 			break;
+		case "reminder recurrence schedule":
+			reminderScheduleDailyField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			enterValue(reminderScheduleDailyField, fieldValue);
+			break;	
+		case "prior reminder starts from":
+			priorReminderStartOnField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+			enterValue(priorReminderStartOnField, fieldValue);
+			break;	
 		case "search":
 			tableSearchField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			if (text.equals("text workflow type name")) {
-				enterValue(tableSearchField, workflowTypeName);
+			if (text.equals("text document type name")) {
+				enterValue(tableSearchField, documentTypeTemplateTypeName);
 			} else {
 				enterValue(tableSearchField, fieldValue);
 			}
 			break;
 		case "edit name":
-			workflowTypeName = String.format("%s%s", fieldValue, generateRandomString(7));
+			documentTypeTemplateTypeName = String.format("%s%s", fieldValue, generateRandomString(7));
 			nameField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(nameField, workflowTypeName);
-			break;
-		case "minimum user count":
-			element = minimumUserCountAndSLAField.get(0);
-			element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(element, fieldValue);
-			break;
-		case "sla/days":
-			element = minimumUserCountAndSLAField.get(1);
-			element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			enterValue(element, fieldValue);
+			enterValue(nameField, documentTypeTemplateTypeName);
 			break;
 		default:
 			System.out.println("invalid name");
@@ -546,36 +690,39 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	}
 
 	/**
-	 * validate mentioned row number data in workflow type
+	 * validate mentioned row number data in document/template type
 	 * 
 	 * @param rowNumber
 	 * @param data
 	 */
 	public void validateMentionedRowNumberDataFromTable(String data, int rowNumber) {
 		String rowData = getXmlFilesData(data);
-		String[] workflowTypeExpectedData = rowData.split("\\|");
+		String[] documentTemplateTypeExpectedData = rowData.split("\\|");
 
-		if (workflowTypeExpectedData[0].equals("##")) {
-			workflowTypeExpectedData[0] = workflowTypeName;
+		if (documentTemplateTypeExpectedData[0].equals("##")) {
+			documentTemplateTypeExpectedData[0] = documentTypeTemplateTypeName;
 		}
-		if (workflowTypeExpectedData[2].equals("##")) {
-			workflowTypeExpectedData[2] = dateTimeiFunctions.getCurrentDateMonthNameYear();
+		if (documentTemplateTypeExpectedData[2].equals("##")) {
+			documentTemplateTypeExpectedData[2] = documemntTypeTemplateTypeNumberingSystem;
+		}		
+		if (documentTemplateTypeExpectedData[3].equals("##")) {
+			documentTemplateTypeExpectedData[3] = dateTimeiFunctions.getCurrentDateMonthNameYear();
 		}
-		if (workflowTypeExpectedData[4].equals("##")) {
-			workflowTypeExpectedData[4] = dateTimeiFunctions.getCurrentDateMonthNameYear();
+		if (documentTemplateTypeExpectedData[5].equals("##")) {
+			documentTemplateTypeExpectedData[5] = dateTimeiFunctions.getCurrentDateMonthNameYear();
 		}
-		int columnLength = workflowTypeExpectedData.length;
+		int columnLength = documentTemplateTypeExpectedData.length;
 		List<String> actualData = new ArrayList<>();
 		for (int i = 1; i <= columnLength; i++) {
 			String rowItem = "//*[@aria-rowindex='" + Integer.toString(rowNumber + 1) + "']/..//*[@data-colindex='"
 					+ Integer.toString(i) + "']";
 			WebElement element = driver.findElement(By.xpath(rowItem));
 			actualData.add(getText(element));
-			scrollScrollBar(workflowTypeTable, 15, Constant.RIGHT);
+			scrollScrollBar(documentTemplateTypeTable, 15, Constant.RIGHT);
 		}
-		scrollScrollBar(workflowTypeTable, 200, Constant.LEFT);
-		log.info(String.format("mentioned row %s %s", rowNumber, workflowTypeExpectedData));
-		Assert.assertTrue(compareArrayAndList(workflowTypeExpectedData, actualData));
+		scrollScrollBar(documentTemplateTypeTable, 200, Constant.LEFT);
+		log.info(String.format("mentioned row %s %s", rowNumber, documentTemplateTypeExpectedData));
+		Assert.assertTrue(compareArrayAndList(documentTemplateTypeExpectedData, actualData));
 	}
 
 	/**
@@ -583,7 +730,7 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	 * 
 	 * @param value - value or index or text
 	 */
-	public void selectDropDownfromWorkflowTypePage(String data, String fieldName) {
+	public void selectDropDownfromDocumentTemplateTypePage(String data, String fieldName) {
 		String value = getXmlFilesData(data);
 		WebElement element = null;
 		String optionValue = null;
@@ -622,8 +769,8 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				e.printStackTrace();
 			}
 			break;
-		case "work flow release condition":
-			clickElement(workflowTypeReleaseCondtionOption);
+		case "numbering system":
+			clickElement(docTypeNumberingSystemOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -639,8 +786,8 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				e.printStackTrace();
 			}
 			break;
-		case "select life cycle state":
-			clickElement(selectLifeCycleStateOption);
+		case "select systen data field":
+			clickElement(systemDataFieldOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -655,10 +802,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowLifeCycleStateValue = getText(selectLifeCycleStateOption);
+			documenTypeSystemDataTypeFieldValue = getText(systemDataFieldOption);
 			break;
-		case "select role":
-			clickElement(selectRoleOption);
+		case "workflow type":
+			clickElement(workflowTypeOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -673,10 +820,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowRoleValue = getText(selectRoleOption);
+			documenTypeWorkflowTypeValue = getText(workflowTypeOption);
 			break;
-		case "select action/activity":
-			clickOnPerticularListElement(selectDepartmentAndActionOption, 1);
+		case "notification users list":
+			clickElement(notificationUserListOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -691,10 +838,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowActionValue = getTextFromElementInListInMentionedPosition(selectDepartmentAndActionOption, 1);
+			documenTypeNotificationUserList = getText(notificationUserListOption);
 			break;
-		case "select checklist":
-			clickElement(selectChecklistOption);
+		case "notification department list":
+			clickElement(notificationDepartmentListOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -709,10 +856,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowChecklistValue = getText(selectChecklistOption);
+			documenTypeNotificationDepartmentValue = getText(notificationDepartmentListOption);
 			break;
-		case "select notification type":
-			clickElement(addNotificationTypeOption);
+		case "notification groups list":
+			clickElement(notificationGroupListOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -727,10 +874,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowNotificationValue = getText(addNotificationTypeOption);
+			documentTypeNotificationGroupValue = getText(notificationGroupListOption);
 			break;
-		case "select print type":
-			clickElement(addLifecyclePrintTypeOption);
+		case "notification roles list":
+			clickElement(notificationRoleListOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -745,43 +892,7 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowPrintValue = getText(addLifecyclePrintTypeOption);
-			break;
-		case "increment type":
-			clickElement(incrementTypeOption);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			element = driver.findElement(By.xpath("//*[@role='option' and text()='" + value + "']"));
-			clickElement(element);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			workflowIncrementTypeValue = getText(incrementTypeOption);
-			break;
-		case "select department":
-			clickOnPerticularListElement(selectDepartmentAndActionOption, 0);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			element = driver.findElement(By.xpath("//*[@role='option' and text()='" + value + "']"));
-			clickElement(element);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			workflowDepartmentValue = getTextFromElementInListInMentionedPosition(selectDepartmentAndActionOption, 0);
+			documentTypeNotificationRolesListValue = getText(notificationRoleListOption);
 			break;
 		default:
 			log.error("invalid field" + fieldName);
@@ -808,7 +919,7 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				System.out.println("i= " + i);
 				actualStatus = (activeInactiveTogleIcon.get(i)).getDomProperty("defaultChecked");
 				Assert.assertTrue(actualStatus.equals(status));
-				scrollScrollBar(workflowTypeTable, 2, Constant.DOWN);
+				scrollScrollBar(documentTemplateTypeTable, 2, Constant.DOWN);
 			}
 		} else {
 			try {
@@ -821,11 +932,11 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				actualStatus = (activeInactiveTogleIcon.get(i)).getDomProperty("defaultChecked");
 				System.out.println(actualStatus);
 				Assert.assertTrue(actualStatus.equals(status));
-				scrollScrollBar(workflowTypeTable, 2, Constant.DOWN);
+				scrollScrollBar(documentTemplateTypeTable, 2, Constant.DOWN);
 			}
 		}
 
-		scrollScrollBar(workflowTypeTable, 20, Constant.TOP);
+		scrollScrollBar(documentTemplateTypeTable, 20, Constant.TOP);
 	}
 
 	/**
@@ -837,8 +948,8 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	 */
 	public void verifyMentionedRowCellDataInTable(String data, int rowNumber, int columnNumber) {
 		String rowData = null;
-		if (data.equals("text workflow type name")) {
-			rowData = workflowTypeName;
+		if (data.equals("text document type name")) {
+			rowData = documentTypeTemplateTypeName;
 		} else {
 			rowData = getXmlFilesData(data);
 		}
@@ -854,10 +965,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 	 * 
 	 * @param value - value or index or text
 	 */
-	public void selectDropDownfromWorkflowTypePage(int index, String fieldName) {
+	public void selectDropDownfromDocuementTypePage(int index, String fieldName) {
 		switch (fieldName) {
-		case "select life cycle state":
-			clickElement(selectLifeCycleStateOption);
+		case "select numbering system":
+			clickElement(docTypeNumberingSystemOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -866,15 +977,15 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 			}
 			clickOnPerticularListElement(option, index);
 			try {
-				Thread.sleep(300);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowLifeCycleStateValue = getText(selectLifeCycleStateOption);
+			documemntTypeTemplateTypeNumberingSystem = getText(docTypeNumberingSystemOption);
 			break;
-		case "select role":
-			clickElement(selectRoleOption);
+		case "select system data field":
+			clickElement(systemDataFieldOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -888,10 +999,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowRoleValue = getText(selectRoleOption);
+			documenTypeSystemDataTypeFieldValue = getText(systemDataFieldOption);
 			break;
-		case "select action/activity":
-			clickOnPerticularListElement(selectDepartmentAndActionOption, 1);
+		case "select workflow type field":
+			clickElement(workflowTypeOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -905,10 +1016,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowActionValue = getTextFromElementInListInMentionedPosition(selectDepartmentAndActionOption, 1);
+			documenTypeWorkflowTypeValue = getText(workflowTypeOption);
 			break;
-		case "select checklist":
-			clickElement(selectChecklistOption);
+		case "notification users list":
+			clickElement(notificationUserListOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -922,10 +1033,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowChecklistValue = getText(selectChecklistOption);
+			documenTypeNotificationUserList = getText(notificationUserListOption);
 			break;
-		case "select notification type":
-			clickElement(addNotificationTypeOption);
+		case "notification departments list":
+			clickElement(notificationDepartmentListOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -939,10 +1050,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowNotificationValue = getText(addNotificationTypeOption);
+			documenTypeNotificationDepartmentValue = getText(notificationDepartmentListOption);
 			break;
-		case "select print type":
-			clickElement(addLifecyclePrintTypeOption);
+		case "notification groups list":
+			clickElement(notificationGroupListOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -956,10 +1067,10 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowPrintValue = getText(addLifecyclePrintTypeOption);
+			documentTypeNotificationGroupValue = getText(notificationGroupListOption);
 			break;
-		case "increment type":
-			clickElement(incrementTypeOption);
+		case "notification roles list":
+			clickElement(notificationRoleListOption);
 			try {
 				Thread.sleep(300);
 			} catch (InterruptedException e) {
@@ -973,30 +1084,32 @@ public class DocumentTypeOrTemplateTypePage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			workflowIncrementTypeValue = getText(incrementTypeOption);
-			break;
-		case "select department":
-			clickOnPerticularListElement(selectDepartmentAndActionOption, 0);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			clickOnPerticularListElement(option, index);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			workflowDepartmentValue = getTextFromElementInListInMentionedPosition(selectDepartmentAndActionOption, 0);
+			documentTypeNotificationRolesListValue = getText(notificationRoleListOption);
 			break;
 		default:
 			log.error("invalid field" + fieldName);
 			Assert.fail("failed");
 			break;
 		}
+	}
+	
+	/**
+	 * verify document/template type tabs
+	 * 
+	 * @param tabNames - document/template type tabs
+	 */
+	public void verifyDocumentTemplateTypeTabs(String tabNames) {
+		// wait for element to load
+		String names = getXmlFilesData(tabNames);
+		String[] ExpectedTabNames = names.split("\\|");
+		List<String> actualTabNames = new ArrayList<>();
+		for (int i = 2; i < tabs.size(); i++) {
+			actualTabNames.add(getText(tabs.get(i)));
+		}
+		// compare expected and actual column headers
+		log.info("document/template type tabs " + actualTabNames);
+		Assert.assertTrue(compareArrayAndList(ExpectedTabNames, actualTabNames));
+		log.info("document/template type tabs displayed");
 	}
 
 }

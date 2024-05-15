@@ -16,6 +16,7 @@ import org.openqa.selenium.support.PageFactory;
 import core.BaseClass;
 import page.admin.TagsPage;
 import page.config.ActivitiesPage;
+import page.config.DocumentTypeOrTemplateTypePage;
 import page.config.LifeCycleStatesPage;
 import page.config.NumberingSystemPage;
 import page.config.SystemDataFieldsTypesPage;
@@ -174,6 +175,9 @@ public class AuditTrailPage extends GlobalFunctions {
 	
 	@FindBy(xpath = "//*[@role='tab' and text()='User Creation']")
 	WebElement userCreationTab;
+	
+	@FindBy(xpath = "//*[@role='tab' and text()='document type/template type']")
+	WebElement documentTypeTemplateTypeTab;
 
 	@FindBy(xpath = "//*[@role='tab' and text()='System Data Fields Types']")
 	WebElement systemDataFieldsTypesTab;
@@ -530,7 +534,10 @@ public class AuditTrailPage extends GlobalFunctions {
 			break;		
 		case "user creation tab":
 			verifyText(userCreationTab, name);
-			break;		
+			break;
+		case "document type/template type":
+			verifyText(documentTypeTemplateTypeTab, name);
+			break;
 		case "remove event category header":
 			verifyText(removeEventCategoryHeader, name);
 			break;
@@ -1080,6 +1087,60 @@ public class AuditTrailPage extends GlobalFunctions {
 			break;
 		case "delete":
 			expectedTime = (WorkflowTypePage.workflowTypeDeletedTime).toLowerCase();
+			break;
+		default:
+			log.error("invalid field" + eventName);
+			Assert.fail("failed");
+			break;
+		}
+		for (int i = 1; i <= columnLength + 1; i++) {
+			String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']//*[@aria-colindex='"
+					+ Integer.toString(i) + "']";
+			WebElement element = driver.findElement(By.xpath(rowItem));
+			if (i != 3) {
+				rowData.add(getText(element));
+			} else {
+				actualTime = getText(element);
+			}
+			// scrollScrollBar(auditTrailTable, 90, Constant.RIGHT);
+		}
+		log.info(String.format("mentioned row %s %s", rowNumber, expectedData));
+		Assert.assertTrue(compareArrayAndList(expectedData, rowData));
+		Assert.assertTrue(dateTimeiFunctions.validateTimeWithInDuration(expectedTime, actualTime, "", 60));
+
+	}
+	
+	/**
+	 * validate mentioned row number data in document type/template type audit trail table
+	 * 
+	 * @param rowNumber
+	 * @param data
+	 */
+	public void validateMentionedRowNumberDataForDocumentTypeTemplateTypeAuditTrail(String data, String eventName, int rowNumber) {
+		String expectedTime = null;
+		String actualTime = null;
+		List<String> rowData = new ArrayList<>();
+		String lifeCycleStateData = getXmlFilesData(data);
+		String[] expectedData = lifeCycleStateData.split("\\|");
+		int columnLength = expectedData.length;
+		if (expectedData[0].equals("##")) {
+			expectedData[0] = Integer.toString(rowNumber);
+		}
+		if (expectedData[1].equals("##")) {
+			expectedData[1] = dateTimeiFunctions.getCurrentDateMonthNameYear();
+		}
+		if (expectedData[3].contains("##")) {
+			expectedData[3] = expectedData[3].replace("##", DocumentTypeOrTemplateTypePage.documentTypeTemplateTypeName);
+		}
+		switch (eventName) {
+		case "create":
+			expectedTime = (DocumentTypeOrTemplateTypePage.documentTypeTemplateTypeCreatedTime).toLowerCase();
+			break;
+		case "update":
+			expectedTime = (DocumentTypeOrTemplateTypePage.documentTypeTemplateTypeUpdatedTime).toLowerCase();
+			break;
+		case "delete":
+			expectedTime = (DocumentTypeOrTemplateTypePage.documentTypeTemplateTypeDeletedTime).toLowerCase();
 			break;
 		default:
 			log.error("invalid field" + eventName);

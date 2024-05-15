@@ -1215,4 +1215,264 @@ Feature: Audit Trail functionality
     Then User clicks on 'logged in user drop down'
     And User verifies 'logout option name' is displayed in 'logout' field
     Then User clicks on 'logout option' 
+    
+     @Audit16
+    Scenario: 16_verify user group create, update, delete functionality in audit tral
+    Given User launched the application
+    Then User enters 'email id' in 'email' field of login page
+    Then User enters 'password' in 'password' field of login page
+    And User clicks on 'login' button in login page
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'user group' in user group page
+    And User clicks on 'user group' in user group page
+    And User verify 'user group list tab' in user group page
+    Then User verify 'new user group' in user group page
+    Then User verify 'search option default value' in user group page
+    Then User verify 'table filter default value' in user group page
+    Then User verify 'reset filter' button in user group page
+    Then User verify 'download' button in user group page
+    
+  	And User clicks on 'new user group' in user group page
+    Then User verify 'label name' in user group page
+    Then User enters 'text user group name' in 'name' field of user group page
+    Then User enters 'text user group description' in 'description' field of user group page
+    And User clicks on 'add users link' button in user group page
+    And User enters 'full name' in 'add user' field of user group page
+    And User clicks on 'select all row check box' button in user group page  
+    Then User clicks on '1' and '0' check box in user group page
+    And User clicks on 'add users' button in user group page  
+    And User clicks on 'add user group link' button in user group page
+    Then User clicks on '0' and '0' check box in user group page
+    And User clicks on 'add user group' button in user group page
+    And User clicks on 'add privileges link' button in user group page
+    Then User clicks on '0' and '1' check box in user group page
+    And User clicks on 'add privileges' button in user group page
+    And User clicks on 'save' button in user group page  
+    Then User verify 'user group created successfully message' in user group page
+    Then User verify 'table filter default value' in user group page
+    Then User verify 'search option default value' in user group page
+    And User selects 'user group name option' as 'search option' in user group page
+    Then User enters 'text user group name' in 'search' field of user group page
+    And User verify 'text user group name' in row 1 column 1 in user group page
+    And User clicks on 'reset filter' button in user group page
+ 
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'user group option' as 'category name' in audit trail page
+    And User selects 'created option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'user group' in audit trail page
+    Then User verifies 'create user group audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify workflow type audit tail table data 'text_create_user_group_audit_table_data' for 'create' event in row 1
+    
+    And User clicks on 'admin' sidebar menu
+    And User clicks on 'user group' in user group page
+    And User verify 'user group list tab' in user group page
+    Then User verify 'new user group' in user group page
+    And User selects 'user group name option' as 'search option' in user group page
+    Then User enters 'text user group name' in 'search' field of user group page
+    And User verify 'text user group name' in row 1 column 1 in user group page
+    And User clicks on 'edit' icon in user group page
+    Then User verify 'edit user group header' in user group page
+    Then User verify 'label name' in user group page
+    And User enters 'text edit user group description' in 'description' field of user group page
+    And User clicks on 'update' button in user group page  
+    Then User verify 'user group updated successfully message' in user group page
+          
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'user group option' as 'category name' in audit trail page
+    And User selects 'updated option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'user group' in audit trail page
+    Then User verifies 'update user group audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify workflow type audit tail table data 'text_update_user_group_audit_table_data' for 'update' event in row 1
+        
+    And User clicks on 'admin' sidebar menu
+    And User clicks on 'user group' in user group page
+    And User verify 'user group list tab' in user group page
+    Then User verify 'new user group' in user group page
+    And User selects 'name option' as 'search option' in workflow type page
+    And User selects 'user group name option' as 'search option' in user group page
+    Then User enters 'text user group name' in 'search' field of user group page
+    And User verify 'text user group name' in row 1 column 1 in user group page
+    And User clicks on 'delete icon' in user group page
+    Then User verify 'confirm you delete' in user group page
+    Then User verify 'delete' button in user group page
+    And User clicks on 'delete' button in user group page
+    Then User verify 'user group delete message' in user group page
+    And User clicks on 'reset filter' button in user group page
+    And User selects 'user group name option' as 'search option' in user group page
+    Then User enters 'text user group name' in 'search' field of user group page
+ 		Then User verify 'no rows' in user group page
+           
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'user group option' as 'category name' in audit trail page
+    And User selects 'deleted option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'user group' in audit trail page
+    Then User verifies 'delete user group audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify workflow type audit tail table data 'text_delete_user_group_audit_table_data' for 'delete' event in row 1
+    
+    Then User clicks on 'logged in user drop down'
+    And User verifies 'logout option name' is displayed in 'logout' field
+    Then User clicks on 'logout option' 
+    
+       @Audit17
+    Scenario: 17_verify document type/template type create, update, delete functionality in audit tral
+    Given User launched the application
+    Then User enters 'email id' in 'email' field of login page
+    Then User enters 'password' in 'password' field of login page
+    And User clicks on 'login' button in login page
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    And User clicks on 'config' sidebar menu
+    Then User verify 'document type/template type' in document type template type page
+    And User clicks on 'document type/template type' in document type template type page
+    And User verify 'document type/template type list tab' in document type template type page
+    
+    And User clicks on 'new document type/template type' in document type template type page
+    Then User verify 'all the tabs in document type' displayed in document type template type page  
+    Then User enters 'text document type name' in 'name' field of document type template type page
+    Then User enters 'text document type description' in 'description' field of document type template type page
+    And User selects 0 index option in 'select numbering system' in document type template type page
+    Then User enters 'text retention schedule days' in 'retention schedule' field of document type template type page
+    Then User enters 'text document type initial version' in 'initial version' field of document type template type page
+    And User clicks on 'next' button in document type template type page
+    
+    And User verify 'label select system data field' in document type template type page
+    And User selects 0 index option in 'select system data field' in document type template type page
+    And User clicks on 'add' button in document type template type page
+    Then User clicks on 'next' button in document type template type page
+    
+    And User verify 'label workflow type' in document type template type page
+    And User selects 0 index option in 'select workflow type field' in document type template type page
+    And User clicks on 'add' button in document type template type page
+    Then User clicks on 'next' button in document type template type page
+    
+    And User verify 'label review period duration' in document type template type page
+    Then User enters 'text review period duration' in 'review period duration' field of document type template type page
+    And User enters 'text prior reminder starts from' in 'prior reminder starts from' field of document type template type page
+    Then User enters 'text reminder recurrence schedule' in 'reminder recurrence schedule' field of document type template type page
+    Then User clicks on 'next' button in document type template type page
+    
+    And User verify 'label notification users list' in document type template type page
+    And User selects 0 index option in 'notification users list' in document type template type page
+    Then User selects 0 index option in 'notification departments list' in document type template type page
+    And User selects 0 index option in 'notification groups list' in document type template type page
+    Then User selects 0 index option in 'notification roles list' in document type template type page
+    Then User clicks on 'save' in document type template type page
+ 		Then User verify 'document type created successfully message' in document type template type page
+ 		
+ 		Then User verify 'reset filter' button in document type template type page
+ 		And User selects 'name option' as 'search option' in document type template type page
+    Then User enters 'text document type name' in 'search' field of document type template type page
+    And User verify 'text document type name' in row 1 column 1 in document type template type page
+   
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'document type option' as 'category name' in audit trail page
+    And User selects 'created option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'document type/template type' in audit trail page
+    Then User verifies 'create document type/template type audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify document type template type audit tail table data 'text_create_document_type_template_type_audit_table_data' for 'create' event in row 1
+    
+    And User clicks on 'admin' sidebar menu
+    And User clicks on 'config' sidebar menu
+    Then User verify 'document type/template type' in document type template type page
+    And User clicks on 'document type/template type' in document type template type page
+    And User verify 'document type/template type list tab' in document type template type page
+   	And User selects 'name option' as 'search option' in document type template type page
+    Then User enters 'text document type name' in 'search' field of document type template type page
+    And User verify 'text document type name' in row 1 column 1 in document type template type page
+    And User clicks on 'edit' icon in document type template type page
+    Then User verify 'edit docuement type/template type header' in document type template type page
+    And User verify 'label description' in document type template type page
+    Then User enters 'text document type description1' in 'description' field of document type template type page
+    And User clicks on 'update' button in document type template type page  
+    Then User verify 'document type updated successfully message' in document type template type page
+      
+    And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'document type option' as 'category name' in audit trail page
+    And User selects 'updated option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'document type/template type' in audit trail page
+    Then User verifies 'update document type/template type audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify document type template type audit tail table data 'text_update_user_group_audit_table_data' for 'update' event in row 1
+     
+    And User clicks on 'config' sidebar menu
+    Then User verify 'document type/template type' in document type template type page
+    And User clicks on 'document type/template type' in document type template type page
+    And User verify 'document type/template type list tab' in document type template type page
+   	And User selects 'name option' as 'search option' in document type template type page
+    Then User enters 'text document type name' in 'search' field of document type template type page
+    And User verify 'text document type name' in row 1 column 1 in document type template type page
+    And User clicks on 'delete icon' in document type template type page
+    Then User verify 'confirm you delete' in document type template type page
+    Then User verify 'delete' button in document type template type page
+    And User clicks on 'delete' button in document type template type page
+    Then User verify 'user group delete message' in document type template type page
+    And User clicks on 'reset filter' button in document type template type page
+    And User selects 'name option' as 'search option' in document type template type page
+    Then User enters 'text document type name' in 'search' field of document type template type page
+ 		Then User verify 'no rows' in document type template type page
+ 		
+ 		And User clicks on 'system' sidebar menu
+    Then User verifies 'full name' is displayed in 'logged in user' field
+    Then User verify 'label select category name' in audit trail page
+    And User selects 'document type option' as 'category name' in audit trail page
+    And User selects 'deleted option' as 'event' in audit trail page    
+    Then User verify 'current date' in 'start date' field of audit trail page
+    Then User verify 'current date' in 'end date' field of audit trail page
+    And User clicks on 'identification id' checkbox in audit trail page
+    And User selects 'Jayalakshmi Hegde' as 'user' in audit trail page
+    And User clicks on 'generate' button in audit trail page
+    Then User verify 'document type/template type' in audit trail page
+    Then User verifies 'delete document type/template type audit trail table headers' in audit trail page
+    Then User verify 'generate' button is 'disabled' in audit trail page
+    And User clicks on 'download' button in audit trail page
+    Then User verify document type template type audit tail table data 'text_delete_document_type_template_type_audit_table_data' for 'delete' event in row 1
+    
+    Then User clicks on 'logged in user drop down'
+    And User verifies 'logout option name' is displayed in 'logout' field
+    Then User clicks on 'logout option' 
+     
+     
   
