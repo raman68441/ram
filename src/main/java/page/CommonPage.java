@@ -43,7 +43,7 @@ public class CommonPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Notifications']")
 	WebElement notificationsOption;
 
-	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-body2 css-19p8bze']")
+	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-body2 css-19p8bze'] | //*[@class='MuiTypography-root MuiTypography-body2 css-y7rnz4']")
 	WebElement loginEmailId;
 
 	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-body1 css-j5a1ma']")
@@ -84,6 +84,12 @@ public class CommonPage extends GlobalFunctions {
 	
 	@FindBy(xpath = "//*[text()='Workflow']")
 	WebElement workFlowMenu;
+	
+	@FindBy(xpath = "//*[text()='Repository']")
+	WebElement repositoryMenu;
+	
+	@FindBy(xpath = "//*[text()='Task']")
+	WebElement taskMenu;
 	
 	@FindBy(xpath = "//*[text()='Template']")
 	WebElement templateMenu;
@@ -174,11 +180,17 @@ public class CommonPage extends GlobalFunctions {
 		case "config":
 			clickElement(configMenu);
 			break;
+		case "task":
+			clickElement(taskMenu);
+			break;
 		case "admin":
 			clickElement(adminMenu);
 			break;
 		case "workflow":
 			clickElement(workFlowMenu);
+			break;
+		case "repository":
+			clickElement(repositoryMenu);
 			break;
 		case "template":
 			clickElement(templateMenu);
@@ -244,6 +256,9 @@ public class CommonPage extends GlobalFunctions {
 			break;
 		case "delete":
 			verifyText(deleteBtn, name);
+			break;
+		case "task":
+			verifyText(taskMenu, name);
 			break;
 		case "save button":
 			verifyText(saveBtn, name);

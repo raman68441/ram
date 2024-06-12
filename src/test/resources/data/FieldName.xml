@@ -548,12 +548,23 @@
 	<string name="document type deleted successfully message">Document type deleted successfully</string>
 	<string name="document type already present message">Document type/Template Type already exists</string>	
 	<string name="document type updated successfully message">Document Type updated successfully</string>
-	<string name="workflow">Workflow</string>
-	<string name="workflow">Workflow</string>	
-	<string name="workflow">Workflow</string>
 	<string name="create document type/template type audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
     <string name="update document type/template type audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event|Field|New Value|Old Value</string>
     <string name="delete document type/template type audit trail table headers">ID|Date|Time|Initiating User Login Id|Unique Identifiers|Event</string>
+	<string name="my task tab">My Task</string>
+	<string name="assign task tab">Assign Task</string>	
+	<string name="completed task tab">Completed Task</string>
+	<string name="cancelled task tab">Cancelled Task</string>	
+	<string name="label next up">Next Up</string>
+	<string name="label in progress">In Progress</string>	
+	<string name="label completed">Completed</string>
+	<string name="workflow">Workflow</string>	
+	<string name="workflow">Workflow</string>
+	<string name="workflow">Workflow</string>	
+	<string name="workflow">Workflow</string>
+	<string name="workflow">Workflow</string>	
+	<string name="workflow">Workflow</string>
+	
 
 
 
