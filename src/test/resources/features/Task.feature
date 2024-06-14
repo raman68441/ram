@@ -20,18 +20,18 @@ Feature: Task functionality
     And User verify 'label in progress' in task page
     Then User verify 'label completed' in task page
     
-    #And User clicks on 'assign task tab' in task page
-    #Then User verify 'assign by me tab' in task page
-    #And User verify 'assign new task tab' in task page
-    #And User verifies 'assign by me task table column headers' in task page
-    #Then User verify 'search option default value' in task page
-    #Then User verify 'table filter default value' in task page
-    #Then User verify 'reset filter' button in task page
-    #Then User verify 'download' button in task page
-    #Then User verify "10" displayed in pagination field
-    #Then User verify "previous page" arrow is "disabled" in pagination field
-    #And User verify total number of records displayed in pagination
-    #And User verify number of rows in task table task page
+    And User clicks on 'assign task tab' in task page
+    Then User verify 'assigned by me tab' in task page
+    And User verify 'assign new task tab' in task page
+    And User verifies 'assign by me task table column headers' in task page
+    Then User verify 'search option default value' in task page
+    Then User verify 'table filter default value' in task page
+    Then User verify 'reset filter' button in task page
+    Then User verify 'download' button in task page
+    Then User verify "10" displayed in pagination field
+    Then User verify "previous page" arrow is "disabled" in pagination field
+    And User verify total number of records displayed in pagination
+    And User verify number of rows in task table task page
     #
     #And User clicks on 'assign new task tab' in task page
     #Then User verify 'label task type' in task page
