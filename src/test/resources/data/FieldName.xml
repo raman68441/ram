@@ -558,43 +558,42 @@
 	<string name="label next up">Next Up</string>
 	<string name="label in progress">In Progress</string>	
 	<string name="label completed">Completed</string>
-	<string name="workflow">Workflow</string>	
+	<string name="assigned by me tab">Assigned By Me</string>	
+	<string name="assign new task tab">Assign New Task</string>
+	<string name="assign by me task table column headers">Action|Task ID|Task Type|Target Date|Assigned To|Task Status|Status|Active/Inactive</string>	
+	<string name="label task type">Task Type *</string>
+	<string name="label assignee">Assignee *</string>	
+	<string name="label target date">Target Date</string>
+	<string name="label attached file">Attached File</string>
+	<string name="label drag and drop files here or click to select files">Drag &amp; Drop files here, OR Click to select files.</string>
+	<string name="general option">General</string>
+	<string name="document option">Document</string>
+	<string name="warning message task type required">Task Type is required</string>
+	<string name="warning message assignee required">Assignee is required</string>
+	<string name="assign">ASSIGN</string>
+	<string name="task assigned successfully message">Task Assigned Successfully</string>
+	<string name="task id option">Task ID</string>
+	<string name="task type option">Task Type</string>
+	<string name="edit task header">Edit Task</string>
+	<string name="comments tab">Comments</string>
+	<string name="history tab">History</string>
+	<string name="task updated successfully message">Task Updated Successfully</string>
+	<string name="task assign history text">Assigned the Task</string>
+	<string name="task deleted Successfully message">Task Deleted Successfully</string>
+	<string name="task accepted successfully message">Task Accepted Successfully</string>
+	<string name="task completed successfully message">Task Completed Successfully</string>
+	<string name="task rejected successfully message">Task Rejected Successfully</string>
+	<string name="task transfer successfully message">Task Transfer Successfully</string>
+	<string name="transfer task">TRANSFER TASK</string>
+	<string name="reject">REJECT</string>
+	<string name="accept">ACCEPT</string>
 	<string name="workflow">Workflow</string>
-	<string name="workflow">Workflow</string>	
 	<string name="workflow">Workflow</string>
-	<string name="workflow">Workflow</string>	
+	<string name="workflow">Workflow</string>
+	<string name="workflow">Workflow</string>
+	<string name="workflow">Workflow</string>
+	<string name="workflow">Workflow</string>
 	<string name="workflow">Workflow</string>
 	
-
-
-
-
-	
-
-
-
- 	  
-
- 	 
-	
- 	 	
-
- 	
- 	
-
- 
-
-
-   
-    
-
-
-
-
-   
-  
-  
-  
-
 
 </resources>

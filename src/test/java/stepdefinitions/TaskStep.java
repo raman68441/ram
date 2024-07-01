@@ -12,6 +12,7 @@ public class TaskStep {
 
 	@When("User verify {string} in task page")
 	@When("User verify {string} button in task page")
+	@When("User verify {string} of task page")
 	@When("User verify {string} radio button in task page")
 	public void userVerifyFieldName(String expectedText) {
 		taskPage.verifyFieldName(expectedText);
@@ -19,12 +20,12 @@ public class TaskStep {
 
 	@Then("User verifies {string} in task page")
 	public void userVerifyDepartmentTableHeaderColumns(String columnuName) {
-		taskPage.verifyActivitesListTableColumnHeaders(columnuName);
+		taskPage.verifyAssignTaskTableColumnHeaders(columnuName);
 	}
 	
 	@Then("User verify number of rows in task table task page")
 	public void userVerifyNumberOfRowsInAuditTrailTable() {
-		taskPage.verifyNumberOfRowsInActivitesTable();
+		taskPage.verifyNumberOfRowsInTaskTable();
 	}
 	
 	@When("User clicks on {string} in task page")
@@ -58,6 +59,11 @@ public class TaskStep {
 	@When("User verify {string} in row {int} column {int} in task page")
 	public void userVerifyBusinessUnitTableCellData(String data, int rowNumber, int columnNumber) {
 		taskPage.verifyMentionedCellDataInTable(data, rowNumber, columnNumber);
+	}
+	
+	@Then("User verify {string} in {string} drop down in task page")
+	public void userVerifyDropDownFields(String option, String fieldName) {
+		taskPage.verifyDropDownOptions(option, fieldName);
 	}
 	
 //	@Then("User verify {string} in {string} drop down in task page")

@@ -174,12 +174,16 @@
 	<string name="text_delete_document_type_template_type_audit_table_data">##|##|Jayalakshmi Hegde|Name = ##|Deleted</string>	
 
   
- 
+ <!--task texts--> 
+<string name="text task description">description</string>	
+<string name="text_assign_task_table_data">##|General|##|Jayalakshmi Hegde|To be Accepted|Active</string>	
+<string name="text edit task description">updated task</string>	
+<string name="text task accept">task accepted</string>
+<string name="text task reject">task rejected</string>
+<string name="text_complted_task_table_data">##|General|##|Jayalakshmi Hegde|Completed</string>
+<string name="text_rejected_task_table_data">##|General|##|Jayalakshmi Hegde|Rejected</string>
+<string name="text task reject remark">not properly documented</string>
 
-
-	     
-
-	    
 
 	     
 	      

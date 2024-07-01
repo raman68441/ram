@@ -34,6 +34,20 @@ public class DateTimeiFunctions {
 		log.info(String.format("formated date %s", formattedDate));
 		return formattedDate;
 	}
+	
+	/**
+	 * generate current date month and year in dd-mmm-yyyy with month as English
+	 * locale(ex: 05-sep-2023)
+	 * 
+	 * @return date
+	 */
+	public String getCurrentDateMonthNameYear(String delimeter) {
+		Date date = new Date(); // You can replace this with your own date
+		SimpleDateFormat dateFormat = new SimpleDateFormat(String.format("dd%sMMM%syyyy",delimeter,delimeter), Locale.ENGLISH);
+		String formattedDate = dateFormat.format(date);
+		log.info(String.format("formated date %s", formattedDate));
+		return formattedDate;
+	}
 
 	/**
 	 * generate current  month date, and year in MM/dd/YYYY with month as English

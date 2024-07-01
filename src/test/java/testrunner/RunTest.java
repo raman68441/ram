@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 	features = {"src/test/resources/features"},
 	glue = {"stepdefinitions", "hooks"},
-	tags= "@task",
+	tags= " @task3",
 	plugin={"pretty",
 			"html:target/cucumber-html-report.html",
 			"json:target/cucumber-reports/cucumber.json",

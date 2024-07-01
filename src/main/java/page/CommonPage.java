@@ -43,7 +43,7 @@ public class CommonPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Notifications']")
 	WebElement notificationsOption;
 
-	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-body2 css-19p8bze'] | //*[@class='MuiTypography-root MuiTypography-body2 css-y7rnz4']")
+	@FindBy(xpath = "//p[contains(text(),'@')]")
 	WebElement loginEmailId;
 
 	@FindBy(xpath = "//*[@class ='MuiTypography-root MuiTypography-body1 css-j5a1ma']")

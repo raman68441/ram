@@ -53,6 +53,9 @@ public class TaskPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Completed Task']")
 	WebElement completedTaskTab;
 	
+	@FindBy(xpath="//*[text()='Complete Task']")
+	WebElement completeTaskBtn;
+	
 	@FindBy(xpath = "//*[text()='Cancelled Task']")
 	WebElement cancelledTaskTab;
 	
@@ -107,9 +110,12 @@ public class TaskPage extends GlobalFunctions {
 	
 	@FindBy(xpath = "//*[text()='Clear']")
 	WebElement clearBtn;
-
+	
 	@FindBy(xpath = "//*[text()='Update']")
 	WebElement updateBtn;
+	
+	@FindBy(xpath = "//*[text()='Update']")
+	List <WebElement> updateBtns;
 	
 	@FindBy(xpath = "//*[text()='General']")
 	List<WebElement> labelGeneral;
@@ -121,7 +127,7 @@ public class TaskPage extends GlobalFunctions {
 	WebElement transferTaskBtn;
 	
 	@FindBy(xpath = "//*[text()='Reject']")
-	WebElement rejectBtn;
+	List<WebElement> rejectBtn;
 	
 	@FindBy(xpath = "//*[text()='Accept']")
 	WebElement acceptBtn;	
@@ -162,7 +168,7 @@ public class TaskPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='MuiAlert-message css-1xsto0d']")
 	WebElement taskMessage;
 
-	@FindBy(xpath = "//*[text()= Task Type is required']")
+	@FindBy(xpath = "//*[text()= 'Task Type is required']")
 	WebElement taskTypeRequired;
 
 	@FindBy(xpath = "//*[text()='Assignee is required']")
@@ -189,16 +195,22 @@ public class TaskPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='MuiTypography-root MuiTypography-h5 css-tv5qfu']")
 	WebElement editTaskHeader;
 
+	@FindBy(xpath="//*[@id='simple-tabpanel-1']//p[2]")
+	WebElement historyContent;
+		
 	@FindBy(id = "table-filter-option")
 	WebElement tableFilterOption;
 
 	@FindBy(id = "table-search-option")
 	WebElement tableSearchOption;
+	
+	@FindBy(id ="remarks")
+	WebElement remarks;
 
 	@FindBy(xpath = "//*[@class='PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3']")
 	List<WebElement> activeInactiveTogleIcon;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-10uacdu']")
+	@FindBy(xpath = "//button[text()='Reset Filter']")
 	WebElement resetFilterBtn;
 
 	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-7c3c59']")
@@ -210,12 +222,22 @@ public class TaskPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='MuiDataGrid-overlay css-14349d1']")
 	WebElement emptyTable;
 
-	@FindBy(xpath = "//*[@class='MuiBox-root css-f0fbul']")
+	@FindBy(xpath = "//*[@class='MuiBox-root css-dcaojr']")
 	WebElement scrollPage;
+	
+	@FindBy(xpath="//*[@class='MuiDataGrid-root MuiDataGrid-root--densityStandard MuiDataGrid-withBorderColor css-vqhi2a']")
+	WebElement girdData;
 
 	public String optionName = "//*[@role ='option' and @data-value='#']";
-
-	public static String taskAssignTime, taskUpdatedTime, taskDeletedTime, taskId,
+	
+	String taskIdInNextUp = "//*[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-s18byi']//*[text()='Next Up']/../../../..//*[text()='#']";
+	String taskIdInInProgress = "//*[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-s18byi']//*[text()='In Progress']/../../../..//*[text()='#']";
+	String taskIdInInComplete = "//*[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-s18byi']//*[text()='Completed']/../../../..//*[text()='#']";
+	String taskTypeInNextUp = "//*[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-s18byi']//*[text()='Next Up']/../../../..//*[text()='#']";
+	String taskTypeInProgress = "//*[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-s18byi']//*[text()='In Progress']/../../../..//*[text()='#']";
+	String taskTypeInComplete = "//*[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-s18byi']//*[text()='Completed']/../../../..//*[text()='#']";
+	
+	public static String taskAssignTime, taskUpdatedTime, taskDeletedTime, taskId, taskType,
 			taskDescription;
 
 	/**
@@ -237,6 +259,47 @@ public class TaskPage extends GlobalFunctions {
 		case "completed task tab":
 			verifyText(completedTaskTab, name);
 			break;
+		case "transfer task":
+			verifyText(transferTaskBtn, name);
+			break;
+		case "reject":
+			text = getTextFromElementInListInMentionedPosition(rejectBtn, 0);
+			compareTwoString(text, name);
+			break;
+		case "accept":
+			verifyText(acceptBtn, name);
+			break;
+		case "task id in next up section":
+			String taskIdNextUpText = taskIdInNextUp.replace("#", taskId);
+			List <WebElement> nexUpTaskId = driver.findElements(By.xpath(taskIdNextUpText));
+			verifyText(nexUpTaskId.get((nexUpTaskId.size()-1)), taskId);
+			break;
+		case "task type in next up section":
+			String taskTypeNextUpText = taskTypeInNextUp.replace("#", taskType);
+			List <WebElement> nexUpTaskType = driver.findElements(By.xpath(taskTypeNextUpText));
+			verifyText(nexUpTaskType.get(nexUpTaskType.size()-1), taskType);
+			break;
+		case "task id in inprogress section":
+			String taskIdInProgressText = taskIdInInProgress.replace("#", taskId);
+			List<WebElement> inProgressTaskId = driver.findElements(By.xpath(taskIdInProgressText));
+			verifyText(inProgressTaskId.get(inProgressTaskId.size()-1), taskId);
+			break;
+		case "task type in inprogress section":
+			taskType = "General";
+			String taskTypeInProgressText = taskTypeInProgress.replace("#", taskType);
+			List <WebElement> inProgressTaskType = driver.findElements(By.xpath(taskTypeInProgressText));
+			verifyText(inProgressTaskType.get(inProgressTaskType.size()-1), taskType);
+			break;
+		case "task id in complete section":
+			String taskIdComplete = taskIdInInComplete.replace("#", taskId);
+			List <WebElement> completeTaskId = driver.findElements(By.xpath(taskIdComplete));
+			verifyText(completeTaskId.get(completeTaskId.size()-1), taskId);
+			break;
+		case "task type in complete section":
+			String taskTypeComplete = taskTypeInComplete.replace("#", taskType);
+			List <WebElement> completeTaskType = driver.findElements(By.xpath(taskTypeComplete));
+			verifyText(completeTaskType.get(completeTaskType.size()-1), taskType);
+			break;
 		case "cancelled task tab":
 			verifyText(cancelledTaskTab, name);
 			break;
@@ -250,13 +313,13 @@ public class TaskPage extends GlobalFunctions {
 		case "comments tab":
 			verifyText(commentsTab, name);
 			break;
-		case "assign new task":
+		case "assign new task tab":
 			verifyText(assignNewTaskTab, name);
-			break;
+			break;			
 		case "label task type":
 		case "label assignee":
 		case "label target date":
-		case "label description":
+		case "label description field":
 		case "label comment":
 			getTextFromElementInListAndValidate(assignNewTaskLabels, name);
 			break;
@@ -268,7 +331,7 @@ public class TaskPage extends GlobalFunctions {
 		case "label attached file":
 			verifyText(labelAttachedFile, name);
 			break;
-		case "label drag and drop":
+		case "label drag and drop files here or click to select files":
 			verifyText(selectFileText, name);
 			break;
 		case "cancel":
@@ -281,19 +344,23 @@ public class TaskPage extends GlobalFunctions {
 			text = getTextFromElementInListInMentionedPosition(viewDetailsLink, 0);
 			compareTwoString(text, name);
 			break;
-		case "warning message task type is required":
+		case "warning message task type required":
 			verifyText(taskTypeRequired, name);
 			break;
 		case "warning message description required":
 			verifyText(descriptionRequired, name);
 			break;
-		case "warning message assignee is required":
+		case "warning message assignee required":
 			verifyText(assigneeRequired, name);
 			break;
 		case "task assigned successfully message":
 		case "task updated successfully message":
-		case "task deleted Successfully message":
-			if (fieldName.contains("created")) {
+		case "task deleted Successfully message":			
+		case "task accepted successfully message":
+		case "task completed successfully message":
+		case "task rejected successfully message":
+		case "task transfer successfully message":
+			if (fieldName.contains("assign")) {
 				taskAssignTime = dateTimeiFunctions.getCurrentTime();
 			} else if (fieldName.contains("updated")) {
 				taskUpdatedTime = dateTimeiFunctions.getCurrentTime();
@@ -302,6 +369,11 @@ public class TaskPage extends GlobalFunctions {
 				taskDeletedTime = dateTimeiFunctions.getCurrentTime();
 			}
 			verifyText(taskMessage, name);
+			if (fieldName.contains("assign")) {
+				String taskElement = "//*[@aria-rowindex='2']//*[@data-colindex='1']";
+				WebElement id = driver.findElement(By.xpath(taskElement));
+				taskId = getText(id);
+			}
 			break;
 		case "confirm you delete":
 			text = getTextFromElementInListInMentionedPosition(confirmDelete, 1);
@@ -317,7 +389,12 @@ public class TaskPage extends GlobalFunctions {
 			verifyText(noRecordsFound, name);
 			break;		
 		case "edit task header":
-			verifyText(editTaskHeader, name);
+			String editTaskHeaderText = getText(editTaskHeader);
+			Assert.assertTrue("Edit header displayed", editTaskHeaderText.contains(name));
+			break;
+		case "task assign history text":
+			String historyText = getText(historyContent);
+			Assert.assertTrue("Edit header displayed", historyText.contains(name));
 			break;
 		case "search option default value":
 			verifyText(tableSearchOption, name);
@@ -333,18 +410,10 @@ public class TaskPage extends GlobalFunctions {
 			break;
 		case "reset filter":
 			verifyText(resetFilterBtn, name);
+			//taskId = "TSK-000008";
 			break;
 		case "save button":
 			verifyText(saveBtn, name);
-			break;
-		case "transfer task":
-			verifyText(transferTaskBtn, name);
-			break;
-		case "reject":
-			verifyText(rejectBtn, name);
-			break;
-		case "accept":
-			verifyText(acceptBtn, name);
 			break;
 		case "update":
 			verifyText(updateBtn, name);
@@ -352,6 +421,9 @@ public class TaskPage extends GlobalFunctions {
 		case "clear":
 			verifyText(clearBtn, name);
 			break;	
+		case "assign":
+			verifyText(assignBtn, name);
+			break;			
 		case "no rows":
 			verifyText(emptyTable, name);
 			break;
@@ -367,7 +439,7 @@ public class TaskPage extends GlobalFunctions {
 	 * 
 	 * @param columnHeaders -task table column headers name
 	 */
-	public void verifyActivitesListTableColumnHeaders(String expectedColumnHeaders) {
+	public void verifyAssignTaskTableColumnHeaders(String expectedColumnHeaders) {
 		// wait for element to load
 		waitTillAttributeDisplay(taskTable, "class", "MuiDataGrid-virtualScroller css-1pzb349",
 				Duration.ofSeconds(60));
@@ -390,7 +462,7 @@ public class TaskPage extends GlobalFunctions {
 	 * 
 	 * @param rows
 	 */
-	public void verifyNumberOfRowsInActivitesTable() {
+	public void verifyNumberOfRowsInTaskTable() {
 
 		scrollScrollBar(scrollPage, 5000, Constant.DOWN);
 		int rowsInPage = Integer.valueOf(getText(paginationPage.rowsPerPage));
@@ -398,8 +470,7 @@ public class TaskPage extends GlobalFunctions {
 		if (rowsInPage > totalRecords) {
 			rowsInPage = totalRecords;
 		}
-		int NumberOfRowsINTable = firstColumnData.size();
-
+		int NumberOfRowsINTable = (Integer.parseInt(getAttribute(girdData, "aria-rowcount")))-1;
 		Assert.assertTrue(rowsInPage == NumberOfRowsINTable);
 		scrollScrollBar(scrollPage, 5000, Constant.TOP);
 	}
@@ -418,8 +489,20 @@ public class TaskPage extends GlobalFunctions {
 		case "assign task tab":
 			clickElement(assignTaskTab);
 			break;
+		case "history tab":
+			clickElement(historyTab);
+			break;	
 		case "assign by me tab":
 			clickElement(assignedByMeTab);
+			break;
+		case "task type":
+			clickElement(taskTypeField);
+			break;
+		case "assign":
+			clickElement(assignBtn);
+			break;
+		case "completed task tab":
+			clickElement(completedTaskTab);
 			break;
 		case "assign new task tab":
 			clickElement(assignNewTaskTab);
@@ -430,9 +513,16 @@ public class TaskPage extends GlobalFunctions {
 		case "update":
 			clickElement(updateBtn);
 			break;
+		case "update button":
+			int length = (updateBtns.size())-1;
+			clickOnPerticularListElement(updateBtns,length);
+			break;
 		case "delete":
 			clickElement(deleteBtn);
 			break;
+		case "complete task":
+			clickElement(completeTaskBtn);
+			break;				
 		case "edit":
 			clickOnPerticularListElement(editIcon, 0);
 			break;
@@ -454,18 +544,21 @@ public class TaskPage extends GlobalFunctions {
 		case "reset all":
 			clickElement(resetFilterBtn);
 			break;
-//		case "electronic signature yes":
-//			clickOnPerticularListElement(radioBtns,0);
-//			break;	
-//		case "comments yes":
-//			clickOnPerticularListElement(radioBtns,2);
-//			break;	
-//		case "electronic signature no":
-//			clickOnPerticularListElement(radioBtns,1);
-//			break;	
-//		case "comments no":
-//			clickOnPerticularListElement(radioBtns,3);
-//			break;	
+		case "transfer task":
+			clickElement(transferTaskBtn);
+			break;
+		case "reject":
+			clickOnPerticularListElement(rejectBtn,0);
+			break;
+		case "reject button":
+			clickOnPerticularListElement(rejectBtn,1);
+			break;
+		case "accept":
+			clickElement(acceptBtn);
+			break;
+		case "cancelled task":
+			clickElement(cancelledTaskTab);
+			break;		
 		default:
 			Assert.fail("failed");
 			log.error("invalid field " + fieldName);
@@ -493,12 +586,16 @@ public class TaskPage extends GlobalFunctions {
 			break;
 		case "search":
 			tableSearchField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			if (text.equals("text task description")) {
-				enterValue(tableSearchField, fieldValue);
-			} else if(text.equals("text meaning of signature")) {
+			if (text.equals("task id")) {
+				enterValue(tableSearchField, taskId);
+			} else {
 				enterValue(tableSearchField, fieldValue);
 			}
 			break;
+		case "remarks":
+			remarks.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+				enterValue(remarks, fieldValue);
+			break;				
 		default:
 			System.out.println("invalid name");
 			break;
@@ -506,40 +603,33 @@ public class TaskPage extends GlobalFunctions {
 	}
 
 	/**
-	 * validate mentioned row number data in activities
+	 * validate mentioned row number data in Task page
 	 * 
 	 * @param rowNumber
 	 * @param data
 	 */
 	public void validateMentionedRowNumberDataFromTable(String data, int rowNumber) {
 		String rowData = getXmlFilesData(data);
-		String[] ActivitiesExpectedData = rowData.split("\\|");
+		String[] taskTableExpectedData = rowData.split("\\|");
+		rowNumber= rowNumber+1;
 
-		if (ActivitiesExpectedData[0].equals("##")) {
-			ActivitiesExpectedData[0] = "";
+		if (taskTableExpectedData[0].equals("##")) {
+			taskTableExpectedData[0] = taskId;
 		}
-		if (ActivitiesExpectedData[4].equals("##")) {
-			ActivitiesExpectedData[4] = dateTimeiFunctions.getCurrentMonthDateYear("-");
-		}
-		if (ActivitiesExpectedData[6].equals("#")) {
-			ActivitiesExpectedData[6] = "";
-		} else {
-			ActivitiesExpectedData[6] = dateTimeiFunctions.getCurrentMonthDateYear("-");
-		}
-		if (ActivitiesExpectedData[7].equals("#")) {
-			ActivitiesExpectedData[7] = "";
-		}
-		int columnLength = ActivitiesExpectedData.length;
+		if (taskTableExpectedData[2].equals("##")) {
+			taskTableExpectedData[2] = dateTimeiFunctions.getCurrentDateMonthNameYear("-");
+		}	
+		int columnLength = taskTableExpectedData.length;
 		List<String> actualData = new ArrayList<>();
 		for (int i = 1; i <= columnLength; i++) {
-			String rowItem = "//*[@data-rowindex='" + Integer.toString(rowNumber) + "']/..//*[@data-colindex='"
+			String rowItem = "//*[@aria-rowindex='" + Integer.toString(rowNumber) + "']//*[@data-colindex='"
 					+ Integer.toString(i) + "']";
 			WebElement element = driver.findElement(By.xpath(rowItem));
 			actualData.add(getText(element));
 			 scrollScrollBar(taskTable, 15, Constant.RIGHT);
 		}
-		log.info(String.format("mentioned row %s %s", rowNumber, ActivitiesExpectedData));
-		Assert.assertTrue(compareArrayAndList(ActivitiesExpectedData, actualData));
+		log.info(String.format("mentioned row %s %s", rowNumber, taskTableExpectedData));
+		Assert.assertTrue(compareArrayAndList(taskTableExpectedData, actualData));
 	}
 
 	/**
@@ -578,6 +668,41 @@ public class TaskPage extends GlobalFunctions {
 				e.printStackTrace();
 			}
 			element = driver.findElement(By.xpath("//*[@data-value='" + value + "']"));
+			clickElement(element);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case "select task type":
+			clickElement(taskTypeField);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			element = driver.findElement(By.xpath("//li[text()='" + value + "']"));
+			clickElement(element);
+			taskType = value;
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case "assignee":
+			clickElement(assigneeField);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			element = driver.findElement(By.xpath("//li[text()='" + value + "']"));
 			clickElement(element);
 			try {
 				Thread.sleep(1000);
@@ -639,17 +764,31 @@ public class TaskPage extends GlobalFunctions {
 	 * @param data
 	 */
 	public void verifyMentionedCellDataInTable(String data, int rowNumber, int columnNumber) {
-		String rowData = null;
-		if(data.equals("text task name")) {
-			rowData = taskId;
+		String expectedText = null;
+		rowNumber = rowNumber+1;
+		if(data.equals("task id")) {
+			expectedText = taskId;
 		} else {
-		  rowData = getXmlFilesData(data);
+			expectedText = getXmlFilesData(data);
 		}
 		
-		String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']/..//*[@data-colindex='"
+		String rowItem = "//*[@aria-rowindex='" + Integer.toString(rowNumber) + "']//*[@data-colindex='"
 				+ Integer.toString(columnNumber) + "']";
 		WebElement element = driver.findElement(By.xpath(rowItem));
-		compareTwoString(rowData, getText(element));
+		compareTwoString(expectedText, getText(element));
+	}
+	
+	/**
+	 * verify drop down option from Task Page
+	 * 
+	 * @param option    - drop down option
+	 * @param fieldName - field name
+	 */
+	public void verifyDropDownOptions(String option, String fieldName) {
+		String name = getXmlFilesData(option);
+		WebElement element = null;
+		element = driver.findElement(By.xpath("//*[text()='" + name + "']"));
+		verifyText(element, name);
 	}
 
 }
