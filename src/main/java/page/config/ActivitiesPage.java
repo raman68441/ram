@@ -66,8 +66,8 @@ public class ActivitiesPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Cancel']")
 	WebElement cancelBtn;
 
-	@FindBy(xpath = "//*[text()='Save']")
-	WebElement saveBtn;
+	@FindBy(xpath = "//*[text()='Create']")
+	WebElement createBtn;
 
 	@FindBy(xpath = "//*[text()='Update']")
 	WebElement updateBtn;
@@ -80,6 +80,7 @@ public class ActivitiesPage extends GlobalFunctions {
 
 	@FindBy(xpath = "//*[text()='Electronic Signature:']")
 	WebElement labelElectronicSignature;
+
 
 	@FindBy(xpath = "//*[text()='Comments:']")
 	WebElement labelComments;
@@ -99,16 +100,20 @@ public class ActivitiesPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Delete']")
 	WebElement deleteBtn;
 
-	@FindBy(xpath = "//*[@class='MuiAlert-message css-1xsto0d']")
+	
+	@FindBy(xpath = "//div[@class='MuiAlert-icon css-1l54tgj']/following-sibling::div[1]")
 	WebElement activitiesMessage;
 
-	@FindBy(xpath = "//*[text()= Name is required']")
+	@FindBy(xpath="//div[@class='MuiAlert-icon css-1l54tgj']/following-sibling::div[2]")
+	WebElement activityMessageCloseIcon;
+
+	@FindBy(xpath = "//*[text()='Name is required']")
 	WebElement nameRequired;
 
 	@FindBy(xpath = "//*[text()='Description is required']")
 	WebElement descriptioneRequired;
 
-	@FindBy(xpath = "//*[text()='Meaning OfS ignature is Required']")
+	@FindBy(xpath = "//*[text()='Meaning of Signature is required']")
 	WebElement meaningOfSignatureRequired;
 
 	@FindBy(xpath = "//*[@role='option']")
@@ -126,7 +131,7 @@ public class ActivitiesPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary css-aqsgr9']")
 	WebElement deactiveIcon;
 
-	@FindBy(xpath = "//*[text()='Edit Activities']")
+	@FindBy(xpath = "//*[@id='root']/div[1]/div[3]/div/div[2]/div/div[1]/div/div[2]/p")
 	WebElement editActivityHeader;
 
 	@FindBy(id = "table-filter-option")
@@ -138,10 +143,10 @@ public class ActivitiesPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='PrivateSwitchBase-input MuiSwitch-input css-1m9pwf3']")
 	List<WebElement> activeInactiveTogleIcon;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-10uacdu']")
+	@FindBy(xpath ="//button[text()='Reset Filter']")
 	WebElement resetFilterBtn;
-
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-disableElevation css-7c3c59']")
+	
+	@FindBy(xpath = "//*[@id='simple-tabpanel-0']/div/div[1]/div/div[5]/button")
 	WebElement downloadBtn;
 
 	@FindBy(id = "table-search")
@@ -150,8 +155,10 @@ public class ActivitiesPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='MuiDataGrid-overlay css-14349d1']")
 	WebElement emptyTable;
 
-	@FindBy(xpath = "//*[@class='MuiBox-root css-f0fbul']")
+	@FindBy(xpath = "//*[@id='root']/div/div[3]")
 	WebElement scrollPage;
+	
+	
 
 	public String optionName = "//*[@role ='option' and @data-value='#']";
 
@@ -220,19 +227,21 @@ public class ActivitiesPage extends GlobalFunctions {
 		case "activity created successfully message":
 		case "activity name is allready present message":
 		case "activity updated successfully message":
+			
 			if (fieldName.contains("created")) {
 				activityCreatedTime = dateTimeiFunctions.getCurrentTime();
 			} else if (fieldName.contains("updated")) {
 				activityUpdatedTime = dateTimeiFunctions.getCurrentTime();
 			}
 			verifyText(activitiesMessage, name);
+			activityMessageCloseIcon.click();
 			break;
 		case "activities deleted message":
 			text = name.replace("#", activityName);
 			activityDeletedTime = dateTimeiFunctions.getCurrentTime();
 			verifyText(activitiesMessage, text);
 			break;
-		case "confirm you delete":
+		case "confirm your delete":
 			text = getTextFromElementInListInMentionedPosition(confirmDelete, 1);
 			compareTwoString(text, name);
 			break;
@@ -257,8 +266,8 @@ public class ActivitiesPage extends GlobalFunctions {
 		case "reset filter":
 			verifyText(resetFilterBtn, name);
 			break;
-		case "save button":
-			verifyText(saveBtn, name);
+		case "create button":
+			verifyText(createBtn, name);
 			break;
 		case "update":
 			verifyText(updateBtn, name);
@@ -294,6 +303,15 @@ public class ActivitiesPage extends GlobalFunctions {
 		log.info("activities column headers " + actualColumnHeadersText);
 		Assert.assertTrue(compareArrayAndList(ExpectedColumnHeader, actualColumnHeadersText));
 		log.info("activities column headers displayed");
+	
+//		List<String> actualHeaders = getTableColumnHeaders(); // Method to retrieve column headers
+//		System.out.println("Actual headers: " + actualHeaders);
+//		List<String> expectedHeaders = Arrays.asList("Header1", "Header2", "Header3"); // Update as per your table
+//
+//	Assert.assertTrue("Header mismatch. Expected: " + expectedHeaders + " but was: " + actualHeaders,
+//               actualHeaders.equals(expectedHeaders));
+
+//	
 	}
 
 	/**
@@ -333,19 +351,32 @@ public class ActivitiesPage extends GlobalFunctions {
 			clickElement(newActivity);
 			break;
 		case "cancel":
+			//waitForElementToBeClickable(cancelBtn);
+		
+			waitTillAttributeDisplay(cancelBtn, "text", "Cancel", Duration.ofSeconds(30));
 			clickElement(cancelBtn);
 			break;
+		
 		case "update":
 			clickElement(updateBtn);
 			break;
 		case "delete":
 			clickElement(deleteBtn);
 			break;
+//		case "edit":
+//			clickElement(editBtn);
+//			break;
 		case "edit":
-			clickOnPerticularListElement(editIcon, 0);
+			//waitForListElementsToBeVisible(editIcon);
+		waitForElementToBeInisible(activitiesMessage);
+			clickOnPerticularListElement(editIcon, 2);
+			System.out.println("Edit list element is found.....");
 			break;
 		case "delete icon":
-			clickOnPerticularListElement(deleteIcon, 0);
+			//waitTillAttributeDisplay(deleteIcon, "data-testid", "DeleteOutlineOutlinedIcon", Duration.ofSeconds(30));
+			//Thread.sleep(3000);
+			waitForElementToBeInisible(activitiesMessage);
+			clickOnPerticularListElement(deleteIcon, 2);
 			break;
 		case "reset filter":
 			clickElement(resetFilterBtn);
@@ -353,8 +384,8 @@ public class ActivitiesPage extends GlobalFunctions {
 		case "download":
 			clickElement(downloadBtn);
 			break;
-		case "save":
-			clickElement(saveBtn);
+		case "create":
+			clickElement(createBtn);
 			break;
 		case "select field type option":
 			clickElement(dropdownIcon);
@@ -373,7 +404,8 @@ public class ActivitiesPage extends GlobalFunctions {
 			break;	
 		case "comments no":
 			clickOnPerticularListElement(radioBtns,3);
-			break;	
+			break;
+		
 		default:
 			Assert.fail("failed");
 			log.error("invalid field " + fieldName);
@@ -483,7 +515,7 @@ public class ActivitiesPage extends GlobalFunctions {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			element = driver.findElement(By.xpath("//*[@role='option']/..//*[text()='" + value + "']"));
+			element = driver.findElement(By.xpath("//*[@role='option']/..//*[text()='Meaning of Signature']"));
 			clickElement(element);
 			try {
 				Thread.sleep(300);
@@ -569,7 +601,7 @@ public class ActivitiesPage extends GlobalFunctions {
 		  rowData = getXmlFilesData(data);
 		}
 		
-		String rowItem = "//*[@data-id='" + Integer.toString(rowNumber) + "']/..//*[@data-colindex='"
+		String rowItem = "//*[@aria-rowindex='" + Integer.toString(rowNumber) + "']/..//*[@aria-colindex='"
 				+ Integer.toString(columnNumber) + "']";
 		WebElement element = driver.findElement(By.xpath(rowItem));
 		compareTwoString(rowData, getText(element));

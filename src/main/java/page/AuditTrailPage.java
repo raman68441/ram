@@ -80,7 +80,7 @@ public class AuditTrailPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedInherit MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorInherit MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedInherit MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorInherit MuiButton-disableElevation css-jx524e']")
 	WebElement cancelBtnRemoveCategory;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-disableElevation css-1eqqfr2']")
+	@FindBy(xpath = " //*[text()='Remove']")
 	WebElement removeBtn;
 
 	@FindBy(id = "audit_trail_user")
@@ -92,7 +92,7 @@ public class AuditTrailPage extends GlobalFunctions {
 	@FindBy(id = "audit_trail_enter_name")
 	WebElement enterName;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-7s49xk']")
+	@FindBy(xpath = "//button[text()='Add New Event Category']")
 	WebElement addNewEventCategory;
 
 	@FindBy(xpath = "//*[text()='Add New Event Category']")
@@ -101,25 +101,28 @@ public class AuditTrailPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Generate']")
 	WebElement generateBtn;
 
-	@FindBy(xpath = "//*[text()='Generate']")
+	@FindBy(xpath = "//*[contains(@class,'MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-1xa4c71')]//button")
 	List<WebElement> generateBtns;
-
-	@FindBy(xpath = "//*[contains(@class,'MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css')]")
+	
+	@FindBy(xpath = "//*[contains(@class,'MuiDialogActions-root MuiDialogActions-spacing css')]//button")
+	List<WebElement> generateBtnss;
+	
+	@FindBy(xpath = "//*[text()='Generate']")
 	WebElement enableGenerateBtn;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInfo MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textInfo MuiButton-sizeMedium MuiButton-textSizeMedium css-1ub7g1i']")
+	@FindBy(xpath = "//div[contains(@class,'MuiStack-root css-')]//button")
 	List<WebElement> resetAllFiltersAndRemoveAddedEventCategory;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInfo MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textInfo MuiButton-sizeMedium MuiButton-textSizeMedium css-1ub7g1i']")
+	@FindBy(xpath = "//*[contains(@class,'MuiStack-root css-jj2ztu')]//button")
 	List<WebElement> enableResetAllFiltersAndRemoveAddedEventCategory;
 
 	@FindBy(xpath = "//*[text()='Remove Added Event Category']")
 	WebElement removeAddedEventCategory;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium Mui-disabled MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-7s49xk']")
+	@FindBy(xpath = "//*[text()='Download']")
 	WebElement downloadBtn;
 
-	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-7s49xk']")
+	@FindBy(xpath = "//*[@id='root']/div[1]/div[3]/div/div[2]/div[3]/div[2]/div/button[3]/span[1]")
 	WebElement downloadBtnEnable;
 
 	@FindBy(xpath = "//*[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-disableElevation MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-disableElevation css-x7si5o']")
@@ -176,7 +179,7 @@ public class AuditTrailPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[@role='tab' and text()='User Creation']")
 	WebElement userCreationTab;
 	
-	@FindBy(xpath = "//*[@role='tab' and text()='document type/template type']")
+	@FindBy(xpath = "//*[@role='tab' and text()='Document Type/Template Type']")
 	WebElement documentTypeTemplateTypeTab;
 
 	@FindBy(xpath = "//*[@role='tab' and text()='System Data Fields Types']")
@@ -190,6 +193,10 @@ public class AuditTrailPage extends GlobalFunctions {
 
 	@FindBy(xpath = "//*[@class='MuiDataGrid-row']")
 	List<WebElement> totalNumberOfRows;
+	
+	@FindBy(xpath = "//*[@role='tab' and text()='Site']")
+	WebElement siteTab;
+	
 
 	public String auditTrailColumnHeader = "//*[@class='MuiDataGrid-columnHeader MuiDataGrid-columnHeader--sortable' and  @aria-colindex='#']";
 
@@ -247,7 +254,8 @@ public class AuditTrailPage extends GlobalFunctions {
 			clickOnPerticularListElement(dateFeild, 1);
 			break;
 		case "generate":
-			waitTillAttributeDisplay(enableGenerateBtn, "textContent", "Generate", Duration.ofSeconds(30));
+			waitForElementToBeClickable(enableGenerateBtn);
+			//waitTillAttributeDisplay(enableGenerateBtn, "textContent", "Generate", Duration.ofSeconds(30));
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
@@ -309,6 +317,12 @@ public class AuditTrailPage extends GlobalFunctions {
 			break;
 		case "add new event all day":
 			clickOnPerticularListElement(checkBoxFields, 2);
+			break;
+//		case "add new event category generate button":
+//			clickElement(generateBtn);
+//			break;
+		case "add new event category generate button":
+			clickOnPerticularListElement(generateBtnss, 1);
 			break;
 		default:
 			Assert.fail("failed");
@@ -483,8 +497,10 @@ public class AuditTrailPage extends GlobalFunctions {
 		case "label select user":
 		case "label select condition":
 		case "label enter name":
+		case "label view site name":
 			getTextFromElementInListAndValidate(auditTralFieldLabels, name);
 			break;
+			
 		case "label or":
 			verifyText(orField, name);
 			break;
@@ -496,6 +512,7 @@ public class AuditTrailPage extends GlobalFunctions {
 			verifyTextContent(addNewEventCategory, "textContent", name);
 			break;
 		case "label generate":
+			waitForElementToBeClickable(generateBtn);
 			verifyTextContent(generateBtn, "textContent", name);
 			break;
 		case "label reset all filters":
@@ -524,6 +541,7 @@ public class AuditTrailPage extends GlobalFunctions {
 			verifyText(tagTab, name);
 			break;
 		case "activities tab":
+			waitForElementToBeVisible(activitiesTab);
 			verifyText(activitiesTab, name);
 			break;
 		case "checklist tab":
@@ -561,6 +579,9 @@ public class AuditTrailPage extends GlobalFunctions {
 		case "label add new event select condition":
 		case "label add new event enter name":
 			getTextFromElementInListAndValidate(auditTralAddNewEventFieldLabels, name);
+			break;
+		case "site tab":
+			verifyText(siteTab, name);
 			break;
 		default:
 			log.error("invalid field" + fieldName);

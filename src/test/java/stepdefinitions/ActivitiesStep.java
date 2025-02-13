@@ -3,7 +3,7 @@ package stepdefinitions;
 import core.BaseClass;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import page.admin.BusinessUnitPage;
+import page.admin.SitePage;
 import page.config.ActivitiesPage;
 
 public class ActivitiesStep {
