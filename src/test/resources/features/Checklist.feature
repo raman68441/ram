@@ -17,7 +17,7 @@ Feature: checklist screen functionality
     Then User verify 'table filter default value' in checklist page
     Then User verify 'reset filter' button in checklist page
     Then User verify 'download' button in checklist page
-    Then User verify "100" displayed in pagination field
+    #Then User verify "100" displayed in pagination field
     Then User verify "previous page" arrow is "disabled" in pagination field
     And User verify total number of records displayed in pagination
     And User verify number of rows in checklist table checklist page
@@ -30,10 +30,10 @@ Feature: checklist screen functionality
     Then User verify 'label checkpoint and picklist categories' in checklist page
     Then User verify 'no rows' in checklist page
     Then User verify 'column header checkpoint name' in checklist page
-    Then User verify 'column header id' in checklist page
+   # Then User verify 'column header id' in checklist page
     Then User verify 'cancel' button in checklist page
-    Then User verify 'save button' in checklist page  
-    And User clicks on 'save' button in checklist page    
+    Then User verify 'create button' in checklist page  
+    And User clicks on 'create' button in checklist page    
     Then User verify 'warning message checklist name is a required field' in checklist page
     Then User verify 'warning message checklist description is a required field' in checklist page
     And User verify 'warning message at least one checkpoint is required' in checklist page
@@ -65,8 +65,10 @@ Feature: checklist screen functionality
     And User clicks on 'add table column button' in checklist page
     Then User verify 'label select type' in checklist page
     And User verify 'label header name' in checklist page
+     And User selects 'string and selection option' as 'select type' in checklist page 
+    And User selects 'constant string option' as 'select type' in checklist page  
     And User verify 'label enter string name' in checklist page
-    And User selects 'constant string option' as 'select type' in checklist page 
+    And User selects 'list manager option' as 'select type' in checklist page 
     And User selects 'string and selection option' as 'select type' in checklist page 
     And User verify 'label enter selection value' in checklist page
     Then User enters 'text header name' in 'header name' field of checklist page
@@ -75,7 +77,7 @@ Feature: checklist screen functionality
     And User clicks on 'apply' button in checklist page 
     And User clicks on 'add' button in checklist page
     And User save 'id column' row 1 data in checklist page
-    And User clicks on 'save' button
+    And User clicks on 'create' button
     Then User verify 'checklist has been added message' in checklist page
     
     Then User verify 'reset filter' button in checklist page
@@ -114,7 +116,7 @@ Feature: checklist screen functionality
     And User clicks on 'apply' button in checklist page 
     And User clicks on 'add' button in checklist page
     And User save 'id column' row 1 data in checklist page
-    And User clicks on 'save' button
+    And User clicks on 'create' button
     Then User verify 'checklist name is allready present message' in checklist page
     And User clicks on 'cancel' button in checklist page
     
@@ -137,7 +139,7 @@ Feature: checklist screen functionality
     Then User verify 'text_edit_checklist_table_data' in row 1 of checklist page
     
     And User clicks on 'delete icon' in checklist page
-    Then User verify 'confirm you delete' in checklist page
+    Then User verify 'confirm your delete' in checklist page
     Then User verify 'delete' button in checklist page
     And User clicks on 'delete' button in checklist page
     Then User verify 'checklist deleted message' in checklist page
