@@ -43,7 +43,7 @@ Feature: Document Type/Template Type screen functionality
     And User verify 'no' button in document type template type page
     Then User verify 'manual' radio button in document type template type page
     Then User verify 'auto' radio button in document type template type page
-    And User verify 'save button' in document type template type page
+    And User verify 'create button' in document type template type page
     Then User verify 'next' button in document type template type page
     Then User verify 'cancel' button in document type template type page 
     
@@ -65,7 +65,7 @@ Feature: Document Type/Template Type screen functionality
     And User verify 'no' button in document type template type page
     Then User verify 'manual' radio button in document type template type page
     Then User verify 'auto' radio button in document type template type page
-    And User verify 'save button' in document type template type page
+    And User verify 'create button' in document type template type page
     Then User verify 'next' button in document type template type page
     Then User verify 'cancel' button in document type template type page 
     
@@ -73,7 +73,6 @@ Feature: Document Type/Template Type screen functionality
     And User clicks on 'external document' button in document type template type page
     Then User verify 'label selected content external document' in document type template type page
     And User clicks on 'template' button in document type template type page
-    Then User verify 'label selected content template' in document type template type page   
     And User clicks on 'default format' button in document type template type page
     And User verify 'label selected content default format' in document type template type page
     And User clicks on 'yes' button in document type template type page
@@ -113,26 +112,30 @@ Feature: Document Type/Template Type screen functionality
     And User verify 'label select system data field' in document type template type page
     And User verify 'back' button in document type template type page
     Then User verify 'next' button in document type template type page
-    Then User verify 'save button' button in document type template type page   
+    Then User verify 'create button' button in document type template type page   
     Then User verify 'cancel' button in document type template type page 
     Then User verify 'add' button in document type template type page   
     And User clicks on 'next' button in document type template type page
-    Then User verify 'warning message please add atleast one system data field' in document type template type page
-    And User selects 0 index option in 'select system data field' in document type template type page
-    And User clicks on 'add' button in document type template type page
-    Then User clicks on 'next' button in document type template type page
-    
     And User verify 'label workflow type' in document type template type page
-    And User verify 'back' button in document type template type page
-    Then User verify 'next' button in document type template type page
-    Then User verify 'save button' button in document type template type page   
-    Then User verify 'cancel' button in document type template type page 
-    Then User verify 'add' button in document type template type page   
-    And User clicks on 'next' button in document type template type page
-    Then User verify 'warning message please add atleast one workflow type' in document type template type page
+     And User clicks on 'next' button in document type template type page
+     Then User verify 'document type please add at least one workflow type' in document type template type page
     And User selects 0 index option in 'select workflow type field' in document type template type page
     And User clicks on 'add' button in document type template type page
     Then User clicks on 'next' button in document type template type page
+    
+    
+    
+    And User verify 'back' button in document type template type page
+    Then User verify 'next' button in document type template type page
+    Then User verify 'create button' button in document type template type page   
+    Then User verify 'cancel' button in document type template type page 
+    And User clicks on 'next' button in document type template type page
+    Then User verify 'warning message review period duration is required' in document type template type page
+    Then User verify 'warning message prior reminder is required' in document type template type page
+    Then User verify 'warning message reminder recurrence schedule is required' in document type template type page
+     Then User enters 'text review period duration' in 'review period duration' field of document type template type page
+    And User enters 'text prior reminder starts from' in 'prior reminder starts from' field of document type template type page
+    Then User enters 'text reminder recurrence schedule' in 'reminder recurrence schedule' field of document type template type page
     
     And User verify 'label review period duration' in document type template type page
     Then User verify 'label prior reminder starts from in days' in document type template type page
@@ -149,13 +152,8 @@ Feature: Document Type/Template Type screen functionality
     Then User verify 'daily' check box in document type template type page
     And User verify 'weekly' check box in document type template type page
     Then User verify 'monthly' check box in document type template type page
-    And User verify 'back' button in document type template type page
-    Then User verify 'next' button in document type template type page
-    Then User clicks on 'next' button in document type template type page
-    Then User verify 'warning message review period duration is required' in document type template type page
-    Then User verify 'warning message prior reminder is required' in document type template type page
-    Then User verify 'warning message reminder recurrence schedule is required' in document type template type page
-    And User verify 'save button' button in document type template type page   
+    And User verify 'back' button in document type template type page 
+    And User verify 'create button' button in document type template type page   
     Then User verify 'cancel' button in document type template type page 
     Then User enters 'text review period duration' in 'review period duration' field of document type template type page
     And User enters 'text prior reminder starts from' in 'prior reminder starts from' field of document type template type page
@@ -167,13 +165,13 @@ Feature: Document Type/Template Type screen functionality
     And User verify 'label notification groups list' in document type template type page
     Then User verify 'label notification roles list' in document type template type page
     And User verify 'back' button in document type template type page
-    And User verify 'save button' button in document type template type page   
+    And User verify 'create button' button in document type template type page   
     Then User verify 'cancel' button in document type template type page 
     And User selects 0 index option in 'notification users list' in document type template type page
     Then User selects 0 index option in 'notification departments list' in document type template type page
     And User selects 0 index option in 'notification groups list' in document type template type page
     Then User selects 0 index option in 'notification roles list' in document type template type page
-    Then User clicks on 'save' in document type template type page
+    Then User clicks on 'create' in document type template type page
  		Then User verify 'document type created successfully message' in document type template type page
     
     Then User verify 'reset filter' button in document type template type page
@@ -186,7 +184,7 @@ Feature: Document Type/Template Type screen functionality
     Then User verify 'search option default value' in document type template type page
     And User selects 'description option' as 'search option' in document type template type page 
     Then User enters 'text document type description' in 'search' field of document type template type page
-    And User verify 'text document type description' in row 1 column 2 in document type template type page      
+    And User verify 'text document type description' in row 1 column 3 in document type template type page      
     And User selects 'name option' as 'search option' in document type template type page
     Then User enters 'text document type name' in 'search' field of document type template type page
     And User verify 'text document type name' in row 1 column 1 in document type template type page
@@ -194,7 +192,7 @@ Feature: Document Type/Template Type screen functionality
     Then User verify 'search option default value' in document type template type page 
     And User selects 'description option' as 'search option' in document type template type page 
     Then User enters 'text document type description' in 'search' field of document type template type page
-    And User verify 'text document type description' in row 1 column 2 in document type template type page  
+    And User verify 'text document type description' in row 1 column 3 in document type template type page  
     And User clicks on 'reset filter' button in document type template type page
     Then User verify 'search option default value' in document type template type page
     Then User verify 'table filter default value' in document type template type page
@@ -204,24 +202,29 @@ Feature: Document Type/Template Type screen functionality
     Then User verify 'label document type name' in document type template type page
     And User verify 'label description' in document type template type page
     Then User enters 'text document type description1' in 'description' field of document type template type page
+    Then User clicks on 'next' button in document type template type page
+    Then User clicks on 'next' button in document type template type page
+    Then User clicks on 'next' button in document type template type page
+    Then User clicks on 'next' button in document type template type page
     And User clicks on 'update' button in document type template type page  
     Then User verify 'document type updated successfully message' in document type template type page
     
     And User selects 'description option' as 'search option' in document type template type page 
     Then User enters 'text document type description1' in 'search' field of document type template type page
-    And User verify 'text document type description1' in row 1 column 2 in document type template type page  
+    And User verify 'text document type description1' in row 1 column 3 in document type template type page  
     And User clicks on 'view' icon in document type template type page
     Then User verify 'view docuement type/template type header' in document type template type page
     And User clicks on 'back arrow' in document type template type page  
      
      And User selects 'description option' as 'search option' in document type template type page 
     Then User enters 'text document type description1' in 'search' field of document type template type page
-    And User verify 'text document type description1' in row 1 column 2 in document type template type page    
+    And User verify 'text document type description1' in row 1 column 3 in document type template type page    
     And User clicks on 'delete icon' in document type template type page
-    Then User verify 'confirm you delete' in document type template type page
+    Then User verify 'confirm your delete' in document type template type page
     Then User verify 'delete' button in document type template type page
     And User clicks on 'delete' button in document type template type page
     Then User verify 'document type deleted successfully message' in document type template type page
+    
 
     Then User clicks on 'logged in user drop down'
     And User verifies 'logout option name' is displayed in 'logout' field
