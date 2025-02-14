@@ -73,13 +73,13 @@ public class CommonPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Hide all']")
 	WebElement hideAll;
 	
-	@FindBy(xpath = "//*[text()='System']")
+	@FindBy(xpath = "//div[@id=\"root\"]//div//a[@href=\"/app/system\"]")
 	WebElement systemMenu;
 	
-	@FindBy(xpath = "//*[text()='Config']")
+	@FindBy(xpath = "//div[@id=\"root\"]//a[@href=\"/app/configuration\"]")
 	WebElement configMenu;
 	
-	@FindBy(xpath = "//*[text()='Admin']")
+	@FindBy(xpath = "//a[@href='/app/admin']//*[name()='svg']")
 	WebElement adminMenu;
 	
 	@FindBy(xpath = "//*[text()='Workflow']")
@@ -88,13 +88,13 @@ public class CommonPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Repository']")
 	WebElement repositoryMenu;
 	
-	@FindBy(xpath = "//*[text()='Task']")
+	@FindBy(xpath = "//a[@href='/app/task']")
 	WebElement taskMenu;
 	
 	@FindBy(xpath = "//*[text()='Template']")
 	WebElement templateMenu;
 	
-	@FindBy(xpath = "//*[text()='Document']")
+	@FindBy(xpath = "//a[@href='/app/repository']//*[name()='svg']")
 	WebElement documentMenu;
 	
 	@FindBy(xpath = "//*[text()='Reports']")
@@ -115,7 +115,7 @@ public class CommonPage extends GlobalFunctions {
 	@FindBy(xpath = "//*[text()='Cancel']")
 	WebElement cancelBtn;
 
-	@FindBy(xpath = "//*[text()='Save']")
+	@FindBy(xpath = "//*[@id='simple-tabpanel-1']/div[2]/div[2]/button")
 	WebElement saveBtn;
 
 	@FindBy(xpath = "//*[text()='Update']")
@@ -123,6 +123,9 @@ public class CommonPage extends GlobalFunctions {
 	
 	@FindBy(xpath = "//*[text()='Back']")
 	WebElement backBtn;
+	
+	@FindBy(xpath="//button[text()='Create']")
+	WebElement createBtn;
 	
 	
 	public static String loggedInUserfullName;
@@ -222,6 +225,9 @@ public class CommonPage extends GlobalFunctions {
 		case "back":
 			clickElement(backBtn);
 			break;
+		case "create":
+			clickElement(createBtn);
+			break;	
 		default:
 			Assert.fail("failed");
 			System.out.println("invalid name");
@@ -237,7 +243,7 @@ public class CommonPage extends GlobalFunctions {
 	public void verifyFieldText(String text, String fieldName) {
 		String name = getXmlFilesData(text);
 		switch (fieldName) {
-		case "logged in user":
+		case "logged in user":	
 			waitTillAttributeDisplay(loginName, "textContent", name, Duration.ofSeconds(60));
 			verifyText(loginName, name);
 			loggedInUserfullName = name;
@@ -260,7 +266,7 @@ public class CommonPage extends GlobalFunctions {
 		case "task":
 			verifyText(taskMenu, name);
 			break;
-		case "save button":
+		case "create":
 			verifyText(saveBtn, name);
 			break;
 		case "update":
