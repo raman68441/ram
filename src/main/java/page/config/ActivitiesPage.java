@@ -351,7 +351,7 @@ public class ActivitiesPage extends GlobalFunctions {
 			clickElement(newActivity);
 			break;
 		case "cancel":
-			//waitForElementToBeClickable(cancelBtn);
+			waitForElementToBeClickable(cancelBtn);
 		
 			waitTillAttributeDisplay(cancelBtn, "text", "Cancel", Duration.ofSeconds(30));
 			clickElement(cancelBtn);
