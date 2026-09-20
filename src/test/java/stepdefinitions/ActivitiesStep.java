@@ -7,6 +7,7 @@ import page.admin.SitePage;
 import page.config.ActivitiesPage;
 //hdjshd
 //kdikekdk
+//kd;sidfjka
 public class ActivitiesStep {
 	
 	ActivitiesPage activitiesPage = new ActivitiesPage(BaseClass.getDriver());
