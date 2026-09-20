@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import page.admin.SitePage;
 import page.config.ActivitiesPage;
-
+//hdjshd
 public class ActivitiesStep {
 	
 	ActivitiesPage activitiesPage = new ActivitiesPage(BaseClass.getDriver());
