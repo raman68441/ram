@@ -7,6 +7,7 @@ Feature: Audit Trail functionality
     Given User launched the application
     Then User enters 'email id' in 'email' field of login page
     //kdikekals
+    //dkieksl
     Then User enters 'password' in 'password' field of login page
     And User clicks on 'login' button in login page
     Then User verifies 'full name' is displayed in 'logged in user' field
