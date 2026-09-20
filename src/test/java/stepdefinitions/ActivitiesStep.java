@@ -6,7 +6,7 @@ import io.cucumber.java.en.When;
 import page.admin.SitePage;
 import page.config.ActivitiesPage;
 //hdjshd
-//kdikekdk
+//kdikekdksd
 //kd;sidfjka
 public class ActivitiesStep {
 	
