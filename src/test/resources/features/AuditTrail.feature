@@ -6,7 +6,10 @@ Feature: Audit Trail functionality
   Scenario: 1_verify all the fields in audit trail page
     Given User launched the application
     Then User enters 'email id' in 'email' field of login page
-    //kdikekals
+    ##//kdikekals
+    ##//dkieksl
+    #a;ksdikd\#
+    #kdiek
     Then User enters 'password' in 'password' field of login page
     And User clicks on 'login' button in login page
     Then User verifies 'full name' is displayed in 'logged in user' field
